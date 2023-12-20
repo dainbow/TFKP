@@ -1,0 +1,747 @@
+\documentclass[a4paper,12pt]{article}
+
+%%% Работа с русским языком
+
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage{indentfirst}            % красная строка в первом абзаце
+\usepackage[unicode]{hyperref}
+\usepackage{epigraph}
+\frenchspacing                      % равные пробелы между словами и предложениями
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % пакеты AMS
+\usepackage{bbm} % Blackboard bold для цифр
+\usepackage{icomma}                                    % "Умная" запятая
+
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+\renewcommand{\emptyset}{\ensuremath{\varnothing}}
+
+\newcommand{\cl}{\text{cl }}
+\newcommand{\setint}{\text{int }}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}{Лемма}[section]
+\newtheorem{proposition}{Утверждение}[section]
+\newtheorem*{corollary}{Следствие}
+\newtheorem*{exercise}{Упражнение}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+\newtheorem*{note}{Замечание}
+\newtheorem*{reminder}{Напоминание}
+\newtheorem*{example}{Пример}
+\newtheorem*{tasks}{Вопросы и задачи}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Решение}
+
+%%% Оформление страницы
+\usepackage{extsizes}     % Возможность сделать 14-й шрифт
+\usepackage{geometry}     % Простой способ задавать поля
+\usepackage{setspace}     % Интерлиньяж
+\usepackage{enumitem}     % Настройка окружений itemize и enumerate
+\usepackage{epigraph}     % Эпиграф
+\setlist{leftmargin=25pt} % Отступы в itemize и enumerate
+
+\geometry{top=25mm}    % Поля сверху страницы
+\geometry{bottom=30mm} % Поля снизу страницы
+\geometry{left=20mm}   % Поля слева страницы
+\geometry{right=20mm}  % Поля справа страницы
+
+\begin{document}
+\tableofcontents
+\newpage
+
+\section{Комплексная дифференцируемость. Условия Коши-Римана}
+\begin{definition}
+	Окрестностью назовём
+	\[
+		B_r(z_0) = \{z \in \mathbb{C} \:\vert\: \vert z - z_0\vert < r\}
+	\]
+	Проколотой окрестностью назовём
+	\[
+		\dot{B}_r(z_0) = \{z \in \mathbb{C} \:\vert\: 0 < \vert z - z_0\vert < r\}
+	\]
+	Замкнутой окрестностью назовём
+	\[
+		\overline{B}_r(z_0) = \{z_0 \in \mathbb{C} \:\vert\: \vert z - z_0\vert \leq r\}
+	\]
+\end{definition}
+
+\begin{note}
+	Введём обозначения:
+	\begin{align*}
+		\Delta x = x - x_0 ;\;\;\;\; \Delta y = y - y_0 ;\;\;\;\; \Delta z = z - z_0 = \Delta x + i\Delta y \\
+		\Delta u = u(x,\,y) - u(x_0,\,y_0);\;\;\; \Delta v = v(x,\,y) - v(x_0,\, y_0) ;\;\;\; \Delta f = f(x,\, y) - f(x_0,\, y_0) = \Delta u + i\Delta v
+	\end{align*}
+\end{note}
+
+\begin{definition}
+	Говорят, что $f :\: B_r(z_0) \to \mathbb{C}$ дифференцируема в точке $z_0$, если
+	\[
+		\exists A \in \mathbb{C} :\: f(z) = f(z_0) + A(z - z_0) + o(z - z_0),\, \vert z - z_0\vert \to 0
+	\]
+\end{definition}
+
+\begin{lemma}
+	$f :\: B_r(z_0) \to \mathbb{C}$ дифференцируема в $z_0 \Leftrightarrow \exists f'(z_0),\, A = f'(z_0)$.
+\end{lemma}
+
+\begin{theorem}
+	Условие Коши-Римана.
+
+	$f :\: B_r(z_0) \to \mathbb{C}$ дифференцируема в $z_0$ тогда и только тогда, когда
+	\begin{itemize}
+		\item $u(x,\, y),\, v(x,\, y)$ дифференцируемы в $(x_0,\, y_0)$
+		\item Выполняется условие Коши-Римана:
+		      \[
+			      \begin{cases}
+				      \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \\
+				      \frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}
+			      \end{cases}
+		      \]
+	\end{itemize}
+	При этом
+	\[
+		f'(z_0) = \frac{\partial u}{\partial x}(x_0,\, y_0) + i\frac{\partial v}{\partial x}(x_0,\, y_0) = \frac{\partial v}{\partial y}(x_0,\, y_0) - i\frac{\partial u}{\partial y}(x_0,\, y_0)
+	\]
+\end{theorem}
+
+\begin{proof}
+	($\Rightarrow$)
+
+	Пусть
+	\[
+		\exists f'(z_0) = a + ib = A \in \mathbb{C}
+	\]
+	Значит, по определению дифференцируемости
+	\[
+		\Delta f = A\Delta z + \alpha(\Delta z);\;\;\;\; \alpha(\Delta z) := \alpha_1(\Delta x,\, \Delta y) + i\alpha_2(\Delta x,\, \Delta y)
+	\]
+	Где $\alpha(\Delta z) = o(\Delta z),\, \vert\Delta z\vert \to 0$
+
+	Тогда, раскрыв это выражение по каждой координате, получим
+	\[
+		\begin{cases}
+			\Delta u = a\Delta x - b\Delta y + \alpha_1(\Delta x,\, \Delta y) \\
+			\Delta v = b\Delta x + a \Delta y + \alpha_2(\Delta x,\, \Delta y)
+		\end{cases}
+	\]
+	Из того, что $\vert\alpha_1\vert \leq \vert \alpha(\Delta z)\vert$ и $\vert\alpha_2\vert \leq \vert \alpha(\Delta z)\vert \Rightarrow \alpha_1,\, \alpha_2 = o(\Delta z),\, \vert \Delta z\vert \to 0$.
+
+	Значит, $u$ дифференцируема, причём
+	\[
+		\frac{\partial u}{\partial x} = b ;\;\;\;\; \frac{\partial u}{\partial y} = -b
+	\]
+	Аналогично для $v$, причём
+	\[
+		\frac{\partial v}{\partial x} = b ;\;\;\;\; \frac{\partial v}{\partial y} = a
+	\]
+	Видим, что УКР выполняется.
+
+	($\Leftarrow$)
+
+	Пусть $u,\, v$ дифференцируемы в $(x_0,\, y_0)$ и выполняется УКР. Тогда
+	\begin{align*}
+		\Delta f = \Delta u + i\Delta v = \frac{\partial u}{\partial x}\Delta x + \frac{\partial u}{\partial y}\Delta y + \alpha_1(\Delta Z) + i\left(\frac{\partial v}{\partial x}\Delta x + \frac{\partial v}{\partial y}\Delta y + \alpha_2(\Delta z)\right) = \\
+		\Delta u + i\Delta v = \frac{\partial u}{\partial x}\Delta x - \frac{\partial v}{\partial x}\Delta y + \alpha_1(\Delta Z) + i\left(\frac{\partial v}{\partial x}\Delta x + \frac{\partial u}{\partial x}\Delta y + \alpha_2(\Delta z)\right) =            \\
+		\left(\frac{\partial u}{\partial x} + i\frac{\partial v}{\partial x}\right)\cdot(\Delta x + i\Delta y) + \alpha_1(\Delta z) + i\alpha_2(\Delta z)
+	\end{align*}
+	Значит,
+	\[
+		\exists f'(z_0) = \frac{\partial u}{\partial x} +i\frac{\partial v}{\partial x}
+	\]
+\end{proof}
+
+\section{Связность. Теорема о голоморфной в области функции, производная которой равна нулю.}
+\begin{definition}
+	Если $u :\: G \to \mathbb{R},\, G \subseteq \mathbb{R}^2$ -- область, причём
+	\[
+		u \in C^2(G),\, \Delta u = 0
+	\]
+	где $\Delta = \nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}$
+\end{definition}
+
+\begin{definition}
+	Функция $f :\: G \to \mathbb{C}$, где $G \subseteq \mathbb{C}$ -- область, называется регулярной (аналитической, голоморфной), если
+	\[
+		\forall z \in G \: \exists f'(z)
+	\]
+\end{definition}
+
+\begin{definition}
+	Функция $f :\: G \to \mathbb{C},\, G \subseteq \mathbb{C}$ называется регулярной в точке $z_0 \in G$, если
+	\[
+		\exists r > 0,\, B_r(z_0) \subseteq G :\: f \text{ регулярна на }B_r(z_0)
+	\]
+\end{definition}
+
+\begin{definition}
+	Множество $E \subseteq \overline{\mathbb{C}}$ называется связным, если не существует открытых $G_1,\, G_2$:
+	\begin{enumerate}
+		\item $G_1 \cup G_2 \supseteq E$
+		\item $E \cap G_1 \cap G_2 = \emptyset$
+		\item $E \cap G_1 \neq \emptyset$ и $E \cap G_2 \neq \emptyset$
+	\end{enumerate}
+\end{definition}
+
+\begin{definition}
+	Непустое открытое связное множество в $\overline{\mathbb{C}}$ называется областью.
+\end{definition}
+
+\begin{definition}
+	Область $D$ называется односвязной, если $\overline{\mathbb{C}} \setminus D$ -- связно.
+\end{definition}
+
+\begin{theorem}
+	Пусть $f$ голоморфна в области $D$ и
+	\[
+		\forall z \in D :\: f'(z) \equiv 0
+	\]
+	Тогда $f \equiv const$
+\end{theorem}
+
+\begin{proof}
+	Любые $(x_0,\, y_0) \in D$ лежат вместе с каким-то отрезком $[(x_0,\, y_0),\, (x_0,\, y_0 + \Delta y)]$. Тогда
+	\[
+		f' = u_x + v_xi \Rightarrow u_x \equiv v_x \equiv 0 \Rightarrow u_y \equiv v_y \equiv 0
+	\]
+	Применим теорему Лагранжа к $u(x,\,y)$. Аналогично к $v(x,\,y) \Rightarrow f \equiv const$ на всех вертикальных отрезках.
+
+	Аналогично на горизонтальных. Тогда $f \equiv const$ на $D$ в силу связности.
+\end{proof}
+
+\section{Теорема об обратной функции}
+\begin{theorem}
+	Пусть $f :\: G \to H \subseteq C,\, g :\: H \to \mathbb{C}$ регулярны. Тогда $\zeta(z) = g(f(z))$ также регулярна, причём
+	\[
+		\forall z \in G :\: \zeta'(z) = g'(f(z))f'(z)
+	\]
+\end{theorem}
+
+\begin{proof}
+	Зафиксируем $z_0 \in G,\, w_0 = f(z_0) \in G$.
+
+	Из дифференцируемости
+	\[
+		\Delta f = f(z_0)\Delta z + o(\Delta z),\, \vert\Delta z\vert \to 0;\;\;\;\; \Delta g = g'(w_0)\Delta w + o(\Delta w),\, \vert\Delta w\vert \to 0
+	\]
+	Пусть $\Delta w = \Delta f$, тогда
+	\[
+		\frac{\Delta\zeta}{\Delta z} = g'(w_0)\frac{\Delta f}{\Delta z} + \frac{o(\Delta f)}{\Delta f}\cdot\frac{\Delta f}{\Delta z} \overset{\Delta z \to 0}{\to} g'(w_0)f'(z_0) + 0
+	\]
+\end{proof}
+
+\begin{theorem}
+	Об обратной фнуции.
+
+	Пусть $f :\: G \to \mathbb{C}$ регулярная и непрерывно дифференцируема на $G$. Пусть $z_0 \in G,\, w_0 = f(z_0),\, f'(z_0) \neq 0$. Тогда $\exists B_\delta(z_0),\, B_\varepsilon(w_0)$, такие, что
+	\begin{enumerate}
+		\item $\forall z \in B_\delta(z_0) :\: f'(z) \neq 0$
+		\item $\forall \hat{w} \in B_\varepsilon(w_0)$ уравнение $\hat{w} = f(z)$ имеет в $B_\delta(z_0)$ единственное решение $\hat{z}$, то есть на $B_\varepsilon(w_0)$ определена обратная функция $g :\: B_\varepsilon(w_0) \to B_\delta(z_0)$, то есть
+		      \[
+			      \forall w \in B_\delta(w_0) :\: f(g(w)) = w
+		      \]
+		\item $g$ регулярна на $B_\varepsilon(w_0)$, причём
+		      \[
+			      \forall w \in B_\varepsilon(w_0) :\: g'(w) = \frac{1}{f'(g(w))}
+		      \]
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Первые два пункта выполняется благодаря обычной теореме об обратной функции из матана.
+
+	Пусть $f(z) = u(x,\,y) + iv(x,\,y)$. Имеем отображение $\mathbb{R}^2 \to \mathbb{R}^2$. В силу непрерывной дифференцируемости этих двух функций запишем якобиан и преобразуем согласно УКР:
+	\[
+		J(x,\,y) = \begin{vmatrix}
+			u_x & u_y \\
+			v_x & v_y
+		\end{vmatrix} = \begin{vmatrix}
+			u_x & -v_x \\
+			v_x & u_x
+		\end{vmatrix} = (u_x)^2 + (v_x)^2 = \vert f'(z)\vert^2 \Rightarrow J(x_0,\, y_0) \neq 0
+	\]
+
+	Третий пункт выполняется благодаря предыдущей теореме:
+	\[
+		g(f(z)) = z \Rightarrow g'(f(z))f'(z) = 1 \Rightarrow g'(f(z)) = \frac{1}{f'(z)} = g'(w) = \frac{1}{f'(g(w))}
+	\]
+\end{proof}
+
+\section{Степенные ряды. Формула Коши-Адамара\dots}
+\begin{definition}
+	Ряд $\sum_{n = 1}^\infty$ сходится, если сходится последовательность $\{\sum_{k=1}^n g_k(z)\}_{n = 1}^\infty$.
+
+	Сходимость бывает условной и абсолютной.
+\end{definition}
+
+\begin{definition}
+	Степенным рядом называется ряд вида
+	\[
+		\sum_{n = 0}^\infty a_nz^n,\, a_n \in \mathbb{C}
+	\]
+\end{definition}
+
+\begin{theorem}
+	Признак Вейерштрасса.
+
+	Пусть
+	\[
+		\forall n \: \forall z:\: \vert g_n(z)\vert \leq \alpha_n
+	\]
+	причём $\sum_{n = 1}^\infty \alpha_n < +\infty$. Тогда ряд $\sum_{n = 1}^\infty g_n(z)$ сходится абсолютно равномерно.
+\end{theorem}
+
+\begin{theorem}
+	Пусть $\frac{1}{R} := \overline{\lim}\sqrt[n]{\vert a_n\vert},\, R \in [0,\, +\infty]$. Тогда
+	\begin{enumerate}
+		\item Если $\vert z\vert \leq r < R$, то степенной ряд сходится равномерно и абсолютно.
+		\item Если $\vert z\vert > R$, то ряд расходится
+		\item $f(z) = \sum_{n = 0}^\infty a_nz^n$ голоморфна при $\vert z\vert < R$ и её производная $f'(z) = \sum_{n = 1}^\infty na_nz^{n-1}$
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Пусть $\rho \in (r,\, R) \Rightarrow \frac{1}{R} < \frac{1}{\rho} < \frac{1}{r}$. По определению верхнего предела
+		      \[
+			      \exists N \in \mathbb{N} \: \forall n > N :\: \sqrt[n]{a_n} < \frac{1}{\rho}
+		      \]
+		      Тогда (в условиях текущего пункта):
+		      \[
+			      \exists N \in \mathbb{N} \: \forall n > N :\: \vert a_nz^n\vert \leq \left(\frac{r}{\rho}\right)^n,\, \frac{r}{\rho} < 1
+		      \]
+		      Тогда по теореме Вейшерштрасса мы можем ограничить рассматриваемый ряд сходящимся числовым (геометрическая прогрессия) и всё доказали.
+		\item Пусть $\vert z\vert > R$, то есть $\frac{1}{\vert z\vert} < \frac{1}{R}$. Значит
+		      \[
+			      \exists \varepsilon > 0 :\: \frac{1}{\vert z\vert} \leq \frac{1}{R} - \varepsilon \Rightarrow \vert z\vert \geq \frac{1}{\frac{1}{R} - \varepsilon}
+		      \]
+		      По определению верхнего предела:
+		      \[
+			      \exists \{n_k\}_{k = 1}^\infty \: \forall k :\: \sqrt[n_k]{\vert a_{n_k}\vert} > \frac{1}{R} - \varepsilon \Rightarrow \vert a_{n_k}z^{n_k}\vert \geq \left(\frac{1}{R} - \varepsilon\right)^{n_k}\cdot\left(\frac{1}{\frac{1}{R} - \varepsilon}\right)^{n_k} \geq 1
+		      \]
+		      Получили, что не выполнено необходимое условие сходимости ряда.
+		\item Заметим, что у $g(z) = \sum_{n = 1}^\infty na_nz^{n-1}$ ряд сходимости такой же в силу $\sqrt[n]{n} \to 1$, то есть он сходится при $\vert z\vert < R$.
+
+		      Заметим, что частичные суммы $G_n = F_n'$, то есть равна производной соответствующей частичной суммы $f$.
+
+		      Распишем производную $f$ через частичные суммы:
+		      \begin{align*}
+			      \frac{f(z) - f(z_0)}{z - z_0} = \frac{F_N(z) - F_N(z_0)}{z - z_0} + \frac{H_N(z) - H_N(z_0)}{z - z_0} = \\
+			      \left(\frac{F_N(z) - F_N(z_0)}{z - z_0}  - F_N'(z_0)\right) + (F_N'(z_0) - g(z_0)) + g(z_0) + \left(\frac{H_N(z) - H_N(z_0)}{z - z_0}\right)
+		      \end{align*}
+		      Устремляя $N \to +\infty$, получим
+		      \[
+			      \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0} = g(z_0)
+		      \]
+		      так как
+		      \[
+			      \frac{H_N(z) - H_N(z_0)}{z - z_0} = \sum_{n = N}^\infty a_n\frac{z^n - z^n_0}{z - z_0} = \sum_{n = N}^\infty \left[a_n\sum_{k =0}^{n-1}z^kz_0^{n - 1 - k}\right] \Rightarrow
+		      \]
+		      \[
+			      \left\vert\frac{H_N(z) - H_N(z_0)}{z - z_0}\right\vert \leq \sum_{n = N}^\infty \vert a_n\vert\cdot n\cdot r^{n - 1}
+		      \]
+		      Проследнее выражение стремится к нулю, как остаток сходящегося ряда.
+	\end{enumerate}
+
+\end{proof}
+
+\section{Степенные ряды. Свойства экспоненты и тригонометрических.}
+\begin{definition}
+	Голоморфные в $\mathbb{C}$ функции называют целыми
+\end{definition}
+
+\begin{definition}
+	Определим эскпоненту
+	\[
+		e^z := \sum_{n = 0}^\infty \frac{z^n}{n!}
+	\]
+	$R_\text{сх} = +\infty \Rightarrow e^z$ целая.
+\end{definition}
+
+\begin{lemma}
+	Свойства экспоненты:
+	\begin{enumerate}
+		\item $(e^z)' = e^z$
+		\item $e^{z_1 + z_2} = e^{z_1}e^{z_2}$
+		\item $\forall z \in \mathbb{C} :\: e^z \neq 0$
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Сразу следует из пункта 3 предыдущей теоремы.
+		\item Покажем эквивалентное свойство $e^{a - z}e^z = e^a$. Пусть
+		      \[
+			      g(z) := e^{a - z}e^z \Rightarrow g'(z) = -e^{a - z}e^z + e^{a - z}e^z = 0
+		      \]
+		      А это значит, что $g \equiv const$, так как голоморфна.
+
+		      Посчитаем $g(0) = e^{a - 0}e^0 = e^a \Rightarrow g(z) \equiv e^a$, что и требовалось доказать.
+		\item $\forall z \in \mathbb{C}$ выполняется:
+		      \[
+			      e^ze^{-z} = e^0 = 1
+		      \]
+		      Значит в $e^ze^{-z}$ никто не может быть нулём.
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Определим тригонометрические функции на $\mathbb{C}$:
+	\[
+		\cos(z) := \sum_{n = 0}^\infty \frac{(-1)^nz^{2n}}{(2n)!} ;\;\;\;\; \sin(z) = \sum_{n = 0}^\infty \frac{(-1)^nz^{2n + 1}}{(2n + 1)!}
+	\]
+\end{definition}
+
+\begin{lemma}
+	Свойства тригонометрических функций:
+	\begin{enumerate}
+		\item $e^{iz} = \cos(z) + i\sin(z)$
+		\item $\vert e^z\vert = e^{\text{Re }z}$
+		\item Если $e^{z + T} = e^z$, то $T = 2\pi ik,\, k \in \mathbb{Z}$
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Очевидно
+		\item Очевидно
+		\item Заметим, что
+		      \[
+			      e^T = 1 \Leftrightarrow \text{Re }T = 0 \Leftrightarrow T = i\beta
+		      \]
+		      Тогда
+		      \[
+			      e^{i\beta} = \cos(\beta) + i\sin(\beta) = 1 \Leftrightarrow \beta = 2\pi k \Rightarrow T = 2\pi ki,\, k \in \mathbb{Z}
+		      \]
+	\end{enumerate}
+\end{proof}
+
+\section{Первообразная и полный дифференциал в области. Условия\dots}
+\begin{definition}
+	Кривая $\gamma$ -- класс эквивалентных параметризаций
+	\[
+		z(t) = x(t) + iy(t),\, t \in [t_0,\, t_1]
+	\]
+\end{definition}
+
+\begin{definition}
+	Кривая $\gamma$ называется гладкой, если существует параметризация
+	\[
+		z(t) = x(t) + iy(t),\, x \in C^1([t_0,\,t_1]),\, y \in C^1([t_0,\, t_1]);\;\; \forall t \in [t_0,\, t_1] :\: z'(t) \neq 0
+	\]
+\end{definition}
+
+\begin{definition}
+	Гладкая кривая $\gamma$ называется замкнутой, если
+	\[
+		z(t_0) = z(t_1);\;\; z'(t_0 + 0) = z'(t_1 - 0)
+	\]
+\end{definition}
+
+\begin{definition}
+	Кривая $\gamma$ называется кусочно гладкой, если
+	\[
+		\exists t_0 = \theta_0 < \theta_1 < \cdots < \theta_{n - 1} < \theta_n = t_1
+	\]
+	что
+	\[
+		\forall k :\: z_k(t),\, t \in [\theta_{k-1},\, \theta_k] \text{ - это гладкая кривая}
+	\]
+\end{definition}
+
+\begin{definition}
+	Пусть $g :\: G \to \mathbb{C}$ на области $G$. Назовём это первообразной непрерывной функции $f :\: G \to \mathbb{C}$, если $g$ регулярна на $G$ и
+	\[
+		\forall z \in G :\: g'(z) = f(z)
+	\]
+\end{definition}
+
+\begin{definition}
+	Выражение $f(z)dz$ называется полным дифференциалом в области $G$, если существует первообразная $g$ для $f$ на $G$, то есть
+	\[
+		f(z)dz = g'(z)dz
+	\]
+\end{definition}
+
+\begin{theorem}
+	Пусть $f :\: G \to \mathbb{C}$ непрерывна на области $G$. Тогда:
+	\begin{enumerate}
+		\item Если $fdz$ -- полный дифференциал на $G$, то для любой замкнутой КГК $\dot{\gamma} \subseteq G$ выполняется
+		      \[
+			      \int_{\dot{\gamma}}f(z)dz = 0
+		      \]
+		\item Если для любой замкнутой ломаной кривой $\gamma$ выполняет равенство выше, то $fdz$ -- полный дифференциал.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item По условию $\exists g :\: G \to \mathbb{C}$, регулярная, такая, что $g'(z) = f(z)$. Тогда
+		      \[
+			      \int_{\dot{\gamma}}f(z)dz = \int_{t_0}^{t_1} g'(z(t))z'(t)dt = \int_{t_0}^{t_1}\frac{d}{dt}(g(z(t)))dt = g(z(t_1)) - g(z(t_0)) = g(z(t_0)) - g(z(t_0)) = 0
+		      \]
+		\item Фиксируем $a \in G$ как начальную точку ломаной $\gamma$. Тогда $\forall z \in G :\: \exists \gamma_{az}$ -- ломаная с началом в $a$ и концом в $z$.
+		      \[
+			      g(z) = \int_{\gamma_{az}} f(z)dz
+		      \]
+		      не зависит от $\gamma_{az}$, а лишь от $z$.
+
+		      Действительно, если $\exists \gamma_{az} \not\sim \tilde{\gamma}_{az}$, то пусть $\dot{\gamma} = \gamma_{az} \cup \tilde{\gamma}_{az}^{-1}$, тогда по аддитивности интеграла
+		      \[
+			      \int_{\dot{\gamma}}f(z)dz = 0 = \int_{\gamma_{az}}f(z)dz - \int_{\tilde{\gamma}_{az}}f(z)dz
+		      \]
+		      Докажем, что $\forall z :\: g'(z) = f(z)$. Рассмотрим $z_0 :\: \exists \varepsilon > 0 :\: B_\varepsilon(z_0) \subseteq G$ и приращение $\Delta z :\: 0 < \vert\Delta z\vert < \varepsilon$. Тогда $z_0 + \Delta z \in G$. Рассмотрим
+		      \[
+			      \frac{g(z_0 + \Delta z) - g(z_0)}{\Delta z} = \frac{1}{\Delta z} \int_{[z_0,\, z_0 + \Delta z]}f(z)dz
+		      \]
+		      Значит
+		      \[
+			      \left\vert\frac{\Delta g}{\Delta z} - f(z_0)\right\vert = \left\vert \frac{1}{\Delta z}\int_{[z_0,\, z_0 + \Delta z]}(f(z) - f(z_0)) dz\right\vert
+		      \]
+		      В силу непрерывности $f(z)$, найдём $r(\varepsilon)$ -- радиус шара, где $\vert f(z) - f(z_0)\vert < \varepsilon$, тогда
+		      \[
+			      \forall z \in B_{r(\varepsilon)}(z_0) \cap B_\varepsilon(z_0) :\: \left\vert \frac{\Delta g}{\Delta z} - f(z_0)\right\vert \leq \left\vert \frac{\varepsilon\min\{r(\varepsilon),\, \varepsilon\}}{\min\{r(\varepsilon),\, \varepsilon\}}\right\vert = \varepsilon
+		      \]
+	\end{enumerate}
+\end{proof}
+
+\section{Лемма Гурса и теорема Коши для выпуклой области}
+\begin{lemma}
+	Гурса.
+
+	Пусть $G$ -- область, $f :\: G \to \mathbb{C}$ регулярна. Тогда для любого треугольника из $G$ верно
+	\[
+		\int_{\partial\triangle} f(z)dz = 0
+	\]
+\end{lemma}
+
+\begin{proof}
+	Зафиксируем $\triangle ABC \subseteq G$. Тогда будем рассматривать
+	\[
+		I := \int_{\partial\triangle ABC}f(z)dz
+	\]
+	Разобьём треугольник средними линиями:
+	\[
+		\triangle ABC = \bigcup_{k = 1}^4 \triangle_k
+	\]
+	Тогда
+	\[
+		I = \sum_{k = 1}^4 \int_{\partial \triangle_k}f(z)dz
+	\]
+	Докажем, что
+	\[
+		\exists k_0 :\: \left\vert \int_{\partial \triangle_{k_0}}f(z)dz\right\vert \geq \frac{\vert I\vert}{4}
+	\]
+	Очевидно от противного, так как триангуляции с ориентацией, то если бы все были меньше, то нельзя было бы набрать $I$.
+
+	Обозначим найдённый треугольник за $\triangle^1 := \triangle_{k_0}$, а $\triangle^0 := \triangle ABC$. Аналогично построению $\triangle^1$ из $\triangle^0$ можем построить бесконечную последовательность $\{\triangle^N\}_{N = 0}^\infty$, и для них
+	\[
+		\left\vert \int_{\partial \triangle^N}f(z)dz\right\vert \geq \frac{\vert I\vert}{4^N}
+	\]
+	Теперь заметим, что $P_N = \frac{P_0}{2^N}$, где $P_N$ -- периметр $N$-го треугольника. В силу компактности
+	\[
+		\exists z_0 \in \bigcap_{N = 1}^\infty \triangle^N
+	\]
+	Так как $f$ дифференцируема в $z_0$, то по определению:
+	\[
+		\exists_{\delta_0}(z_0) \: \forall z \in B_{\delta_0}(z_0) :\: f(z) = f(z_0) + f'(z_0)(z - z_0) + o(z - z_0)
+	\]
+	А для $o$-малого верно:
+	\[
+		\forall \varepsilon > 0 \: \exists \delta_1 \leq \delta_0 \: \forall z \in B_{\delta_1}(z_0) :\: \vert o(z - z_0)\vert \leq \varepsilon\vert z - z_0\vert
+	\]
+	Теперь можем расписать интеграл:
+  \begin{align*}
+    \int_{\partial\triangle^N}f(z)dz = f(z_0)\int_{\partial\triangle^N}dz + f'(z_0)\int_{\partial\triangle^N}zdz - z_0f'(z_0)\int_{\partial\triangle^N} + \int_{\partial\triangle^N}o(z - z_0)dz =\\
+    \int_{\partial\triangle^N}o(z - z_0)dz
+  \end{align*}
+  Интегралы по $1$ и $z$ равны нулю, так как они, очевидно, полные дифференциалы.
+
+  Причём полагаем $N$ таким, что
+  \[
+    \forall z \in \triangle^N :\: \vert z - z_0\vert < \delta_1
+  \]
+  Тогда 
+  \[
+    \left\vert\int_{\partial\triangle^N} f(z)dz\right\vert \leq \int_{\partial\triangle^N} \vert o(z - z_0)\vert\cdot\vert dz\vert \leq \varepsilon\int_{\partial\triangle^N} \vert z - z_0\vert\cdot\vert dz\vert \leq \varepsilon P_N^2 \leq \varepsilon\frac{P_0^2}{4^N}
+  \]
+  Получили, что
+  \[
+    \vert I\vert \leq \varepsilon\frac{P_0^2}{4^N}
+  \]
+  В силу произвольности $\varepsilon$: $I = 0$.
+\end{proof}
+
+\begin{theorem}
+  Коши для выпуклой области.
+
+  Пусть $D$ -- выпуклая область, $f$ -- голоморфна в $D \setminus \{0\}$, $f$ -- непрерывна в $D$. Тогда $\forall \gamma$ -- кусочно-гладкой замкнутой кривой
+  \[
+    \int_\gamma fdz = 0
+  \]
+\end{theorem}
+
+\begin{proof}
+  По лемме Гурса
+  \[
+    \forall \triangle \subseteq D :\: \int_{\partial \triangle} fdz = 0  
+  \]
+
+  Тогда мы можем триангулировать любую ломаную $\Rightarrow$ по одной из теорем $fdz$ -- полный дифференциал (нужна была непрерывности и нулевой интеграл по всем ломаным).
+
+  А как мы знаем, интеграл по любой замкнутой кривой от полного дифференциала нулевой.
+\end{proof}
+
+\section{Интеграл Коши и его свойства}
+\begin{definition}
+  Пусть $\gamma$ -- кусочно-гладкая кривая в $\mathbb{C}$. Тогда $\forall \phi \in C(\gamma)$ определим интеграл Коши, как
+  \[
+    F_n(z,\, \phi) = \int_\gamma \frac{\phi(\xi)}{(\xi - z)^n}d\xi
+  \]
+\end{definition}
+
+\begin{theorem}
+  Свойства интеграла Коши:
+  \begin{enumerate}
+    \item $F_n(z,\, \phi)$ - голоморфна ($\Rightarrow$ непрерывна) в $\mathbb{C} \setminus \gamma$
+    \item $F_n'(z,\, \phi) = nF_{n + 1}(z,\, \phi)$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Вначале покажем непрерывность для $n = 1$:
+  \[
+    F_1(z,\, \phi) - F_1(z_0,\, \phi) = \int_\gamma\frac{\phi(\xi)(z - z_0)}{(\xi - z)(\xi - z_0)}d\xi = (z - z_0)\cdot F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right)
+  \]
+  Введём $\delta = \rho(z_0,\, \gamma)$. Для $z_0 \in \mathbb{C}\setminus \gamma$ оно, очевидно, не равно нулю.
+
+  Тогда
+  \[
+    \left\vert (z - z_0)\cdot F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right)\right\vert \leq \frac{const}{\delta^2}\vert z - z_0\vert
+  \]
+  что и гарантирует непрерывность.
+
+  Из того же тождества
+  \[
+    \frac{F_1(z,\, \phi) - F_1(z_0,\, \phi)}{z - z_0} = F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) \overset{z \to z_0}{\to} F_1\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = F_2(z_0,\, \phi(\xi))
+  \]
+  Доказали голоморфность существованием производной.
+
+  Далее по индукции: пусть $F_{n - 1}$ голоморфна в $D$:
+  \[
+    F_{n - 1}'(z,\, \phi) = (n - 1)F_n(z,\, \phi)
+  \]
+  Распишем приращение с помощью умного нуля:
+  \begin{align*}
+    F_n(z,\, \phi) - F_n(z_0,\, \phi) =\\
+    \int_\gamma\left[\left(\frac{1}{(\xi - z)^n} - \frac{1}{(\xi - z)^{n - 1}(\xi - z_0)}\right) + \frac{1}{(\xi - z)^{n - 1}(\xi - z_0)} - \frac{1}{(\xi - z_0)^n}\right]\phi(\xi)d\xi =\\
+    (z - z_0)\int_\gamma\frac{\phi(\xi)d\xi}{(\xi - z)^n(\xi - z_0)} + F_{n - 1}\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) - F_{n-1}\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right)
+  \end{align*}
+  Сходимость к нулю первого слагаемого доказывается аналогично предыдущему пункту с непрерывностью, а последние два слагаемых дают приращение непрерывной функции, которое также стремится к нулю при $z \to z_0$.
+
+  Поделим предыдущее выражение на $z - z_0$ и посчитаем производную:
+  \begin{align*}
+    \frac{F_n(z,\, \phi) - F_n(z_0,\, \phi)}{z - z_0} = \int_\gamma\frac{\phi(\xi)d\xi}{(\xi - z)^n(\xi - z_0)} + \frac{F_{n - 1}\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) - F_{n-1}\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right)}{z - z_0} \overset{z \to z_0}{\to} \\
+    F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) + F_{n - 1}'\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) + (n-1)F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = \\
+    n\cdot F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = n\cdot F_{n + 1}(z_0,\, \phi(\xi))
+  \end{align*}
+  Таким образом, $F_n(z,\, \phi)$ -- бесконечно дифференцируемая.
+\end{proof}
+
+\section{Интегральная формула Коши для круга\dots}
+\begin{theorem}
+  Пусть $f$ -- голоморфна в $D$, причём $\overline{O}_r(a) \subset D$. Тогда
+  \[
+    \forall z \in O_r(a) :\: f(z) = \frac{1}{2\pi i} \int_{\vert z - a\vert = r}\frac{f(\xi)}{\xi - z}d\xi
+  \]
+\end{theorem}
+
+\begin{proof}
+  Благодаря замкнутости
+  \[
+    \exists R > r :\: \overline{O}_R(a) \subseteq D
+  \]
+  Фиксируем $z \in O_r(a)$:
+  \[
+    g(\xi) = \begin{cases}
+      \frac{f(\xi) - f(z)}{\xi - z},\, \xi \neq z\\
+      f'(z),\, \xi = z
+    \end{cases}
+  \]
+  $g(\xi)$ -- голоморфна в $O_R(a) \setminus \{z\}$ (как отношение голоморфных функций) и непрерывна в $O_R(a) \Rightarrow \forall \gamma_r$ -- замкнутого контура по теореме Коши:
+  \[
+    \int_{\gamma_r}g(\xi)d\xi = 0
+  \] 
+  То есть
+  \[
+    \int_{\gamma_r}\frac{f(\xi)d\xi}{\xi - z} = f(z)\int_{\gamma_r}\frac{d\xi}{\xi - z} =: G(z)
+  \]
+  $G(z)$ -- голоморфна в $O_r(a),\, G' = \int_{\gamma_r} \frac{d\xi}{(\xi - z)^2} \equiv 0 \Rightarrow G \equiv const \Rightarrow G(a) = 2\pi i \Rightarrow$
+  \[
+    f(z) = \frac{1}{2\pi i} \int_{\gamma_r}\frac{f(\xi)d\xi}{\xi - z}
+  \]
+\end{proof}
+
+\begin{corollary}
+  \begin{enumerate}
+    \item $f$ -- голоморфна в $D \Rightarrow f$ -- интеграл Коши $\Rightarrow f'$ -- голоморфна в $D$.
+    \item $f$ -- голоморфна в $D \Rightarrow \forall n \in \mathbb{N} :\: f^{(n)}$ -- голоморфна в $D$.
+    \item В условии формулы Коши для круга:
+    \[
+      f^{(n)}(z) = \frac{n!}{2\pi} \int_{\vert z - a\vert = r} \frac{f(\xi)d\xi}{(\xi - z)^{n + 1}}
+    \]
+  \end{enumerate}
+\end{corollary}
+
+\section{Теорема Морера. Теорема о среднем.}
+\begin{theorem}
+  Мореры.
+
+  Пусть $f$ -- непрерывна в области $D$ и
+  \[
+    \forall \overline{\triangle} \subseteq D :\: \int_{\partial \triangle} f(z)dz = 0
+  \]
+  Тогда $f$ -- голоморфна в $D$.
+\end{theorem}
+
+\begin{proof}
+  Заметим, что $\overline{O}_r(a) \subseteq D$ -- выпукло, поэтому применяем лемму:
+  \[
+    \forall z \in O_r(a) \: \exists F :\: F' = f
+  \]
+  В этом круге по одному из следствий $F$ голоморфна $\Rightarrow f$ -- голоморфна в $O_r(a)$.
+
+  Это верно $\forall a \in D \Rightarrow f$ -- голоморфна в $D$.
+\end{proof}
+
+\begin{theorem}
+  О среднем.
+
+  Пусть $f$ -- голоморфна в $\overline{O}_r(a) \subseteq D$, тогда
+  \[
+    f(a) = \frac{1}{2\pi}\int_0^{2\pi}f(a + e^{i\theta}r)d\theta
+  \]
+\end{theorem}
+
+\begin{proof}
+  Пусть $\xi = a + re^{i\theta}$. Тогда
+  \[
+    f(a) = \frac{1}{2\pi i}\int_0^{2\pi}\frac{f(a + re^{i\theta})ire^{i\theta}d\theta}{re^{i\theta}} = \frac{1}{2\pi}\int_0^{2\pi}f(a + re^{i\theta})d\theta
+  \]
+\end{proof}
+
+\end{document}
