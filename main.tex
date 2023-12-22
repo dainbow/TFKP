@@ -565,183 +565,807 @@
 		\forall \varepsilon > 0 \: \exists \delta_1 \leq \delta_0 \: \forall z \in B_{\delta_1}(z_0) :\: \vert o(z - z_0)\vert \leq \varepsilon\vert z - z_0\vert
 	\]
 	Теперь можем расписать интеграл:
-  \begin{align*}
-    \int_{\partial\triangle^N}f(z)dz = f(z_0)\int_{\partial\triangle^N}dz + f'(z_0)\int_{\partial\triangle^N}zdz - z_0f'(z_0)\int_{\partial\triangle^N} + \int_{\partial\triangle^N}o(z - z_0)dz =\\
-    \int_{\partial\triangle^N}o(z - z_0)dz
-  \end{align*}
-  Интегралы по $1$ и $z$ равны нулю, так как они, очевидно, полные дифференциалы.
+	\begin{align*}
+		\int_{\partial\triangle^N}f(z)dz = f(z_0)\int_{\partial\triangle^N}dz + f'(z_0)\int_{\partial\triangle^N}zdz - z_0f'(z_0)\int_{\partial\triangle^N} + \int_{\partial\triangle^N}o(z - z_0)dz = \\
+		\int_{\partial\triangle^N}o(z - z_0)dz
+	\end{align*}
+	Интегралы по $1$ и $z$ равны нулю, так как они, очевидно, полные дифференциалы.
 
-  Причём полагаем $N$ таким, что
-  \[
-    \forall z \in \triangle^N :\: \vert z - z_0\vert < \delta_1
-  \]
-  Тогда 
-  \[
-    \left\vert\int_{\partial\triangle^N} f(z)dz\right\vert \leq \int_{\partial\triangle^N} \vert o(z - z_0)\vert\cdot\vert dz\vert \leq \varepsilon\int_{\partial\triangle^N} \vert z - z_0\vert\cdot\vert dz\vert \leq \varepsilon P_N^2 \leq \varepsilon\frac{P_0^2}{4^N}
-  \]
-  Получили, что
-  \[
-    \vert I\vert \leq \varepsilon\frac{P_0^2}{4^N}
-  \]
-  В силу произвольности $\varepsilon$: $I = 0$.
+	Причём полагаем $N$ таким, что
+	\[
+		\forall z \in \triangle^N :\: \vert z - z_0\vert < \delta_1
+	\]
+	Тогда
+	\[
+		\left\vert\int_{\partial\triangle^N} f(z)dz\right\vert \leq \int_{\partial\triangle^N} \vert o(z - z_0)\vert\cdot\vert dz\vert \leq \varepsilon\int_{\partial\triangle^N} \vert z - z_0\vert\cdot\vert dz\vert \leq \varepsilon P_N^2 \leq \varepsilon\frac{P_0^2}{4^N}
+	\]
+	Получили, что
+	\[
+		\vert I\vert \leq \varepsilon\frac{P_0^2}{4^N}
+	\]
+	В силу произвольности $\varepsilon$: $I = 0$.
 \end{proof}
 
 \begin{theorem}
-  Коши для выпуклой области.
+	Коши для выпуклой области.
 
-  Пусть $D$ -- выпуклая область, $f$ -- голоморфна в $D \setminus \{0\}$, $f$ -- непрерывна в $D$. Тогда $\forall \gamma$ -- кусочно-гладкой замкнутой кривой
-  \[
-    \int_\gamma fdz = 0
-  \]
+	Пусть $D$ -- выпуклая область, $f$ -- голоморфна в $D \setminus \{0\}$, $f$ -- непрерывна в $D$. Тогда $\forall \gamma$ -- кусочно-гладкой замкнутой кривой
+	\[
+		\int_\gamma fdz = 0
+	\]
 \end{theorem}
 
 \begin{proof}
-  По лемме Гурса
-  \[
-    \forall \triangle \subseteq D :\: \int_{\partial \triangle} fdz = 0  
-  \]
+	По лемме Гурса
+	\[
+		\forall \triangle \subseteq D :\: \int_{\partial \triangle} fdz = 0
+	\]
 
-  Тогда мы можем триангулировать любую ломаную $\Rightarrow$ по одной из теорем $fdz$ -- полный дифференциал (нужна была непрерывности и нулевой интеграл по всем ломаным).
+	Тогда мы можем триангулировать любую ломаную $\Rightarrow$ по одной из теорем $fdz$ -- полный дифференциал (нужна была непрерывности и нулевой интеграл по всем ломаным).
 
-  А как мы знаем, интеграл по любой замкнутой кривой от полного дифференциала нулевой.
+	А как мы знаем, интеграл по любой замкнутой кривой от полного дифференциала нулевой.
 \end{proof}
 
 \section{Интеграл Коши и его свойства}
 \begin{definition}
-  Пусть $\gamma$ -- кусочно-гладкая кривая в $\mathbb{C}$. Тогда $\forall \phi \in C(\gamma)$ определим интеграл Коши, как
-  \[
-    F_n(z,\, \phi) = \int_\gamma \frac{\phi(\xi)}{(\xi - z)^n}d\xi
-  \]
+	Пусть $\gamma$ -- кусочно-гладкая кривая в $\mathbb{C}$. Тогда $\forall \phi \in C(\gamma)$ определим интеграл Коши, как
+	\[
+		F_n(z,\, \phi) = \int_\gamma \frac{\phi(\xi)}{(\xi - z)^n}d\xi
+	\]
 \end{definition}
 
 \begin{theorem}
-  Свойства интеграла Коши:
-  \begin{enumerate}
-    \item $F_n(z,\, \phi)$ - голоморфна ($\Rightarrow$ непрерывна) в $\mathbb{C} \setminus \gamma$
-    \item $F_n'(z,\, \phi) = nF_{n + 1}(z,\, \phi)$
-  \end{enumerate}
+	Свойства интеграла Коши:
+	\begin{enumerate}
+		\item $F_n(z,\, \phi)$ - голоморфна ($\Rightarrow$ непрерывна) в $\mathbb{C} \setminus \gamma$
+		\item $F_n'(z,\, \phi) = nF_{n + 1}(z,\, \phi)$
+	\end{enumerate}
 \end{theorem}
 
 \begin{proof}
-  Вначале покажем непрерывность для $n = 1$:
-  \[
-    F_1(z,\, \phi) - F_1(z_0,\, \phi) = \int_\gamma\frac{\phi(\xi)(z - z_0)}{(\xi - z)(\xi - z_0)}d\xi = (z - z_0)\cdot F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right)
-  \]
-  Введём $\delta = \rho(z_0,\, \gamma)$. Для $z_0 \in \mathbb{C}\setminus \gamma$ оно, очевидно, не равно нулю.
+	Вначале покажем непрерывность для $n = 1$:
+	\[
+		F_1(z,\, \phi) - F_1(z_0,\, \phi) = \int_\gamma\frac{\phi(\xi)(z - z_0)}{(\xi - z)(\xi - z_0)}d\xi = (z - z_0)\cdot F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right)
+	\]
+	Введём $\delta = \rho(z_0,\, \gamma)$. Для $z_0 \in \mathbb{C}\setminus \gamma$ оно, очевидно, не равно нулю.
 
-  Тогда
-  \[
-    \left\vert (z - z_0)\cdot F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right)\right\vert \leq \frac{const}{\delta^2}\vert z - z_0\vert
-  \]
-  что и гарантирует непрерывность.
+	Тогда
+	\[
+		\left\vert (z - z_0)\cdot F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right)\right\vert \leq \frac{const}{\delta^2}\vert z - z_0\vert
+	\]
+	что и гарантирует непрерывность.
 
-  Из того же тождества
-  \[
-    \frac{F_1(z,\, \phi) - F_1(z_0,\, \phi)}{z - z_0} = F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) \overset{z \to z_0}{\to} F_1\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = F_2(z_0,\, \phi(\xi))
-  \]
-  Доказали голоморфность существованием производной.
+	Из того же тождества
+	\[
+		\frac{F_1(z,\, \phi) - F_1(z_0,\, \phi)}{z - z_0} = F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) \overset{z \to z_0}{\to} F_1\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = F_2(z_0,\, \phi(\xi))
+	\]
+	Доказали голоморфность существованием производной.
 
-  Далее по индукции: пусть $F_{n - 1}$ голоморфна в $D$:
-  \[
-    F_{n - 1}'(z,\, \phi) = (n - 1)F_n(z,\, \phi)
-  \]
-  Распишем приращение с помощью умного нуля:
-  \begin{align*}
-    F_n(z,\, \phi) - F_n(z_0,\, \phi) =\\
-    \int_\gamma\left[\left(\frac{1}{(\xi - z)^n} - \frac{1}{(\xi - z)^{n - 1}(\xi - z_0)}\right) + \frac{1}{(\xi - z)^{n - 1}(\xi - z_0)} - \frac{1}{(\xi - z_0)^n}\right]\phi(\xi)d\xi =\\
-    (z - z_0)\int_\gamma\frac{\phi(\xi)d\xi}{(\xi - z)^n(\xi - z_0)} + F_{n - 1}\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) - F_{n-1}\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right)
-  \end{align*}
-  Сходимость к нулю первого слагаемого доказывается аналогично предыдущему пункту с непрерывностью, а последние два слагаемых дают приращение непрерывной функции, которое также стремится к нулю при $z \to z_0$.
+	Далее по индукции: пусть $F_{n - 1}$ голоморфна в $D$:
+	\[
+		F_{n - 1}'(z,\, \phi) = (n - 1)F_n(z,\, \phi)
+	\]
+	Распишем приращение с помощью умного нуля:
+	\begin{align*}
+		F_n(z,\, \phi) - F_n(z_0,\, \phi) =                                                                                                                                                   \\
+		\int_\gamma\left[\left(\frac{1}{(\xi - z)^n} - \frac{1}{(\xi - z)^{n - 1}(\xi - z_0)}\right) + \frac{1}{(\xi - z)^{n - 1}(\xi - z_0)} - \frac{1}{(\xi - z_0)^n}\right]\phi(\xi)d\xi = \\
+		(z - z_0)\int_\gamma\frac{\phi(\xi)d\xi}{(\xi - z)^n(\xi - z_0)} + F_{n - 1}\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) - F_{n-1}\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right)
+	\end{align*}
+	Сходимость к нулю первого слагаемого доказывается аналогично предыдущему пункту с непрерывностью, а последние два слагаемых дают приращение непрерывной функции, которое также стремится к нулю при $z \to z_0$.
 
-  Поделим предыдущее выражение на $z - z_0$ и посчитаем производную:
-  \begin{align*}
-    \frac{F_n(z,\, \phi) - F_n(z_0,\, \phi)}{z - z_0} = \int_\gamma\frac{\phi(\xi)d\xi}{(\xi - z)^n(\xi - z_0)} + \frac{F_{n - 1}\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) - F_{n-1}\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right)}{z - z_0} \overset{z \to z_0}{\to} \\
-    F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) + F_{n - 1}'\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) + (n-1)F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = \\
-    n\cdot F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = n\cdot F_{n + 1}(z_0,\, \phi(\xi))
-  \end{align*}
-  Таким образом, $F_n(z,\, \phi)$ -- бесконечно дифференцируемая.
+	Поделим предыдущее выражение на $z - z_0$ и посчитаем производную:
+	\begin{align*}
+		\frac{F_n(z,\, \phi) - F_n(z_0,\, \phi)}{z - z_0} = \int_\gamma\frac{\phi(\xi)d\xi}{(\xi - z)^n(\xi - z_0)} + \frac{F_{n - 1}\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) - F_{n-1}\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right)}{z - z_0} \overset{z \to z_0}{\to} \\
+		F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) + F_{n - 1}'\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) + (n-1)F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) =                                        \\
+		n\cdot F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = n\cdot F_{n + 1}(z_0,\, \phi(\xi))
+	\end{align*}
+	Таким образом, $F_n(z,\, \phi)$ -- бесконечно дифференцируемая.
 \end{proof}
 
 \section{Интегральная формула Коши для круга\dots}
 \begin{theorem}
-  Пусть $f$ -- голоморфна в $D$, причём $\overline{O}_r(a) \subset D$. Тогда
-  \[
-    \forall z \in O_r(a) :\: f(z) = \frac{1}{2\pi i} \int_{\vert z - a\vert = r}\frac{f(\xi)}{\xi - z}d\xi
-  \]
+	Пусть $f$ -- голоморфна в $D$, причём $\overline{O}_r(a) \subset D$. Тогда
+	\[
+		\forall z \in O_r(a) :\: f(z) = \frac{1}{2\pi i} \int_{\vert z - a\vert = r}\frac{f(\xi)}{\xi - z}d\xi
+	\]
 \end{theorem}
 
 \begin{proof}
-  Благодаря замкнутости
-  \[
-    \exists R > r :\: \overline{O}_R(a) \subseteq D
-  \]
-  Фиксируем $z \in O_r(a)$:
-  \[
-    g(\xi) = \begin{cases}
-      \frac{f(\xi) - f(z)}{\xi - z},\, \xi \neq z\\
-      f'(z),\, \xi = z
-    \end{cases}
-  \]
-  $g(\xi)$ -- голоморфна в $O_R(a) \setminus \{z\}$ (как отношение голоморфных функций) и непрерывна в $O_R(a) \Rightarrow \forall \gamma_r$ -- замкнутого контура по теореме Коши:
-  \[
-    \int_{\gamma_r}g(\xi)d\xi = 0
-  \] 
-  То есть
-  \[
-    \int_{\gamma_r}\frac{f(\xi)d\xi}{\xi - z} = f(z)\int_{\gamma_r}\frac{d\xi}{\xi - z} =: G(z)
-  \]
-  $G(z)$ -- голоморфна в $O_r(a),\, G' = \int_{\gamma_r} \frac{d\xi}{(\xi - z)^2} \equiv 0 \Rightarrow G \equiv const \Rightarrow G(a) = 2\pi i \Rightarrow$
-  \[
-    f(z) = \frac{1}{2\pi i} \int_{\gamma_r}\frac{f(\xi)d\xi}{\xi - z}
-  \]
+	Благодаря замкнутости
+	\[
+		\exists R > r :\: \overline{O}_R(a) \subseteq D
+	\]
+	Фиксируем $z \in O_r(a)$:
+	\[
+		g(\xi) = \begin{cases}
+			\frac{f(\xi) - f(z)}{\xi - z},\, \xi \neq z \\
+			f'(z),\, \xi = z
+		\end{cases}
+	\]
+	$g(\xi)$ -- голоморфна в $O_R(a) \setminus \{z\}$ (как отношение голоморфных функций) и непрерывна в $O_R(a) \Rightarrow \forall \gamma_r$ -- замкнутого контура по теореме Коши:
+	\[
+		\int_{\gamma_r}g(\xi)d\xi = 0
+	\]
+	То есть
+	\[
+		\int_{\gamma_r}\frac{f(\xi)d\xi}{\xi - z} = f(z)\int_{\gamma_r}\frac{d\xi}{\xi - z} =: G(z)
+	\]
+	$G(z)$ -- голоморфна в $O_r(a),\, G' = \int_{\gamma_r} \frac{d\xi}{(\xi - z)^2} \equiv 0 \Rightarrow G \equiv const \Rightarrow G(a) = 2\pi i \Rightarrow$
+	\[
+		f(z) = \frac{1}{2\pi i} \int_{\gamma_r}\frac{f(\xi)d\xi}{\xi - z}
+	\]
 \end{proof}
 
 \begin{corollary}
-  \begin{enumerate}
-    \item $f$ -- голоморфна в $D \Rightarrow f$ -- интеграл Коши $\Rightarrow f'$ -- голоморфна в $D$.
-    \item $f$ -- голоморфна в $D \Rightarrow \forall n \in \mathbb{N} :\: f^{(n)}$ -- голоморфна в $D$.
-    \item В условии формулы Коши для круга:
-    \[
-      f^{(n)}(z) = \frac{n!}{2\pi} \int_{\vert z - a\vert = r} \frac{f(\xi)d\xi}{(\xi - z)^{n + 1}}
-    \]
-  \end{enumerate}
+	\begin{enumerate}
+		\item $f$ -- голоморфна в $D \Rightarrow f$ -- интеграл Коши $\Rightarrow f'$ -- голоморфна в $D$.
+		\item $f$ -- голоморфна в $D \Rightarrow \forall n \in \mathbb{N} :\: f^{(n)}$ -- голоморфна в $D$.
+		\item В условии формулы Коши для круга:
+		      \begin{equation}\label{nElem}
+			      f^{(n)}(z) = \frac{n!}{2\pi} \int_{\vert z - a\vert = r} \frac{f(\xi)d\xi}{(\xi - z)^{n + 1}}
+		      \end{equation}
+	\end{enumerate}
 \end{corollary}
 
 \section{Теорема Морера. Теорема о среднем.}
 \begin{theorem}
-  Мореры.
+	Мореры.
 
-  Пусть $f$ -- непрерывна в области $D$ и
-  \[
-    \forall \overline{\triangle} \subseteq D :\: \int_{\partial \triangle} f(z)dz = 0
-  \]
-  Тогда $f$ -- голоморфна в $D$.
+	Пусть $f$ -- непрерывна в области $D$ и
+	\[
+		\forall \overline{\triangle} \subseteq D :\: \int_{\partial \triangle} f(z)dz = 0
+	\]
+	Тогда $f$ -- голоморфна в $D$.
 \end{theorem}
 
 \begin{proof}
-  Заметим, что $\overline{O}_r(a) \subseteq D$ -- выпукло, поэтому применяем лемму:
-  \[
-    \forall z \in O_r(a) \: \exists F :\: F' = f
-  \]
-  В этом круге по одному из следствий $F$ голоморфна $\Rightarrow f$ -- голоморфна в $O_r(a)$.
+	Заметим, что $\overline{O}_r(a) \subseteq D$ -- выпукло, поэтому применяем лемму:
+	\[
+		\forall z \in O_r(a) \: \exists F :\: F' = f
+	\]
+	В этом круге по одному из следствий $F$ голоморфна $\Rightarrow f$ -- голоморфна в $O_r(a)$.
 
-  Это верно $\forall a \in D \Rightarrow f$ -- голоморфна в $D$.
+	Это верно $\forall a \in D \Rightarrow f$ -- голоморфна в $D$.
 \end{proof}
 
 \begin{theorem}
-  О среднем.
+	О среднем.
 
-  Пусть $f$ -- голоморфна в $\overline{O}_r(a) \subseteq D$, тогда
-  \[
-    f(a) = \frac{1}{2\pi}\int_0^{2\pi}f(a + e^{i\theta}r)d\theta
-  \]
+	Пусть $f$ -- голоморфна в $\overline{O}_r(a) \subseteq D$, тогда
+	\[
+		f(a) = \frac{1}{2\pi}\int_0^{2\pi}f(a + e^{i\theta}r)d\theta
+	\]
 \end{theorem}
 
 \begin{proof}
-  Пусть $\xi = a + re^{i\theta}$. Тогда
-  \[
-    f(a) = \frac{1}{2\pi i}\int_0^{2\pi}\frac{f(a + re^{i\theta})ire^{i\theta}d\theta}{re^{i\theta}} = \frac{1}{2\pi}\int_0^{2\pi}f(a + re^{i\theta})d\theta
-  \]
+	Пусть $\xi = a + re^{i\theta}$. Тогда
+	\[
+		f(a) = \frac{1}{2\pi i}\int_0^{2\pi}\frac{f(a + re^{i\theta})ire^{i\theta}d\theta}{re^{i\theta}} = \frac{1}{2\pi}\int_0^{2\pi}f(a + re^{i\theta})d\theta
+	\]
+\end{proof}
+
+\section{Целые функции и теорема Луивилля}
+\begin{definition}
+	$f$ -- целая, если $f$ голоморфна в $\mathbb{C}$.
+\end{definition}
+
+\begin{theorem}
+	Луивилля.
+
+	Если $f$ -- целая и
+	\[
+		\exists M,\,m,\,R \: \forall z,\, \vert z\vert > R :\: \vert f(z)\vert < M\cdot\vert z\vert^m
+	\]
+	Тогда $f(z)$ -- полином степени $\leq m$.
+\end{theorem}
+
+\begin{proof}
+	Знаем, что
+	\[
+		\forall z \in \mathbb{C} :\: f(z) = \sum_{n = 0}^\infty c_nz^n,\, R_{\text{сх}} = \infty
+	\]
+	Тогда по (\ref{Taylor})
+	\[
+		c_n = \frac{1}{2\pi i}\oint_{\vert \xi\vert = \rho} \frac{f(\xi)d\xi}{\xi^{n + 1}}
+	\]
+	Оценим сверху
+	\begin{align*}
+		\vert c_n\vert \leq \frac{1}{2\pi}\int_{\vert \xi\vert = \rho} \frac{\vert f(\xi)\vert\vert d\xi\vert}{\vert\xi^{n + 1}\vert} \leq \frac{M}{2\pi}\int_{\vert \xi\vert = \rho}\frac{\vert \xi\vert^m}{\vert\xi\vert^{n + 1}}\vert d\xi\vert = \\
+		\frac{M}{2\pi}\int_{\vert \xi\vert = \rho}\frac{1}{\vert \xi\vert^{n + 1 - m}}\vert d\xi\vert = \frac{M}{\rho^{n - m}} = M\rho^{m - n}
+	\end{align*}
+	При $n > m$:
+	\[
+		\vert c_n\vert \leq \frac{M}{\rho^{n - m}} \overset{\rho \to +\infty}{\to} 0 \Rightarrow \forall n > m :\: \vert c_n\vert = 0 \Rightarrow f(z) = \sum_{n = 0}^m c_nz^n
+	\]
+\end{proof}
+
+\section{Ряд Тейлора и теорема единственности\dots}
+\begin{theorem}\label{Taylor}
+	Ряд Тейлора.
+
+	Пусть $f$ -- голоморфна в $D,\, O_R(a) \subseteq D$. Тогда
+	\[
+		\forall z \in O_R(a) :\: f(z) = \sum_{n = 0}^\infty c_n(z - a)^n,\, c_n = \frac{f^{(n)}(a)}{n!}
+	\]
+\end{theorem}
+
+\begin{proof}
+	Пусть $r < R,\, f$ -- голоморфна в $\overline{O_r(a)} \Rightarrow$
+	\[
+		2\pi if(z) = \int_{\gamma_r}\frac{f(\xi)d\xi}{\xi - z}
+	\]
+	Тогда распишем
+	\begin{align*}
+		\frac{1}{\xi - z} = \frac{1}{(\xi - a) - (z - a)} = \frac{1}{\xi - a}\cdot\frac{1}{1 - \frac{z - a}{\xi - a}} \overset{\vert z - a\vert < \vert \xi - a\vert}{=} \\
+		\frac{1}{\xi - a}\sum_{n = 0}^\infty \left(\frac{z - a}{\xi - a}\right)^n = \sum_{n = 0}^\infty \frac{(z - a)^n}{(\xi - a)^{n + 1}}
+	\end{align*}
+	Полученный ряд сходится равномерно, а значит можно умножить на $f(\xi)$ и почленно интегрировать
+	\begin{align*}
+		2\pi i f(z) = \sum_{n = 0}^\infty \int_{\gamma_r}\frac{f(\xi)d\xi}{(\xi - a)^{n + 1}}(z - a)^n = \sum_{n = 0}^\infty 2\pi i c_n(z - a)^n \Rightarrow f(z) = \sum_{n = 0}^\infty c_n(z - a)^n
+	\end{align*}
+	Причём по (\ref{nElem}):
+	\[
+		c_n = \frac{f^{(n)}(a)}{n!}
+	\]
+	В завершение скажем
+	\[
+		\forall z :\: \vert z - a\vert < R \: \exists r < R \: z \in O_r(a) \Rightarrow
+	\]
+	формула верна во всём $O_R(a)$.
+\end{proof}
+
+\begin{definition}
+	Пусть $f \neq 0$ -- голоморфна в $O_r(a),\, f(a) = 0$, тогда $m$ -- это порядок нуля в точке $a$. если
+	\[
+		\forall k = \overline{0,\, m - 1} :\: f^{(k)}(a) = 0,\, f^{(m)}(a) \neq 0
+	\]
+\end{definition}
+
+\begin{proposition}
+	$f$ имеет нуль порядка $m \Leftrightarrow \exists g(z)$ -- голоморфная в $O_r(a),\, g(a) \neq 0$:
+	\[
+		f(z) = (z - a)^m\cdot g(z)
+	\]
+\end{proposition}
+
+\begin{proof}
+	($\Rightarrow$)
+
+	БОО $a = 0$. Тогда
+	\[
+		f(z) = \sum_{n = 0}^\infty c_nz^n = \sum_{n = m}^\infty c_nz^n = z^m \sum_{n = 0}^\infty c_{n + m}z^n
+	\]
+	Пусть $g(z) :=\sum_{n = 0}^\infty c_{n + m}z^n$, причём $g(0) \neq 0$, так как $c_m \neq 0$.
+
+	($\Leftarrow$) Пусть $f(z) = (z - a)^mg(z)$. Дифференцируя получаем
+	\[
+		\forall k = \overline{0,\,m-1} :\: f^{(k)}(a) = 0,\, f^{(m)} \neq 0
+	\]
+\end{proof}
+
+\begin{note}\label{nonZero}
+	Пусть $f$ -- голоморфна в окрестности $a,\, f(a) = 0$. Тогда
+	\[
+		\exists \rho > 0 \: \forall z \: \vert z - a\vert \in (0,\, \rho) :\: f(z) \neq 0
+	\]
+\end{note}
+
+\begin{proof}
+	Очевидно следует из предыдущего утверждения.
+\end{proof}
+
+\begin{theorem}
+	О единственности.
+
+	Пусть $f$ и $g$ -- голоморфны в области $D,\, E \subseteq D$, причём в $D$ есть хотя бы одна предельная точка $E$. Тогда если
+	\[
+		\forall z \in E :\: f(z) = g(z)
+	\]
+	то
+	\[
+		\forall z \in D :\: f(z) = g(z)
+	\]
+\end{theorem}
+
+\begin{proof}
+	Пусть $h = f - g,\, a $ -- предельная точка $E,\, a \in D$. Тогда введём
+	\[
+		Z = \{z \in D \:\vert\: h(z) = 0\}
+	\]
+	Тогда по непрерывности $a \in Z$, причём $a$ -- предельная точка $Z \Rightarrow h(z) \equiv 0$ в окрестности $a$ (\ref{nonZero}).
+
+	Пусть $G_1 := \text{int }Z$ -- открытое непустое, так как $a \in G_1$. Тогда если $G_2 := D \setminus G_1$ открытое, то из-за связности $D \Rightarrow G_2$ -- пустое, что доказывает теорему.
+
+	Пусть $G_2$ неоткрыто. Пусть $z^* \in G_2$, причём $z^*$ -- предельная точка $G_1$. Тогда $\exists z_n \to z^*,\, z_n \in G_1$. Тогда $h(z_n) = 0 \overset{\text{непрерывность}}{\Rightarrow} h(z^*) = 0 \Rightarrow$ $z^* \in G_1$ -- противоречие.
+\end{proof}
+
+\section{Приращение аргумента вдоль кривой. Индекс точки\dots}
+\begin{definition}
+	Пусть $\gamma$ -- кусочно гладкая кривая в $D$,
+	\[
+		\Gamma = f(\gamma) = \{w = f(z(t)) \:\vert\: t \in [\alpha,\, \beta]\}
+	\]
+	Причём $\Gamma$ -- кусочно гладкая, $\Gamma \subseteq \mathbb{C}\setminus\{0\}$. Тогда приращением аргумента вдоль кривой называется
+	\[
+		\Delta_\Gamma w := \text{Im }\int_\Gamma\frac{dw}{w} = \text{Im }\int_\gamma\frac{f'(z)dz}{f(z)} =: \Delta_\gamma f
+	\]
+\end{definition}
+
+\begin{lemma}
+	Свойства приращения аргумента:
+	\begin{enumerate}
+		\item $\Delta_\gamma(c\cdot f) = \Delta_\gamma(f),\, c \neq 0$
+		\item $\Delta_\gamma(f_1\cdot f_2) = \Delta_\gamma(f_1) + \Delta_\gamma(f_2)$
+		\item $\Delta_\gamma\frac{1}{f} = -\Delta_\gamma f$
+		\item $\Delta_{-\gamma}(f) = -\Delta_\gamma(f)$
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Следует из второго пункта (приращение константы равно нулю)
+		\item Для доказательство достаточно заметить
+		      \[
+			      \frac{(f_1f_2)'}{f_1f_2} = \frac{f_1'}{f_1} +
+			      \frac{f_2'}{f_2}
+		      \]
+		      И воспользоваться линейностью интеграла.
+		\item Очевидно из предыдущего пункта
+		\item Очевидно
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Индекс $a$ относительно кривой $\gamma$, где $\gamma$ -- кусочно гладкая замкнутая кривая в $\mathbb{C},\, a \in \mathbb{C} \setminus \gamma$, называется
+	\[
+		J_\gamma(a) = \frac{\Delta_\gamma(z - a)}{2\pi} \in \mathbb{Z}
+	\]
+	Иными словами, это количество оборотов кривой вокруг $a$.
+\end{definition}
+
+\begin{lemma}
+	Пусть $\gamma$ -- замкнутая кусочно-гладкая кривая в $\mathbb{C}$. Тогда
+	\begin{enumerate}
+		\item $J_\gamma(z) \equiv const$ в каждой компоненте связности $\mathbb{C}\setminus\gamma$
+		\item Если какая-то компонента содержит $\infty$, то $J_\gamma(z) \equiv 0$ в ней.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Действительно,
+	\[
+		J_\gamma(a) = \frac{1}{2\pi i}\int_\gamma\frac{dz}{z - a}
+	\]
+	интеграл Коши $\Rightarrow$ голоморфна в $\mathbb{C} \setminus \gamma \Rightarrow$ непрерывна и, так как принимает только значения из $\mathbb{Z}$, постоянна в своих компонентах связности. Это следует из того, что
+	\[
+		J_\gamma'(z) = \frac{1}{2\pi i} \int_\gamma\frac{d\xi}{(\xi - z)^2} = 0 \Rightarrow J_\gamma(a) \equiv const \text{ в компоненте связности}
+	\]
+	Для неограниченной компоненты
+	\[
+		f(z) := \text{dist }(\gamma,\, z) = \min_{\zeta \in \gamma}\vert z - \zeta\vert > 0
+	\]
+	Тогда
+	\[
+		\vert J_\gamma(z)\vert = \left\vert\frac{1}{2\pi i}\int_\gamma\frac{d\xi}{\xi - z}\right\vert \leq \frac{1}{2\pi d(z)}\int_\gamma\vert d\xi\vert
+	\]
+	Но $d(z) \to \infty$ при $z \to \infty \Rightarrow J_\gamma(z) = 0$.
+\end{proof}
+
+\section{Общая форма теоремы Коши и интегральной формулы Коши\dots}
+\begin{lemma}
+	Общая теорема Коши.
+
+	Пусть $D$ -- область в $\mathbb{C},\, f$ -- голоморфна в области $D$. Тогда
+	\begin{enumerate}
+		\item Функция
+		      \[
+			      g(\xi,\, z) := \begin{cases}
+				      \frac{f(\xi) - f(z)}{\xi - z},\, \xi \neq z \\
+				      f'(z),\, \xi = z
+			      \end{cases}
+		      \]
+		      непрерывна в $D \times D$.
+		\item $\forall$ кусочно гладкой $\gamma \subset D$:
+		      \[
+			      h(z) = \int_\gamma g(\xi,\, z)d\xi
+		      \]
+		      голоморфна в $D$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item При $\xi \neq z$ непрерывна как отношение непрерывных функций.
+
+		      При $\xi = z$ зафиксируем $z_0 \in D$, по открытости $D \Rightarrow \exists \overline{O}_r(z_0) \subset D$. Тогда будем рассмотримвать сколь угодно близкие $z,\, \xi \in O_\varepsilon(z_0),\, \varepsilon < r$.
+
+		      Распишем в этой окрестности ряд Тейлора для двух точек:
+		      \begin{align*}
+			      f(z) - f(z_0) = \sum_{n = 1}^\infty c_n(z - z_0)^n \\
+			      f(\xi) - f(z_0) = \sum_{n = 1}^\infty c_n(\xi - z_0)^n
+		      \end{align*}
+		      Далее нам понадобится следующая оценка:
+		      \begin{align*}
+			      \left\vert\frac{(z - z_0)^n - (\xi - z_0)^n}{z - \xi = [(z - z_0) - (\xi - z_0)]}\right\vert = \left\vert\sum_{k = 0}^{n - 1}(z - z_0)^{n - 1 - k}(\xi - z_0)^k\right\vert \leq n\varepsilon^{n-1}
+		      \end{align*}
+		      Рассмотрим приращение
+		      \begin{align*}
+			      \vert g(z,\, \xi) - g(z_0,\, z_0)\vert = \vert g(z,\, \xi) - f'(z_0)\vert = \left\vert\sum_{n = 2}^\infty c_n \frac{(z - z_0)^n - (\xi - z_0)^n}{z - \xi}\right\vert \leq \\
+			      \sum_{n = 2}^\infty \vert c_n\vert\cdot n\cdot\varepsilon^{n - 1} \leq \varepsilon\sum_{n = 2}^\infty \vert c_n\vert\cdot n\cdot r^{n - 2} = \varepsilon M
+		      \end{align*}
+		      Где $M < \infty$ взяли из сходимости ряда Тейлора путём дифференцирования ($\exists R > r :\: O_R(z_0) \subseteq D \: \overline{O}_r(z_0) \subseteq D$).
+
+		      Заметим, что мы доказали непрерывность, оценив приращение $g$.
+		\item Видно, что $h$ -- непрерывна в $D$. Тогда для $\overline{\triangle} \subset D$:
+		      \[
+			      \int_{\partial\triangle} h(z)dz = \int_{\partial\triangle}\int_\gamma g(\xi,\,z)d\xi dz = \int_\gamma\int_{\partial\triangle}g(\xi,\,z)dzd\xi = 0
+		      \]
+		      Это верно, так как $g(\xi_0,\, \cdot)$ голоморфна в $D \setminus \{\xi\}$, непрерывна в $D \Rightarrow$ по лемме Гурса $\int_{\partial\triangle}g(\xi,\,z)dz = 0$.
+
+		      В итоге можем применить теорему Морера, из которой будет следовать, что $h$ -- голоморфна.
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	Интегральная теорема Коши.
+
+	Пусть $D$ -- область в $\mathbb{C},\, f$ -- голоморфна в $D$. Пусть $\Gamma$ -- цикл в $D$, причём $\Gamma \sim 0 (\mod D)$. Тогда
+	\begin{enumerate}
+		\item $\forall z \in D \setminus \Gamma :\: J_\Gamma(z)\cdot f(z) = \frac{1}{2\pi i}\int_\Gamma \frac{f(\xi)d\xi}{\xi - z}$
+		\item $\int_\Gamma f(z) dz = 0$
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	($1 \Rightarrow 2$)
+
+	Применим $1$ к $\tilde{f}(z) = (z - a)f(z)$. Где $a \in \mathbb{C} \setminus \Gamma$, если $f(a)$ определена (или $a \in D \setminus \Gamma$).
+
+	Тогда
+	\begin{align*}
+		0 = J_\Gamma(a)(a - a)f(a) = J_\Gamma(a)\cdot\tilde{f}(a) = \int_\Gamma\frac{\tilde{f}(\xi)d\xi}{\xi - a} = \int_\Gamma f(\xi)d\xi
+	\end{align*}
+
+	Докажем первый пункт.
+
+	Введём
+	\[
+		G := \{z \in \mathbb{C} \setminus \Gamma \:\vert\: J_\Gamma(z) = 0\}
+	\]
+	-- открытое множество. Рассмотрим две функции
+	\[
+		2\pi i \cdot\tilde{h}(z) = \int_\Gamma\frac{f(\xi)d\xi}{\xi - z}
+	\]
+	-- голоморфна в $G$, как интеграл Коши.
+
+	\[
+		2\pi i\cdot h(z) = \int_\Gamma\frac{f(\xi) - f(z)}{\xi - z}d\xi
+	\]
+	-- голомофрна в $D$, как функция из второго пункта предыдущей теоремы.
+
+	Заметим, что $\forall z \in G \cap D :\: h(z) = \tilde{h}(z)$, так как
+	\[
+		\tilde{h}(z) = h(z) = \frac{1}{2\pi i}\int_\Gamma \frac{f(z)d\xi}{\xi - z} = f(z)J_\Gamma(z) = 0
+	\]
+	Тогда введём новую функцию
+	\[
+		F(z) := \begin{cases}
+			h(z),\, z \in D \\
+			\tilde{h}(z),\, z \in C\setminus D \subseteq G \text{ так как } \Gamma \sim 0 (\mod D)
+		\end{cases}
+	\]
+	Получается, $F(z)$ -- голоморфна в $\mathbb{C}$.
+
+	Заметим, что
+	\[
+		\lim_{z \to \infty} F(z) = 0
+	\]
+	Так как
+	\[
+		\vert\tilde{h}(z)\vert \leq \frac{1}{2\pi}\int_\Gamma\frac{\max_\Gamma \vert f\vert\cdot\vert d\xi\vert}{d(z)} \overset{z \to \infty}{\to} 0
+	\]
+	Где, $d(z) = \text{dist }(z,\, \Gamma) \Rightarrow d(z) \to \infty$.
+
+	Тогда по теореме Луивилля:
+	\[
+		F(z) \equiv 0
+	\]
+	Тогда в $D \setminus \Gamma :\: h(z) = F(z) = 0$, то есть
+	\begin{align*}
+		f(z)\cdot\frac{1}{2\pi i}\int_{\Gamma}\frac{d\xi}{\xi - z} = \frac{1}{2\pi i}\int_\Gamma\frac{f(\xi)d\xi}{\xi - z} \Rightarrow \\
+		f(z)\cdot J_\Gamma(z) =  \frac{1}{2\pi i}\int_\Gamma\frac{f(\xi)d\xi}{\xi - z}
+	\end{align*}
+\end{proof}
+
+\begin{corollary}
+	Для односвязной области.
+
+	Пусть $D$ -- односвязная область, $f$ голоморфна в $D$, $\gamma$ -- замкнутая кусочно гладкая кривая в $D$. Тогда
+	\[
+		\int_\Gamma f(z)dz = 0
+	\]
+\end{corollary}
+
+\begin{proof}
+	Заметим, что $\forall a \not\in D :\: J_\Gamma(a) = 0$, так как $a$ лежит в компоненте связности, содержащей $\infty \Rightarrow$ можем использовать интегральную теорему Коши.
+\end{proof}
+
+\begin{corollary}
+	Коши для многосвязной области.
+
+	Пусть область $D$ ограничена циклом $\Gamma,\, f$ голоморфна в области $D' \supset D$. Тогда
+	\begin{enumerate}
+		\item $\forall z \in D :\: f(z) = \frac{1}{2\pi i}\int_\Gamma\frac{f(\xi)d\xi}{\xi - z}$
+		\item $\int_\Gamma f(z)dz = 0$
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+	Имеем $0$ оборотов вокруг $D'$, а также один оборот вокруг $D \Rightarrow J_\Gamma(z) = 1 \Rightarrow$ по предыдущей теореме верен первый пункт, а второй выводится аналогично.
+\end{proof}
+
+\section{Разложение голоморфной функции в ряд Лорана\dots}
+\begin{theorem}
+	Пусть $f$ голоморфна в $K := \{z \:\vert\: r < \vert z - a\vert < R\}$. Тогда
+	\[
+		\forall z \in K :\: f(z) = \sum_{-\infty}^{+\infty}c_n(z - a)^n
+	\]
+	где
+	\[
+		c_n = \frac{1}{2\pi i}\cdot\int_{\gamma_\rho}\frac{f(\xi)d\xi}{(\xi - a)^{n + 1}}
+	\]
+	где $\gamma_\rho$ -- положительно ориентированная окружность радиуса $\rho \in (r,\, R)$ с центром в точке $a$.
+\end{theorem}
+
+\begin{proof}
+	Докажем, что интегральная формула для $c_n$ не зависит от $\rho$. Возьмём две окружности радиуса $\rho$ и $\rho'$.
+
+	Пусть $\Gamma := \gamma_\rho - \gamma_{\rho'}$. Применим теорему Коши для многосвязной области к функции $\frac{f(\xi)}{(\xi - a)^{n + 1}}$ (голоморфной в $K \supset K_{(\rho,\,\rho')}$). Тогда
+	\[
+		\int_\Gamma\frac{f(\xi)d\xi}{(\xi - a)^{n + 1}} = 0 \Leftrightarrow \int_{\gamma_\rho}\frac{f(\xi)d\xi}{(\xi - a)^{n + 1}} = \int_{\gamma_{\rho'}}\frac{f(\xi)d\xi}{(\xi - a)^{n + 1}}
+	\]
+	Рассмотрим $r < r' < R' < R$. Тогда $\forall z \in K'_{(r',\, R')}$:
+	\[
+		f(z) = \frac{1}{2\pi i}\int_\Gamma\frac{f(\xi)d\xi}{\xi - z} = \frac{1}{2\pi i} \left(\int_{\gamma_{R'}}\frac{f(\xi)d\xi}{\xi - z} - \int_{\gamma_{r'}}\frac{f(\xi)d\xi}{\xi - z}\right) =: f_1(z) + f_2(z)
+	\]
+	Заметим, что
+	\[
+		f_1(z) = \int_{\gamma_{R'}}\frac{f(\xi)d\xi}{\xi - z}
+	\]
+	голоморфна в $O_{R'}(a) \Rightarrow$
+	\[
+		f_1(z) = \sum_{n = 0}^\infty c_n(z - a)^n
+	\]
+	где $c_n = \frac{f^{(n)}(a)}{n!}$.
+
+	Осталось разложить $f_2$:
+	\[
+		\frac{1}{z - \xi} = \frac{1}{(z - a) - (\xi - a)} = \frac{1}{z - a} \cdot\frac{1}{1 - \frac{\xi - a}{z - a}} = \sum_{n = 0}^\infty \frac{(\xi - a)^n}{(z -a)^{n + 1}}
+	\]
+	при $\left\vert\frac{\xi - a}{z - a}\right\vert < 1$.
+
+	Значит
+	\[
+		f_2(z) = \sum_{n = 0}^\infty \frac{1}{(z - a)^{n + 1}}\cdot\left[c_{-n - 1} := \frac{1}{2\pi i}\int_{\gamma_{r'}}f(\xi)(\xi - a)^nd\xi \right]
+	\]
+	Получается, разложили так, что от $r'$ и $R'$ коэффициенты $c_n$ не зависят.
+\end{proof}
+
+\begin{definition}
+	Такие ряды называются рядами Лорана для голоморфной функции $f$.
+\end{definition}
+
+\begin{theorem}
+	Теорема о единственности ряда Лорана.
+
+	Если $f(z) = \sum_{n = -\infty}^{+\infty}c_n(z - a)^n$ при $z \in K$, то $f$ -- голоморфна в кольце $K$, причём
+	\[
+		c_n = \frac{1}{2\pi i}\cdot\int_{\gamma_\rho}\frac{f(\xi)d\xi}{(\xi - a)^{n + 1}}
+	\]
+\end{theorem}
+
+\begin{proof}
+	$f$ голоморфна как предел сходящегося ряда
+
+	Проверим равенство коэффициентов. Вначале для $n = -1$
+	\[
+		\int_{\gamma_\rho} f(z)dz = \sum_{n = -\infty}^{+\infty} c_n\cdot\int_{\gamma_\rho}(z - a)^ndz = 2\pi i\cdot c_{-1}
+	\]
+	При $n \neq -1$ обращаемся \dots
+\end{proof}
+
+\section{Изолированные особые точки}
+\begin{definition}
+	$a$ -- устранимая особая точка, если
+	\[
+		\exists A \in \mathbb{C} :\: \lim_{z \to a} f(z) = A
+	\]
+\end{definition}
+
+\begin{definition}
+	$a$ полюс, если
+	\[
+		\lim_{z \to a} f(z) = \infty
+	\]
+\end{definition}
+
+\begin{definition}
+	$a$ -- существенная особая точка, если
+	\[
+		\not\exists \lim_{z \to a}f(x)
+	\]
+\end{definition}
+
+\begin{theorem}
+	$a$ -- УОТ $\Leftrightarrow f$ ограниченна в $\dot{O}_\delta(a)$ для некоторого $\delta$.
+\end{theorem}
+
+\begin{proof}
+	($\Rightarrow$) -- очевидно по определению предела.
+
+	($\Leftarrow$)
+
+	Положим $M_\rho(f) = \max_{\gamma_\rho}\vert f\vert$. Тогда
+	\[
+		\vert c_n\vert \leq \frac{1}{2\pi}\int_{\gamma_\rho} \frac{\vert f\vert\vert d\xi\vert}{\rho^{n + 1}} \leq \frac{M_\rho(f)}{2\pi\rho^{n + 1}}\int_{\gamma_r}\vert d\xi\vert = \frac{M_\rho(f)}{\rho^n},\, n \in \mathbb{Z}
+	\]
+	По условию $f$ ограниченный в $\dot{O}(a) \Rightarrow$
+	\[
+		\exists M \: \forall z \in O_\delta(a) :\: \vert f\vert < M
+	\]
+	Тогда из неравенства для $\vert c_n\vert$ следует
+	\[
+		\forall \rho > 0,\, \rho < \delta \Rightarrow \forall n < 0 :\: \frac{1}{\rho^n} \overset{\rho \to 0}{\to} 0 \Rightarrow \forall n < 0 :\: c_n = 0
+	\]
+	Значит
+	\[
+		f(z) = \sum_{n = 0}^\infty c_n(z - a)^n
+	\]
+	она имеет предел в точке $a$, равный $c_0$.
+\end{proof}
+
+\begin{theorem}
+	Пусть $a$ -- изолированная особая точка $f$. Тогда $a$ полюс $\Leftrightarrow$ конечное число коэффициентов в главной части ряда Лорана отличны от нуля.
+\end{theorem}
+
+\begin{proof}
+	($\Leftarrow$)
+
+	По условию
+	\[
+		f(z) = \frac{c_{-m}}{(z - a)^m} + \cdots + \frac{c_{-1}}{z -a} + h(z)
+	\]
+	где $h$ -- голоморфна в окрестности $a$.
+
+	Значит $\phi(z) := f(z)(z - a)^m$ -- голоморфная в этой области, причём $\phi(a) = c_{-m} \neq 0 \Rightarrow$
+	\[
+		\lim_{z \to a}f(z) = \frac{\lim f(z)(z - a)^m}{\lim(z - a)^m} = \infty
+	\]
+
+	($\Rightarrow$)
+
+	По условию
+	\[
+		\lim_{z \to a} f(z) = \infty \Rightarrow \lim_{z \to a}\frac{1}{f(z)} = 0 \Rightarrow
+	\]
+	функция $\frac{1}{f(x)}$ имеет в т.$a$ УОТ $\Rightarrow$ она голоморфна в окрестности $a$. При этом $\frac{1}{f} \neq 0 \Rightarrow$
+	\[
+		\frac{1}{f(z)} = (z - a)^mh(z),\, h(a) \neq 0 \Rightarrow f(z) = \frac{1}{(z - a)^m}\frac{1}{h(z)}
+	\]
+	Где $\frac{1}{h(z)}$ -- голоморфная в окрестности $\Rightarrow$ раскладывается в Тейлора.
+\end{proof}
+
+\begin{theorem}
+	Сохоцкого.
+
+	Пусть $f$ голоморфна в $\dot{O}(a),\, a$ -- СОТ. Тогда
+	\[
+		\forall A \in \overline{\mathbb{C}} \: \exists z_n \to a :\: f(z_n) \to A
+	\]
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Для $A = \infty$ очевидно -- если $A$ -- не предельная, то $f$ ограничена $\Rightarrow a$ -- УОТ.
+		\item Если $A \neq \infty$, то введём
+		      \[
+			      g(z) := \frac{1}{f(z) - A}
+		      \]
+		      Пусть $A$ -- не предельная. Тогда
+		      \[
+			      \exists \varepsilon \: \exists \delta > 0 \: \forall z \in \dot{O}_\delta(a) :\: \vert f(z) - A\vert \geq \varepsilon
+		      \]
+		      Значит $g(z)$ голоморфна в $\dot{O}_\delta(a)$ как отношение голоморфных функций. Причём $g(z) \neq 0$ в $\dot{O}_\delta(a)$. Также $\vert g(z)\vert \leq \frac{1}{\varepsilon} \Rightarrow g$ -- ограниченная, то есть точка $a$ -- УОТ. Тогда
+		      \[
+			      \forall z \in \dot{O}_\delta(a) :\: f(z) = A + \frac{1}{g(z)}
+		      \]
+		      Если $g(a) \neq 0$, то $a$ -- УОТ для $f$.
+
+		      Если $g(a) = 0 \Rightarrow \frac{1}{g(z)}$ имеет полюс в точке $a \Rightarrow$ у $f$ точка $a$ -- полюс. Противоречие.
+	\end{enumerate}
+\end{proof}
+
+\section{Вычеты и формулы для их вычисления. Теорема Коши о вычетах.}
+\begin{definition}
+	Если $f$ голоморфна в $\dot{O}_r(a),\, a \neq \infty$, то определим вычет $f$, как
+	\[
+		\text{res}_af = \frac{1}{2\pi i}\int_{\gamma_\rho}f(z)dz
+	\]
+\end{definition}
+
+\begin{proposition}
+	Вычеты определены корректно (независят от $\gamma$).
+\end{proposition}
+
+\begin{proof}
+	Если $f(z) = \sum_{n = -\infty}^{+\infty} c_nz^n,\, z \in \dot{O}_r(a)$, то
+	\begin{align*}
+		\frac{1}{2\pi i}\int_{\gamma_\rho}f(z)dz = \sum_{n = -\infty}^{+\infty}\frac{1}{2\pi i}c_n\int_{\gamma_\rho}(z - a)^ndz = \frac{1}{2\pi i}c_{-1}2\pi i = c_{-1}
+	\end{align*}
+\end{proof}
+
+\begin{theorem}
+	Коши о вычетах.
+
+	Пусть $D$ ограничена циклом $\Gamma = \gamma_0 - \gamma_1 - \cdots - \gamma_n$ (то есть в условиях теореме Коши для многосвязной области).
+
+	Пусть $A = \{a_1,\,\cdots,\, a_N\} \subseteq D,\, f$ -- голоморфна в $D' \setminus A$, где $D' \supseteq D$. Тогда
+	\[
+		\frac{1}{2\pi i}\int_\Gamma f(z)dz = \sum_{i = 1}^N \text{res}_{a_i} f
+	\]
+\end{theorem}
+
+\begin{proof}
+	Очевидно, что
+	\[
+		\exists R > 0 \: \forall i \neq j :\: \overline{O}_R(a_i) \cap \overline{O}_R(a_j) = \emptyset
+	\]
+	и $\overline{O}_R(a_i) \subseteq D$.
+
+	Обозначим за обход $\delta_k = \partial O_R(a_k)$ (обход против часовой стрелки, то есть положительно ориентировано).
+
+	Обозначим $\tilde{\Gamma} = \Gamma - \sum_{i = 1}^N \delta_i,\, \tilde{D} = D \setminus \cup_{k = 1}^N \overline{O}_R(a_k)$ и $\tilde{D}' = D'
+		\setminus A$. Тогда $\partial\tilde{D} = \tilde{\Gamma}$ и $f$ голоморфна в $\tilde{D}'$. 
+
+		Причём $\tilde{D}' \supseteq \tilde{D}$. Более того, $\tilde{\Gamma} \sim 0 \: (\mod \tilde{D}')$, и $\forall z \not\in \tilde{D}' :\: J_{\tilde{\Gamma}}(z) = 0$. Аналогично проверим для
+		\begin{enumerate}
+			\item $z \not\in D' \Rightarrow \begin{cases}
+				J_\Gamma(z) = 0\\
+				J_{\delta_i}(z) = 0
+			\end{cases} \Rightarrow J_{\tilde{\Gamma}}(z) = 0$
+			\item $z \in A \: (z = a_i) \Rightarrow \begin{cases}
+				J_{-\delta_i}(a_i) = -1\\
+				J_{-\delta_j}(a_i) = 0 \: (i \neq j)\\
+				J_{\gamma_k}(a_i) = 0\\
+				J_\Gamma(a_i) = 1
+			\end{cases} \Rightarrow J_{\tilde{\Gamma}}(z) = 0$
+		\end{enumerate}
+		Тогда по теореме Коши для многосвязной области $\tilde{D}$:
+		\[
+			\int_{\tilde{\Gamma}} f(z)dz = 0 \Rightarrow \sum_{i = 1}^N\int_{\delta_i}f(z)dz = \int_\Gamma f(z)dz \Rightarrow 2\pi i\sum_{i = 1}^N\text{res}_{a_i}(f) = \int_\Gamma f(z)dz
+		\]
+\end{proof}
+
+\begin{corollary}
+	Если $a$ -- УОТ $\Rightarrow \text{res}_af = 0$
+\end{corollary}
+
+\begin{corollary}
+	Если $a$ -- полюс $m$-ого порядка $\Rightarrow$
+	\[
+		\text{res}_af = \frac{1}{(m - 1)!}\lim_{z \to a}\left(f(z)(z - a)^m\right)^{(m - 1)}
+	\]
+\end{corollary}
+
+\begin{proof}
+	$f$ имеет вид
+	\[
+		f = \sum_{n = -m}^\infty c_{n}(z - a)^n
+	\]
+	Тогда
+	\[
+		\text{res}_af = c_{-1} = \frac{1}{(m - 1)!}\lim_{z \to a}\left(f(z)(z - a)^m\right)^{(m - 1)}
+	\]
 \end{proof}
 
 \end{document}
