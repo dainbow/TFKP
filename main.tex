@@ -334,7 +334,7 @@
 			      \exists \{n_k\}_{k = 1}^\infty \: \forall k :\: \sqrt[n_k]{\vert a_{n_k}\vert} > \frac{1}{R} - \varepsilon \Rightarrow \vert a_{n_k}z^{n_k}\vert \geq \left(\frac{1}{R} - \varepsilon\right)^{n_k}\cdot\left(\frac{1}{\frac{1}{R} - \varepsilon}\right)^{n_k} \geq 1
 		      \]
 		      Получили, что не выполнено необходимое условие сходимости ряда.
-		\item Заметим, что у $g(z) = \sum_{n = 1}^\infty na_nz^{n-1}$ ряд сходимости такой же в силу $\sqrt[n]{n} \to 1$, то есть он сходится при $\vert z\vert < R$.
+		\item Заметим, что у $g(z) = \sum_{n = 1}^\infty na_nz^{n-1}$ радиус сходимости такой же в силу $\sqrt[n]{n} \to 1$, то есть ряд сходится при $\vert z\vert < R$.
 
 		      Заметим, что частичные суммы $G_n = F_n'$, то есть равна производной соответствующей частичной суммы $f$.
 
@@ -484,7 +484,7 @@
 		      \[
 			      \int_{\dot{\gamma}}f(z)dz = 0
 		      \]
-		\item Если для любой замкнутой ломаной кривой $\gamma$ выполняет равенство выше, то $fdz$ -- полный дифференциал.
+		\item Если для любой замкнутой ломаной кривой $\gamma$ выполняется равенство выше, то $fdz$ -- полный дифференциал.
 	\end{enumerate}
 \end{theorem}
 
@@ -558,7 +558,7 @@
 	\]
 	Так как $f$ дифференцируема в $z_0$, то по определению:
 	\[
-		\exists_{\delta_0}(z_0) \: \forall z \in B_{\delta_0}(z_0) :\: f(z) = f(z_0) + f'(z_0)(z - z_0) + o(z - z_0)
+		\exists B_{\delta_0}(z_0) \: \forall z \in B_{\delta_0}(z_0) :\: f(z) = f(z_0) + f'(z_0)(z - z_0) + o(z - z_0)
 	\]
 	А для $o$-малого верно:
 	\[
@@ -566,7 +566,7 @@
 	\]
 	Теперь можем расписать интеграл:
 	\begin{align*}
-		\int_{\partial\triangle^N}f(z)dz = f(z_0)\int_{\partial\triangle^N}dz + f'(z_0)\int_{\partial\triangle^N}zdz - z_0f'(z_0)\int_{\partial\triangle^N} + \int_{\partial\triangle^N}o(z - z_0)dz = \\
+		\int_{\partial\triangle^N}f(z)dz = f(z_0)\int_{\partial\triangle^N}dz + f'(z_0)\int_{\partial\triangle^N}zdz - z_0f'(z_0)\int_{\partial\triangle^N} dz + \int_{\partial\triangle^N}o(z - z_0)dz = \\
 		\int_{\partial\triangle^N}o(z - z_0)dz
 	\end{align*}
 	Интегралы по $1$ и $z$ равны нулю, так как они, очевидно, полные дифференциалы.
@@ -601,7 +601,7 @@
 		\forall \triangle \subseteq D :\: \int_{\partial \triangle} fdz = 0
 	\]
 
-	Тогда мы можем триангулировать любую ломаную $\Rightarrow$ по одной из теорем $fdz$ -- полный дифференциал (нужна была непрерывности и нулевой интеграл по всем ломаным).
+	Тогда мы можем триангулировать любую ломаную $\Rightarrow$ по одной из теорем $fdz$ -- полный дифференциал (нужны были непрерывность и нулевой интеграл по всем ломаным).
 
 	А как мы знаем, интеграл по любой замкнутой кривой от полного дифференциала нулевой.
 \end{proof}
