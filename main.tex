@@ -1368,4 +1368,356 @@
 	\]
 \end{proof}
 
+\section{Лемма Жордана.\dots}
+\begin{theorem}
+	Пусть $g$ -- непрерывная функция в $\{z \:\vert\: \text{Im}(z) \geq 0,\, \vert z\vert > R'\}$, причём $\max_{\Gamma_R}\vert g\vert \overset{R \to \infty}{\to} 0$, где $\Gamma_R = \{z \:\vert\: \text{Im}(z) \geq 0,\, \vert z\vert = R\}$. Тогда 
+	\[
+		\forall \alpha > 0 :\: \int_{\Gamma_R} g(z)e^{i\alpha z}dz \to 0,\, R \to \infty
+	\]
+\end{theorem}
+
+\begin{proof}
+	Достаточно доказать, что $\int_{\Gamma_R}\vert e^{i\alpha z}\vert\vert dz\vert$ равномерно ограничен. (то есть $\exists M > 0 \: \forall R > R' :\: \int_{\Gamma_R}\vert e^{i\alpha z}\vert\vert dz\vert \leq M$).
+
+	Пусть $z = Re^{i\phi},\, \phi \in (0,\, \phi)$, тогда очевидно, 
+	\[
+		\vert e^{i\alpha z}\vert = e^{\text{Re}(i\alpha z)} = e^{-R\alpha\sin(\phi)}
+	\]
+	Теперь распишем интеграл
+	\[
+		\int_{\Gamma_R}\vert e^{i\alpha z}\vert\vert dz\vert = \int_0^\pi e^{-R\alpha\sin\phi}Rd\phi = 2R\int_0^{\frac{\pi}{2}}e^{-R\alpha\sin\phi}d\phi
+	\]
+	Вспомним, что $\sin\phi$ вогнут на $[0,\, \frac{\pi}{2}] \Rightarrow \sin\phi \geq \frac{2}{\pi}\phi$. Продолжим цепочку неравенств
+	\begin{align*}
+		2R\int_0^{\frac{\varpi}{2}}e^{-R\alpha\sin\phi}d\phi \leq 2R\int_0^{\frac{\pi}{2}}e^{-\frac{2}{\pi}R\phi}d\phi = \frac{\pi}{\alpha}\int_0^{R\alpha}e^{-t}dt \leq \frac{\pi}{\alpha}\int_0^{+\infty}e^{-t}dt = \frac{\pi}{\alpha}
+	\end{align*}
+\end{proof}
+
+\section{Принцип аргумента. Теорема Руше. Основная теорема алгебры.}
+\begin{theorem}
+	Принцип аргумента.
+
+	Пусть $\Gamma = \gamma_0 - \gamma_1 - \cdots - \gamma_n,\, D$ -- область, ограниченная $\Gamma,\, A := \{a_1,\,\cdots,\, a_k\} \subseteq D,\, f$ голоморфна в $D' \setminus A,\, D' \supset D$. $a_j$ -- полюса функции $f$ и $\forall z \in \Gamma :\: f(z) \neq 0$. Тогда
+	\[
+		\frac{1}{2\pi i}\int_\Gamma\frac{f'}{f}dz = J_{f(\Gamma)}(0) = \frac{1}{2\pi}\Delta_\Gamma f = N - P
+	\]
+	где $N$ и $P$ -- число нулей и полюсов $f$ в $D$ с учётом их кратностей соответственно.
+\end{theorem}
+
+\begin{proof}
+	Из определения $f$, можем её представить в виде
+	\[
+		f = \frac{(z - b_1)^{n_1}\cdots(z - b_\eta)^{n_\eta}}{(z - a_1)^{p_1}\cdots(z - a_k)^{p_k}}g(z)
+	\]
+	где $g$ -- голоморфна в $\overline{D}$ и не содержит там нулей.
+
+	Тогда 
+	\[
+		\frac{f'}{f} = \sum_{i = 1}^\eta\frac{n_i}{z - b_i} - \sum_{i = 1}^k\frac{p_i}{z - a_i} + \frac{g'}{g}
+	\]
+	Значит
+	\[
+		\frac{1}{2\pi i} \int_\Gamma\frac{f'}{f}dz = \sum_{i = 1}^\eta n_iJ_\Gamma(b_i) - \sum_{i = 1}^k p_iJ_\Gamma(a_i) + \frac{1}{2\pi i}\int_\Gamma\frac{g'}{g}dz = \sum_{i = 1}^\eta n_i - \sum_{i = 1}^k p_i = N - P 	
+	\]
+	так как $J_\Gamma(b_i) = 1,\, J_\Gamma(a_i) = 1$
+\end{proof}
+
+\begin{theorem}
+	Теорема Руше.
+
+	Пусть $f,\, g$ -- голоморфные в $\overline{D}$, где $D$ ограничивает $\Gamma = \gamma_0 - \gamma_1 - \cdots - \gamma_n$. Пусть $\vert f\vert > \vert g\vert$ на $\Gamma$. Тогда 
+	\[
+		N_f(D) = N_{f + g}(D)
+	\]
+	где $N_f(D)$ -- число нулей функции $f$ в области $D$.
+\end{theorem}
+
+\begin{proof}
+	Заметим, что $\vert f\vert > 0$ и $\vert f + g\vert > 0$ на $\Gamma$.
+
+	$\vert f\vert$ по условию, $\vert f\vert > \vert g\vert \geq 0,\, \vert f + g\vert$ по неравенству треугольника.
+
+	Тогда по принципу аргументов
+	\[
+		f + g = f\cdot\left(1 + \frac{g}{f}\right) :\: \triangle_\Gamma(f + g) = \triangle_\Gamma f + \triangle_\Gamma\left(1 + \frac{g}{f}\right)
+	\]
+	Но $\vert g\vert < \vert f\vert$, то есть $\left\vert\frac{g}{f}\right\vert < 1 \Rightarrow \triangle_\Gamma\left(1 + \frac{g}{f}\right) = 0$.
+
+	Тогда $\triangle_\Gamma(f + g) = \triangle_\Gamma(f) \Rightarrow$ по принципу аргументов (так как нет полюсов):
+	\[
+		N_f(D) = N_{f +g}(D)
+	\]
+\end{proof}
+
+\begin{theorem}
+	Основная теорема алгебры.
+
+	Пусть $p$ -- многочлен степени $n$ c коэффициентом из $\mathbb{C}$. Тогда $p$ имеет в $\mathbb{C}$ ровно $n$ нулей с учётом кратности.
+\end{theorem}
+
+\begin{proof}
+	Введём для $p$:
+	\[
+		p(z) = [f ::= z^n] + [g := c_{n - 1}z^{n - 1} + \cdots + c_1z + c_0]
+	\]
+	$p$ голоморфно в $\overline{D} = \overline{O}_R(0)$ при $R > 1$. 
+
+	Оценим
+	\[
+		\vert g\vert \leq \sum_{i = 0}^{n - 1}\vert c_iz^i\vert \leq n\cdot\max_i\vert c_i\vert R^{n - 1}
+	\]
+	И возьмём 
+	\[
+		R > n\cdot\max_i\vert c_i\vert 
+	\]
+	тогда $\vert f\vert = R^n > n\cdot\max_i\vert c_i\vert\cdot R^{n - 1} \geq \vert g\vert$.
+
+	Применяя теорему Руше, получим
+	\[
+		N_D(p) = N_D(f) = n
+	\]
+\end{proof}
+
+\section{Теорема о локальной структуре отображения. Принцип сохранения области.\dots}
+\begin{theorem}
+	Пусть $f$ голоморфна в области $D$. Пусть $z_0 \in D,\, f(z_0) = w_0$, причём $z_0$ -- нуль $n$-го порядка. Тогда
+	\[
+		\exists O_\rho(w_0) \: \exists O_r(z_0) :\: \forall w^* \in \dot{O}_\rho(w_0)
+	\]
+	уравнение $f(z) = w^*$ имеет ровно $n$ решений в $\dot{O}_r(z_0)$.
+\end{theorem}
+
+\begin{proof}
+	Пусть $f \not\equiv const \Rightarrow$
+	\[
+		\exists r' \: \forall z \in \dot{O}_{r'}(z_0) :\: f(z) \neq w_0,\, f'(z) \neq 0
+	\]
+	Пусть $r \in (0,\,r')$. Введём
+	\[
+		\gamma = \partial O_r(z_0);\;\;\;\; \Gamma = f(\gamma)
+	\]
+	Тогда
+	\[
+		z \in \gamma \Rightarrow \rho := \text{dist }(\Gamma,\, w_0) > 0
+	\]
+	Пусть $w^* \in \dot{O}_\rho(w_0)$, тогда рассмотрим
+	\[
+		\forall z \in \gamma :\: \vert f(z) - w_0\vert \geq \rho > \vert w^* - w_0\vert
+	\]
+	Тогда по теореме Руше
+	\[
+		N_{O_r(z_0)}(f(z) - w^*) = N_{O_r(z_0)}(f(z) - w_0) = n
+	\]
+	Кратных нулей нет, так как $f'(z) \neq 0$.
+\end{proof}
+
+\begin{theorem}
+	Принцип сохранения области или открытости.
+
+	Пусть $f \not\equiv const$ -- голоморфна в области $D$. Тогда $f(D)$ тоже является областью. Если $U \subseteq D $ и $U$ -- открыто, то $f(U)$ тоже открыто
+\end{theorem}
+
+\begin{proof}
+	Образ связного множества, очевидно, связен. Достаточно показать, что образ открытого открыт. Пусть 
+	\[
+		w_0 \in f(D),\, \exists z_0 :\: f(z_0) = w_0,\, \exists n \in \mathbb{N} :\: f^{(n)}(z_0) \neq 0
+	\]
+	Тогда
+	\[
+		\exists O_r(z_0) \: \exists O_\rho(w_0) :\: \forall w^* \in O_\rho(w_0) \: \exists z^* \in O_r(z_0) \Rightarrow O_\rho(w_0) \subseteq f(O_r(z_0))
+	\]
+	Выбирая малое $r$, получим требуемое.
+\end{proof}
+
+\begin{definition}
+	$f$ голоморфная в $D$ называется однолистной, если
+	\[
+		\forall z_1,\,z_2 :\: z_1 \neq z_2 \Rightarrow f(z_1) \neq f(z_2)
+	\]
+\end{definition}
+
+\begin{definition}
+	$f$ локально однолистна в некоторой области $O(z_0)$.  
+\end{definition}
+
+\begin{proposition}
+	Если $f'(z_0) = 0$, то она неоднолистна.
+\end{proposition}
+
+\begin{proposition}
+	Найдётся достаточно малая окрестность $z_0$, в которой $f$ константа.
+\end{proposition}
+
+\section{Принцип максимума модуля и лемма Шварца}
+\begin{theorem}
+	Принцип максимума модуля.
+
+	Пусть $f$ голоморфна в $D$ и $f \not\equiv const$. Тогда $\vert f\vert$ не может достигать максимума в $z \in D$.
+\end{theorem}
+
+\begin{proof}
+	От противного. Пусть $z_0 \in D$:
+	\[
+		\forall z \in D :\: \vert f(z_0)\vert \geq \vert f(z)\vert
+	\]
+	Рассмотрим $w_0 = f(z_0)$. Тогда
+	\[
+		\forall w \in f(D) :\: \vert w_0\vert \geq \vert w\vert
+	\]
+	То есть $f(D) \subset \overline{O}_{\vert w_0\vert}(0)$, а $\vert w_0\vert$ лежит на его границе $\Rightarrow$ противоречие с принципом сохранения открытости.
+\end{proof}
+
+\begin{lemma}
+	Шварца.
+
+	Пусть $f(z)$ в $D = \{z \:\vert\: \vert z\vert < 1\}$ голоморфна, а $0$ -- неподвижная точка $f(z)$ и $\forall z \in D :\: \vert f(z)\vert \leq 1$. Тогда
+	\begin{enumerate}
+		\item $\forall z \in D :\: \vert f(z)\vert \leq \vert z\vert ;\;\;\; \vert f'(0)\vert \leq 1$
+		\item Если $\exists z_0$: в любом из неравенств предыдущего пункта достигается равенство, то $f(z) = ze^{i\theta},\, \theta \in \mathbb{R}$
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Рассмотрим $g(z) = \frac{f(z)}{z}$, она голоморфна в $\dot{O}_1(0)$, причём точка $0$ -- устранимая особая. Тогда
+		\[
+			g(z) = \begin{cases}
+				\frac{f(z)}{z},\, z \neq 0\\
+				f'(z),\, z = 0
+			\end{cases}
+		\]
+		Голоморфна в $D$.
+
+		Тогда в $O_r(0)$ по принципу максимумов:
+		\[
+			\max_{\vert z\vert \leq r} \vert g\vert = \max_{\vert z\vert = r}\vert g\vert = \frac{1}{r}\max_{\vert z\vert = r} \vert f(z)\vert \leq \frac{1}{r}
+		\]
+		Фиксируем $z \in D$. Тогда
+		\[
+			\forall r \in (\vert z\vert,\, 1) :\: \vert g(z)\vert \leq \frac{1}{r}
+		\]
+		Перейдём к пределу $r \to 1$ и получим $\vert g(z)\vert \leq 1$, тогда $\vert f(z)\vert \leq \vert z\vert$. Из этого неравенства как раз следует $\vert f'(0)\vert \leq 1$:
+		\[
+			\left\vert \frac{f(0) - f(z)}{0 - z}\right\vert = \left\vert \frac{f(z)}{z}\right\vert \leq 1
+		\]
+		\item Пусть $\vert f(z_0)\vert = \vert z_0\vert$ при каком-то $z_0 \neq 0,\, z_0 \in D$. Тогда 
+		\[
+			\vert g(z_0)\vert = 1\Rightarrow g(z) \equiv const
+		\]
+		по принципу максимума, причём $\vert g(z)\vert = 1 \Rightarrow g(z) = e^{i\theta} \Rightarrow f(z) = z\cdot e^{i\theta}$. Если $\vert f'(0)\vert = 1 \Rightarrow g(0) = 1 \Rightarrow$ аналогично берём $z_0 = 0$.
+	\end{enumerate}
+\end{proof}
+
+\section{Дробно-линейные отображения. \dots}
+\begin{definition}
+	Пусть $f$ -- отображение из $D$ в $\mathbb{C}$, которое переводит гладкие кривые в гладкие кривые. Оно называется конформным в точке $z_0$, если оно сохраняет углы между кривыми в точке $z_0$.
+\end{definition}
+
+\begin{proposition}
+	Если $f$ -- голоморфная функция и $f'(z_0) \neq 0$, то $f$ конформно в точке $z_0$.
+\end{proposition}
+
+\begin{lemma}
+	\begin{enumerate}
+		\item Пусть $a \in \mathbb{C},\, \lim_{z \to a}f(z) = \infty$, тогда $f$ конформна в $a \Leftrightarrow f$ имеет полюс первого порядка.
+		\item Пусть $a = \infty,\, \lim_{z \to a}f(z) = A \in \mathbb{C}$, тогда $f$ конформна в $a \Leftrightarrow \text{res}_\infty f \neq 0$
+		\item Пусть $a = \infty,\, \lim_{z \to a}f(z) = \infty$, тогда $f$ конформна в $a \Leftrightarrow f$ имеет полюс первого порядка.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item $f$ конформна в $a \Leftrightarrow f'(a) \neq 0 \Leftrightarrow $ для $g(z) := \frac{1}{f(z)}$ выполняется 
+		\[
+			g'(a) \neq 0 \Leftrightarrow g(z) = g'(a)(z - a) + o(z - a) \Leftrightarrow f(z) = \frac{1}{g'(a)(z - a)}(1 + o(1))
+		\]
+		то есть $f$ имеет простой полюс.
+		\item Знаем, что
+		\[
+			\lim_{z \to \infty} f(z) = A \in \mathbb{C}
+		\]
+		Определим
+		\[
+			g(w) = f\left(\frac{1}{w}\right) = A + g'(0)w + o(w)
+		\]
+		Тогда
+		\[
+			\lim_{w \to 0}\frac{g(w) - A}{w} \neq 0 \Leftrightarrow \lim_{z \to \infty}z(f(z) - A) = -\text{res}_\infty f \neq 0
+		\]
+		\item Знаем, что
+		\[
+			\lim_{z \to a} f(z) = \infty
+		\]
+		Тогда для 
+		\[
+			g(w) := \frac{1}{f(\frac{1}{w})}
+		\]
+		будет верно, что $w = 0$ -- УОТ, причём $g(0) = 0$.
+
+		Значит 
+		\[
+			g(w) = g'(0)w + o(w) 
+		\]
+		Тогда критерием конформности будет $g'(0) \neq 0$, то есть
+		\[
+			\lim_{w \to 0}\frac{g(w)}{w} \neq 0 \Leftrightarrow \lim_{z \to \infty}\frac{z}{f(z)}
+		\]
+		то есть $f$ имеет простой полюс (П1П).
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	$L(z) = \frac{az + b}{cz + d}$ -- дробно линейное отображение, если $L(z) \neq const$, то есть $ad - bc \neq 0$.
+
+	Пусть $\mathfrak{M}$ -- множество всех ДЛО.
+\end{definition}
+
+\begin{proposition}
+	$\mathfrak{M}$ -- группа относительно композиции.
+\end{proposition}
+
+\begin{proof}
+	Подставим и проверим:
+	\[
+		\frac{a_1\frac{a_2z + b_2}{c_2z + d_2} + b_1}{c_1\frac{a_2z + b_2}{c_2z + d_2} + d_1} = \frac{(a_1a_2 + b_1c_2)z + (a_1b_2 + b_1d_2)}{(c_1a_2 + d_1c_2)z + (c_1b_2 + d_1d_2)}
+	\]
+	Заметим, что коэффициенты нового элемента могут быть получены перемножением матриц (это, кстати, доказывает, что сохраняется свойство ненулевого определителя):
+	\[
+		\begin{pmatrix}
+			a_1 & b_1\\
+			c_1 & d_1
+		\end{pmatrix}
+		\cdot
+		\begin{pmatrix}
+			a_2 & b_2\\
+			c_2 & d_2
+		\end{pmatrix}
+	\]
+	Для поиска обратного элемента в группе, возьмём обратную матрицу (существует, так как определитель ненулевой $ad - bc \neq 0$) -- это будет матрица коэффициентов искомого элемента.
+\end{proof}
+
+\begin{proposition}
+	Пусть $L \in \mathfrak{M},\, L$ -- биекция $\overline{\mathbb{C}} \to \overline{\mathbb{C}}$. Тогда $L$ -- конформное отображение в любой точке.
+\end{proposition}
+
+\begin{proof}
+	Посчитаем производную
+	\[
+		L'(z) = \frac{ad - bc}{(cz + d)^2}
+	\]
+	Если $z \neq \infty,\, z \neq -\frac{d}{c},\, c \neq 0$, то $cz + d \neq 0 \Rightarrow L'(z) \neq 0 \Rightarrow$ конформное.
+
+	Пусть $c \neq 0,\, z = \infty$. Если $c \neq 0$, то в $z = \infty$ УОТ, хотим проверить $\text{res}_\infty L \neq 0$ из чего следовала бы конформность.
+
+	Считаем вычет:
+	\[
+		\lim_{z \to \infty} z\left(\frac{az + b}{cz + d} - \frac{a}{c}\right) = \lim_{z \to \infty} \frac{bc - ad}{c(cz + d)} = \frac{bc - ad}{c^2} \neq 0
+	\]
+
+	При $c \neq 0,\, z = -\frac{d}{c}$ -- действительно, простой полюс (1 порядка).
+
+	При $c = 0$ -- линейная функция, которая, очевидно, конформная в $\infty$ -- простой полюс.
+\end{proof}
+
+
 \end{document}
