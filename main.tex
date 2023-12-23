@@ -758,7 +758,7 @@
 	$f$ -- целая, если $f$ голоморфна в $\mathbb{C}$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem}\label{Lui}
 	Луивилля.
 
 	Если $f$ -- целая и
@@ -1075,10 +1075,10 @@
 	\[
 		F(z) := \begin{cases}
 			h(z),\, z \in D \\
-			\tilde{h}(z),\, z \in C\setminus D \subseteq G \text{ так как } \Gamma \sim 0 (\mod D)
+			\tilde{h}(z),\, z \in \mathbb{C}\setminus D \subseteq G \text{ так как } \Gamma \sim 0 (\mod D)
 		\end{cases}
 	\]
-	Получается, $F(z)$ -- голоморфна в $\mathbb{C}$.
+	Получается, $F(z)$ -- голоморфна в $\mathbb{C}$. (В каждой из гладких областей они голоморфны, и совпадают на границе)
 
 	Заметим, что
 	\[
@@ -1090,7 +1090,7 @@
 	\]
 	Где, $d(z) = \text{dist }(z,\, \Gamma) \Rightarrow d(z) \to \infty$.
 
-	Тогда по теореме Луивилля:
+	Тогда по теореме Луивилля (\ref{Lui}):
 	\[
 		F(z) \equiv 0
 	\]
