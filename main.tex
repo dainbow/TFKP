@@ -1325,25 +1325,25 @@
 	Обозначим за обход $\delta_k = \partial O_R(a_k)$ (обход против часовой стрелки, то есть положительно ориентировано).
 
 	Обозначим $\tilde{\Gamma} = \Gamma - \sum_{i = 1}^N \delta_i,\, \tilde{D} = D \setminus \cup_{k = 1}^N \overline{O}_R(a_k)$ и $\tilde{D}' = D'
-		\setminus A$. Тогда $\partial\tilde{D} = \tilde{\Gamma}$ и $f$ голоморфна в $\tilde{D}'$. 
+		\setminus A$. Тогда $\partial\tilde{D} = \tilde{\Gamma}$ и $f$ голоморфна в $\tilde{D}'$.
 
-		Причём $\tilde{D}' \supseteq \tilde{D}$. Более того, $\tilde{\Gamma} \sim 0 \: (\mod \tilde{D}')$, и $\forall z \not\in \tilde{D}' :\: J_{\tilde{\Gamma}}(z) = 0$. Аналогично проверим для
-		\begin{enumerate}
-			\item $z \not\in D' \Rightarrow \begin{cases}
-				J_\Gamma(z) = 0\\
-				J_{\delta_i}(z) = 0
-			\end{cases} \Rightarrow J_{\tilde{\Gamma}}(z) = 0$
-			\item $z \in A \: (z = a_i) \Rightarrow \begin{cases}
-				J_{-\delta_i}(a_i) = -1\\
-				J_{-\delta_j}(a_i) = 0 \: (i \neq j)\\
-				J_{\gamma_k}(a_i) = 0\\
-				J_\Gamma(a_i) = 1
-			\end{cases} \Rightarrow J_{\tilde{\Gamma}}(z) = 0$
-		\end{enumerate}
-		Тогда по теореме Коши для многосвязной области $\tilde{D}$:
-		\[
-			\int_{\tilde{\Gamma}} f(z)dz = 0 \Rightarrow \sum_{i = 1}^N\int_{\delta_i}f(z)dz = \int_\Gamma f(z)dz \Rightarrow 2\pi i\sum_{i = 1}^N\text{res}_{a_i}(f) = \int_\Gamma f(z)dz
-		\]
+	Причём $\tilde{D}' \supseteq \tilde{D}$. Более того, $\tilde{\Gamma} \sim 0 \: (\mod \tilde{D}')$, и $\forall z \not\in \tilde{D}' :\: J_{\tilde{\Gamma}}(z) = 0$. Аналогично проверим для
+	\begin{enumerate}
+		\item $z \not\in D' \Rightarrow \begin{cases}
+				      J_\Gamma(z) = 0 \\
+				      J_{\delta_i}(z) = 0
+			      \end{cases} \Rightarrow J_{\tilde{\Gamma}}(z) = 0$
+		\item $z \in A \: (z = a_i) \Rightarrow \begin{cases}
+				      J_{-\delta_i}(a_i) = -1              \\
+				      J_{-\delta_j}(a_i) = 0 \: (i \neq j) \\
+				      J_{\gamma_k}(a_i) = 0                \\
+				      J_\Gamma(a_i) = 1
+			      \end{cases} \Rightarrow J_{\tilde{\Gamma}}(z) = 0$
+	\end{enumerate}
+	Тогда по теореме Коши для многосвязной области $\tilde{D}$:
+	\[
+		\int_{\tilde{\Gamma}} f(z)dz = 0 \Rightarrow \sum_{i = 1}^N\int_{\delta_i}f(z)dz = \int_\Gamma f(z)dz \Rightarrow 2\pi i\sum_{i = 1}^N\text{res}_{a_i}(f) = \int_\Gamma f(z)dz
+	\]
 \end{proof}
 
 \begin{corollary}
@@ -1366,6 +1366,679 @@
 	\[
 		\text{res}_af = c_{-1} = \frac{1}{(m - 1)!}\lim_{z \to a}\left(f(z)(z - a)^m\right)^{(m - 1)}
 	\]
+\end{proof}
+
+\section{Лемма Жордана.\dots}
+\begin{theorem}
+	Пусть $g$ -- непрерывная функция в $\{z \:\vert\: \text{Im}(z) \geq 0,\, \vert z\vert > R'\}$, причём $\max_{\Gamma_R}\vert g\vert \overset{R \to \infty}{\to} 0$, где $\Gamma_R = \{z \:\vert\: \text{Im}(z) \geq 0,\, \vert z\vert = R\}$. Тогда
+	\[
+		\forall \alpha > 0 :\: \int_{\Gamma_R} g(z)e^{i\alpha z}dz \to 0,\, R \to \infty
+	\]
+\end{theorem}
+
+\begin{proof}
+	Достаточно доказать, что $\int_{\Gamma_R}\vert e^{i\alpha z}\vert\vert dz\vert$ равномерно ограничен. (то есть $\exists M > 0 \: \forall R > R' :\: \int_{\Gamma_R}\vert e^{i\alpha z}\vert\vert dz\vert \leq M$).
+
+	Пусть $z = Re^{i\phi},\, \phi \in (0,\, \phi)$, тогда очевидно,
+	\[
+		\vert e^{i\alpha z}\vert = e^{\text{Re}(i\alpha z)} = e^{-R\alpha\sin(\phi)}
+	\]
+	Теперь распишем интеграл
+	\[
+		\int_{\Gamma_R}\vert e^{i\alpha z}\vert\vert dz\vert = \int_0^\pi e^{-R\alpha\sin\phi}Rd\phi = 2R\int_0^{\frac{\pi}{2}}e^{-R\alpha\sin\phi}d\phi
+	\]
+	Вспомним, что $\sin\phi$ вогнут на $[0,\, \frac{\pi}{2}] \Rightarrow \sin\phi \geq \frac{2}{\pi}\phi$. Продолжим цепочку неравенств
+	\begin{align*}
+		2R\int_0^{\frac{\varpi}{2}}e^{-R\alpha\sin\phi}d\phi \leq 2R\int_0^{\frac{\pi}{2}}e^{-\frac{2}{\pi}R\phi}d\phi = \frac{\pi}{\alpha}\int_0^{R\alpha}e^{-t}dt \leq \frac{\pi}{\alpha}\int_0^{+\infty}e^{-t}dt = \frac{\pi}{\alpha}
+	\end{align*}
+\end{proof}
+
+\section{Принцип аргумента. Теорема Руше. Основная теорема алгебры.}
+\begin{theorem}
+	Принцип аргумента.
+
+	Пусть $\Gamma = \gamma_0 - \gamma_1 - \cdots - \gamma_n,\, D$ -- область, ограниченная $\Gamma,\, A := \{a_1,\,\cdots,\, a_k\} \subseteq D,\, f$ голоморфна в $D' \setminus A,\, D' \supset D$. $a_j$ -- полюса функции $f$ и $\forall z \in \Gamma :\: f(z) \neq 0$. Тогда
+	\[
+		\frac{1}{2\pi i}\int_\Gamma\frac{f'}{f}dz = J_{f(\Gamma)}(0) = \frac{1}{2\pi}\Delta_\Gamma f = N - P
+	\]
+	где $N$ и $P$ -- число нулей и полюсов $f$ в $D$ с учётом их кратностей соответственно.
+\end{theorem}
+
+\begin{proof}
+	Из определения $f$, можем её представить в виде
+	\[
+		f = \frac{(z - b_1)^{n_1}\cdots(z - b_\eta)^{n_\eta}}{(z - a_1)^{p_1}\cdots(z - a_k)^{p_k}}g(z)
+	\]
+	где $g$ -- голоморфна в $\overline{D}$ и не содержит там нулей.
+
+	Тогда
+	\[
+		\frac{f'}{f} = \sum_{i = 1}^\eta\frac{n_i}{z - b_i} - \sum_{i = 1}^k\frac{p_i}{z - a_i} + \frac{g'}{g}
+	\]
+	Значит
+	\[
+		\frac{1}{2\pi i} \int_\Gamma\frac{f'}{f}dz = \sum_{i = 1}^\eta n_iJ_\Gamma(b_i) - \sum_{i = 1}^k p_iJ_\Gamma(a_i) + \frac{1}{2\pi i}\int_\Gamma\frac{g'}{g}dz = \sum_{i = 1}^\eta n_i - \sum_{i = 1}^k p_i = N - P
+	\]
+	так как $J_\Gamma(b_i) = 1,\, J_\Gamma(a_i) = 1$
+\end{proof}
+
+\begin{theorem}
+	Теорема Руше.
+
+	Пусть $f,\, g$ -- голоморфные в $\overline{D}$, где $D$ ограничивает $\Gamma = \gamma_0 - \gamma_1 - \cdots - \gamma_n$. Пусть $\vert f\vert > \vert g\vert$ на $\Gamma$. Тогда
+	\[
+		N_f(D) = N_{f + g}(D)
+	\]
+	где $N_f(D)$ -- число нулей функции $f$ в области $D$.
+\end{theorem}
+
+\begin{proof}
+	Заметим, что $\vert f\vert > 0$ и $\vert f + g\vert > 0$ на $\Gamma$.
+
+	$\vert f\vert$ по условию, $\vert f\vert > \vert g\vert \geq 0,\, \vert f + g\vert$ по неравенству треугольника.
+
+	Тогда по принципу аргументов
+	\[
+		f + g = f\cdot\left(1 + \frac{g}{f}\right) :\: \triangle_\Gamma(f + g) = \triangle_\Gamma f + \triangle_\Gamma\left(1 + \frac{g}{f}\right)
+	\]
+	Но $\vert g\vert < \vert f\vert$, то есть $\left\vert\frac{g}{f}\right\vert < 1 \Rightarrow \triangle_\Gamma\left(1 + \frac{g}{f}\right) = 0$.
+
+	Тогда $\triangle_\Gamma(f + g) = \triangle_\Gamma(f) \Rightarrow$ по принципу аргументов (так как нет полюсов):
+	\[
+		N_f(D) = N_{f +g}(D)
+	\]
+\end{proof}
+
+\begin{theorem}
+	Основная теорема алгебры.
+
+	Пусть $p$ -- многочлен степени $n$ c коэффициентом из $\mathbb{C}$. Тогда $p$ имеет в $\mathbb{C}$ ровно $n$ нулей с учётом кратности.
+\end{theorem}
+
+\begin{proof}
+	Введём для $p$:
+	\[
+		p(z) = [f ::= z^n] + [g := c_{n - 1}z^{n - 1} + \cdots + c_1z + c_0]
+	\]
+	$p$ голоморфно в $\overline{D} = \overline{O}_R(0)$ при $R > 1$.
+
+	Оценим
+	\[
+		\vert g\vert \leq \sum_{i = 0}^{n - 1}\vert c_iz^i\vert \leq n\cdot\max_i\vert c_i\vert R^{n - 1}
+	\]
+	И возьмём
+	\[
+		R > n\cdot\max_i\vert c_i\vert
+	\]
+	тогда $\vert f\vert = R^n > n\cdot\max_i\vert c_i\vert\cdot R^{n - 1} \geq \vert g\vert$.
+
+	Применяя теорему Руше, получим
+	\[
+		N_D(p) = N_D(f) = n
+	\]
+\end{proof}
+
+\section{Теорема о локальной структуре отображения. Принцип сохранения области.\dots}
+\begin{theorem}
+	Пусть $f$ голоморфна в области $D$. Пусть $z_0 \in D,\, f(z_0) = w_0$, причём $z_0$ -- нуль $n$-го порядка. Тогда
+	\[
+		\exists O_\rho(w_0) \: \exists O_r(z_0) :\: \forall w^* \in \dot{O}_\rho(w_0)
+	\]
+	уравнение $f(z) = w^*$ имеет ровно $n$ решений в $\dot{O}_r(z_0)$.
+\end{theorem}
+
+\begin{proof}
+	Пусть $f \not\equiv const \Rightarrow$
+	\[
+		\exists r' \: \forall z \in \dot{O}_{r'}(z_0) :\: f(z) \neq w_0,\, f'(z) \neq 0
+	\]
+	Пусть $r \in (0,\,r')$. Введём
+	\[
+		\gamma = \partial O_r(z_0);\;\;\;\; \Gamma = f(\gamma)
+	\]
+	Тогда
+	\[
+		z \in \gamma \Rightarrow \rho := \text{dist }(\Gamma,\, w_0) > 0
+	\]
+	Пусть $w^* \in \dot{O}_\rho(w_0)$, тогда рассмотрим
+	\[
+		\forall z \in \gamma :\: \vert f(z) - w_0\vert \geq \rho > \vert w^* - w_0\vert
+	\]
+	Тогда по теореме Руше
+	\[
+		N_{O_r(z_0)}(f(z) - w^*) = N_{O_r(z_0)}(f(z) - w_0) = n
+	\]
+	Кратных нулей нет, так как $f'(z) \neq 0$.
+\end{proof}
+
+\begin{theorem}
+	Принцип сохранения области или открытости.
+
+	Пусть $f \not\equiv const$ -- голоморфна в области $D$. Тогда $f(D)$ тоже является областью. Если $U \subseteq D $ и $U$ -- открыто, то $f(U)$ тоже открыто
+\end{theorem}
+
+\begin{proof}
+	Образ связного множества, очевидно, связен. Достаточно показать, что образ открытого открыт. Пусть
+	\[
+		w_0 \in f(D),\, \exists z_0 :\: f(z_0) = w_0,\, \exists n \in \mathbb{N} :\: f^{(n)}(z_0) \neq 0
+	\]
+	Тогда
+	\[
+		\exists O_r(z_0) \: \exists O_\rho(w_0) :\: \forall w^* \in O_\rho(w_0) \: \exists z^* \in O_r(z_0) \Rightarrow O_\rho(w_0) \subseteq f(O_r(z_0))
+	\]
+	Выбирая малое $r$, получим требуемое.
+\end{proof}
+
+\begin{definition}
+	$f$ голоморфная в $D$ называется однолистной, если
+	\[
+		\forall z_1,\,z_2 :\: z_1 \neq z_2 \Rightarrow f(z_1) \neq f(z_2)
+	\]
+\end{definition}
+
+\begin{definition}
+	$f$ локально однолистна в некоторой области $O(z_0)$.
+\end{definition}
+
+\begin{proposition}
+	Если $f'(z_0) = 0$, то она неоднолистна.
+\end{proposition}
+
+\begin{proposition}
+	Найдётся достаточно малая окрестность $z_0$, в которой $f$ константа.
+\end{proposition}
+
+\section{Принцип максимума модуля и лемма Шварца}
+\begin{theorem}
+	Принцип максимума модуля.
+
+	Пусть $f$ голоморфна в $D$ и $f \not\equiv const$. Тогда $\vert f\vert$ не может достигать максимума в $z \in D$.
+\end{theorem}
+
+\begin{proof}
+	От противного. Пусть $z_0 \in D$:
+	\[
+		\forall z \in D :\: \vert f(z_0)\vert \geq \vert f(z)\vert
+	\]
+	Рассмотрим $w_0 = f(z_0)$. Тогда
+	\[
+		\forall w \in f(D) :\: \vert w_0\vert \geq \vert w\vert
+	\]
+	То есть $f(D) \subset \overline{O}_{\vert w_0\vert}(0)$, а $\vert w_0\vert$ лежит на его границе $\Rightarrow$ противоречие с принципом сохранения открытости.
+\end{proof}
+
+\begin{lemma}
+	Шварца.
+
+	Пусть $f(z)$ в $D = \{z \:\vert\: \vert z\vert < 1\}$ голоморфна, а $0$ -- неподвижная точка $f(z)$ и $\forall z \in D :\: \vert f(z)\vert \leq 1$. Тогда
+	\begin{enumerate}
+		\item $\forall z \in D :\: \vert f(z)\vert \leq \vert z\vert ;\;\;\; \vert f'(0)\vert \leq 1$
+		\item Если $\exists z_0$: в любом из неравенств предыдущего пункта достигается равенство, то $f(z) = ze^{i\theta},\, \theta \in \mathbb{R}$
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Рассмотрим $g(z) = \frac{f(z)}{z}$, она голоморфна в $\dot{O}_1(0)$, причём точка $0$ -- устранимая особая. Тогда
+		      \[
+			      g(z) = \begin{cases}
+				      \frac{f(z)}{z},\, z \neq 0 \\
+				      f'(z),\, z = 0
+			      \end{cases}
+		      \]
+		      Голоморфна в $D$.
+
+		      Тогда в $O_r(0)$ по принципу максимумов:
+		      \[
+			      \max_{\vert z\vert \leq r} \vert g\vert = \max_{\vert z\vert = r}\vert g\vert = \frac{1}{r}\max_{\vert z\vert = r} \vert f(z)\vert \leq \frac{1}{r}
+		      \]
+		      Фиксируем $z \in D$. Тогда
+		      \[
+			      \forall r \in (\vert z\vert,\, 1) :\: \vert g(z)\vert \leq \frac{1}{r}
+		      \]
+		      Перейдём к пределу $r \to 1$ и получим $\vert g(z)\vert \leq 1$, тогда $\vert f(z)\vert \leq \vert z\vert$. Из этого неравенства как раз следует $\vert f'(0)\vert \leq 1$:
+		      \[
+			      \left\vert \frac{f(0) - f(z)}{0 - z}\right\vert = \left\vert \frac{f(z)}{z}\right\vert \leq 1
+		      \]
+		\item Пусть $\vert f(z_0)\vert = \vert z_0\vert$ при каком-то $z_0 \neq 0,\, z_0 \in D$. Тогда
+		      \[
+			      \vert g(z_0)\vert = 1\Rightarrow g(z) \equiv const
+		      \]
+		      по принципу максимума, причём $\vert g(z)\vert = 1 \Rightarrow g(z) = e^{i\theta} \Rightarrow f(z) = z\cdot e^{i\theta}$. Если $\vert f'(0)\vert = 1 \Rightarrow g(0) = 1 \Rightarrow$ аналогично берём $z_0 = 0$.
+	\end{enumerate}
+\end{proof}
+
+\section{Дробно-линейные отображения. \dots}
+\begin{definition}
+	Пусть $f$ -- отображение из $D$ в $\mathbb{C}$, которое переводит гладкие кривые в гладкие кривые. Оно называется конформным в точке $z_0$, если оно сохраняет углы между кривыми в точке $z_0$.
+\end{definition}
+
+\begin{proposition}
+	Если $f$ -- голоморфная функция и $f'(z_0) \neq 0$, то $f$ конформно в точке $z_0$.
+\end{proposition}
+
+\begin{lemma}
+	\begin{enumerate}
+		\item Пусть $a \in \mathbb{C},\, \lim_{z \to a}f(z) = \infty$, тогда $f$ конформна в $a \Leftrightarrow f$ имеет полюс первого порядка.
+		\item Пусть $a = \infty,\, \lim_{z \to a}f(z) = A \in \mathbb{C}$, тогда $f$ конформна в $a \Leftrightarrow \text{res}_\infty f \neq 0$
+		\item Пусть $a = \infty,\, \lim_{z \to a}f(z) = \infty$, тогда $f$ конформна в $a \Leftrightarrow f$ имеет полюс первого порядка.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	\begin{enumerate}
+		\item $f$ конформна в $a \Leftrightarrow f'(a) \neq 0 \Leftrightarrow $ для $g(z) := \frac{1}{f(z)}$ выполняется
+		      \[
+			      g'(a) \neq 0 \Leftrightarrow g(z) = g'(a)(z - a) + o(z - a) \Leftrightarrow f(z) = \frac{1}{g'(a)(z - a)}(1 + o(1))
+		      \]
+		      то есть $f$ имеет простой полюс.
+		\item Знаем, что
+		      \[
+			      \lim_{z \to \infty} f(z) = A \in \mathbb{C}
+		      \]
+		      Определим
+		      \[
+			      g(w) = f\left(\frac{1}{w}\right) = A + g'(0)w + o(w)
+		      \]
+		      Тогда
+		      \[
+			      \lim_{w \to 0}\frac{g(w) - A}{w} \neq 0 \Leftrightarrow \lim_{z \to \infty}z(f(z) - A) = -\text{res}_\infty f \neq 0
+		      \]
+		\item Знаем, что
+		      \[
+			      \lim_{z \to a} f(z) = \infty
+		      \]
+		      Тогда для
+		      \[
+			      g(w) := \frac{1}{f(\frac{1}{w})}
+		      \]
+		      будет верно, что $w = 0$ -- УОТ, причём $g(0) = 0$.
+
+		      Значит
+		      \[
+			      g(w) = g'(0)w + o(w)
+		      \]
+		      Тогда критерием конформности будет $g'(0) \neq 0$, то есть
+		      \[
+			      \lim_{w \to 0}\frac{g(w)}{w} \neq 0 \Leftrightarrow \lim_{z \to \infty}\frac{z}{f(z)}
+		      \]
+		      то есть $f$ имеет простой полюс (П1П).
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	$L(z) = \frac{az + b}{cz + d}$ -- дробно линейное отображение, если $L(z) \neq const$, то есть $ad - bc \neq 0$.
+
+	Пусть $\mathfrak{M}$ -- множество всех ДЛО.
+\end{definition}
+
+\begin{proposition}
+	$\mathfrak{M}$ -- группа относительно композиции.
+\end{proposition}
+
+\begin{proof}
+	Подставим и проверим:
+	\[
+		\frac{a_1\frac{a_2z + b_2}{c_2z + d_2} + b_1}{c_1\frac{a_2z + b_2}{c_2z + d_2} + d_1} = \frac{(a_1a_2 + b_1c_2)z + (a_1b_2 + b_1d_2)}{(c_1a_2 + d_1c_2)z + (c_1b_2 + d_1d_2)}
+	\]
+	Заметим, что коэффициенты нового элемента могут быть получены перемножением матриц (это, кстати, доказывает, что сохраняется свойство ненулевого определителя):
+	\[
+		\begin{pmatrix}
+			a_1 & b_1 \\
+			c_1 & d_1
+		\end{pmatrix}
+		\cdot
+		\begin{pmatrix}
+			a_2 & b_2 \\
+			c_2 & d_2
+		\end{pmatrix}
+	\]
+	Для поиска обратного элемента в группе, возьмём обратную матрицу (существует, так как определитель ненулевой $ad - bc \neq 0$) -- это будет матрица коэффициентов искомого элемента.
+\end{proof}
+
+\begin{proposition}
+	Пусть $L \in \mathfrak{M},\, L$ -- биекция $\overline{\mathbb{C}} \to \overline{\mathbb{C}}$. Тогда $L$ -- конформное отображение в любой точке.
+\end{proposition}
+
+\begin{proof}
+	Посчитаем производную
+	\[
+		L'(z) = \frac{ad - bc}{(cz + d)^2}
+	\]
+	Если $z \neq \infty,\, z \neq -\frac{d}{c},\, c \neq 0$, то $cz + d \neq 0 \Rightarrow L'(z) \neq 0 \Rightarrow$ конформное.
+
+	Пусть $c \neq 0,\, z = \infty$. Если $c \neq 0$, то в $z = \infty$ УОТ, хотим проверить $\text{res}_\infty L \neq 0$ из чего следовала бы конформность.
+
+	Считаем вычет:
+	\[
+		\lim_{z \to \infty} z\left(\frac{az + b}{cz + d} - \frac{a}{c}\right) = \lim_{z \to \infty} \frac{bc - ad}{c(cz + d)} = \frac{bc - ad}{c^2} \neq 0
+	\]
+
+	При $c \neq 0,\, z = -\frac{d}{c}$ -- действительно, простой полюс (1 порядка).
+
+	При $c = 0$ -- линейная функция, которая, очевидно, конформная в $\infty$ -- простой полюс.
+\end{proof}
+
+\section{Круговое свойство и принцип симметрии}
+\begin{theorem}
+	При ДЛО образом окружности или прямой будет окружность или прямая.
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Рассмотрим афинное отображение $w = az + b$ (когда $c = 0$).
+
+		      Знаем из аналитической геометрии, что окружность переходит в окружность, а прямая в прямую.
+		\item При $c \neq 0$ представим отображение в виде
+		      \[
+			      w = \frac{az + b}{cz + d} = \frac{a}{c} + \frac{-ad + bc}{c}\cdot\frac{1}{cz + d}
+		      \]
+		      Введём обозначения
+		      \[
+			      w = \alpha + \beta t;\;\;\;\; \alpha := \frac{a}{c};\;\;\;\; \beta := \frac{-ad + bc}{c};\;\;\;\; t := \frac{1}{\zeta} ;\;\;\;\; \zeta := cz + d
+		      \]
+		      Видим, что $w(t),\, \zeta(t)$ -- афинные, проверим выполнимость утвеждения теоремы для $z = \frac{1}{\zeta}$.
+
+		      Положим $\zeta = \xi + i\eta$. Тогда наша искомая окружность или прямая могла быть описана таким уравнением:
+		      \[
+			      A(\xi^2 + \eta^2) + B\xi + C\eta + D = 0,\; 4AD < B^2 + C^2
+		      \]
+		      задаёт невырожденную окружность при $A \neq 0$ и невырожденную прямую при $A = 0$. Полагая $t = \frac{1}{\xi}$, учитывая $\xi^2 + \eta^2 = \zeta\overline{\zeta},\, \xi = \frac{\zeta + \overline{\zeta}}{2},\, \eta = \frac{\zeta - \overline{\zeta}}{2i}$, запишем уравнение в виде
+		      \[
+			      A\zeta\overline{\zeta} + \left(\frac{B}{2} + \frac{C}{2i}\right)\zeta + \left(\frac{B}{2} - \frac{C}{2i}\right)\overline{\zeta} + D = 0
+		      \]
+		      и отсюда получим
+		      \[
+			      A + \left(\frac{B}{2} + \frac{C}{2i}\right)\overline{t} + \left(\frac{B}{2} - \frac{C}{2i}\right)t + Dt\overline{t} = 0
+		      \]
+		      что задаёт окружность при $D \neq 0$ и прямую при $D = 0$.
+
+		      Суперпозиция преобразований, переводящих окружности и прямые в окружности и прямые, переводит окружности и прямые в окружности и прямые.
+	\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+	Окружность или прямая $\gamma$ переходит при ДЛО в прямую, если нуль знаменателя принадлежит $\gamma$, и в окружность иначе.
+
+	Это называется круговым свойством.
+\end{corollary}
+
+\begin{definition}
+	Точки $z_1$ и $z_2$ называются симметричными относительно окружности и центром в точке $z_0$ радиуса $R > 0$, если они лежат на одном луче, исходящем из точки $z_0$, и $\vert z_1 - z_0\vert\cdot\vert z_2 - z_0\vert = R^2$.
+\end{definition}
+
+\begin{proposition}
+	Следующие определения эквивалентны:
+	\begin{enumerate}
+		\item $\begin{cases}
+							\arg(z_1 - z_0) = \arg(z_2 - z_0)\\
+							\vert z_1 - z_0\vert\cdot\vert z_2 - z_0\vert = R^2
+			      \end{cases}$
+		\item $(z_1 - z_0)\overline{(z_2 - z_1)} = R^2$
+		\item Точки пересечения изначальной окружности с $\forall$ другой проходящей через $z_1,\, z_2$ являются точками касания.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	$1 \Leftrightarrow 2$ очевидно.
+
+	$(2 \Rightarrow 3)$.
+
+	Пусть $z'$ -- точка принадлежащая обеим окружностям. По условию
+	\[
+		\vert z' - z_0\vert^2 = R^2 = \vert z_1 - z_0	\vert\cdot\vert z_2 - z_0\vert
+	\]
+	Значит $z' - z_0$ -- касательная к произвольной окружности.
+
+	$(3 \Leftarrow 2)$.
+
+	$z' - z_0$ -- касательная, значит
+	\[
+		\vert z' - z_0\vert^2 = \vert z_2 - z_0\vert\cdot\vert z_1 - z_0\vert
+	\]
+	Значит $\vert z_2 - z_0\vert\cdot\vert z_1 - z_0\vert = R^2$.
+\end{proof}
+
+\begin{theorem}
+	При ДЛО пара симметричных точек относительно окружности или прямой $\gamma$ переходит в пару симметричных точек относительно образа $\gamma$.
+\end{theorem}
+
+\begin{proof}
+	Очевидно из 3 эквивалентного определения симметрии, так как ДЛО сохраняют углы, а значит все касательные останутся касательными.
+\end{proof}
+
+\section{Общий вид конформных отображений\dots}
+\begin{theorem}
+	Любое конформное отображение из $\overline{\mathbb{C}} \to \overline{\mathbb{C}}$ -- это ДЛУ.
+\end{theorem}
+
+\begin{proof}
+	Из предыдущих свойств, очевидно, что каждое ДЛУ обладает всеми нужными свойствами.
+
+	Если же $f$ произвольный автоморфизм расширенной комплексной плоскости, то $\exists z_0 \in \overline{\mathbb{C}} :\: f(z_0) = \infty$. 
+
+	\begin{enumerate}
+		\item Если $z_0 \in \mathbb{C}$, то $f$ имеет полюс первого порядка (так как $f$ конформно в $z_0$). Рассмотрим
+		\[
+			h(z) := \frac{\text{res}_{z_0}f}{z - z_0} - f(z)
+		\]
+		Голоморфна кроме $z_0$, а $z_0$ -- её УОТ. Причём
+		\[
+			\lim_{z \to \infty}h(z) = \lim_{z \to \infty}f(z) \in \mathbb{C}
+		\]
+		(из-за биективности мы не можем попасть в бесконечность из двух разных точек).
+
+		Значит $h$ -- целая и ограниченная $\Rightarrow h \equiv const$ (по теореме Луивилля) $\Rightarrow f$ -- ДЛУ. 
+	\end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Введём красивое обозначение для единичного открытого шара
+	\[
+		\mathbb{D} := \{z \in \mathbb{C} \:\vert\: \vert z\vert < 1\}
+	\]
+\end{definition}
+
+\begin{theorem}
+	Общий вид конформного отображения $\mathbb{D} \mapsto \mathbb{D}$:
+	\[
+		f(z) = e^{i\beta}\frac{z - a}{1 - z\overline{a}},\, \vert a\vert < 1,\, \theta \in \mathbb{R}
+	\]
+\end{theorem}
+
+\begin{proof}
+	Очевидно, что $\exists a = f(0)$. Тогда введём
+	\[
+		\phi(w) := \frac{w - a}{1 - \overline{a}w},\, h := \phi\circ f
+	\]
+	Заметим, что $h$ -- конформное отображение, причём $h(0) = 0$.
+
+	Тогда по лемме Шварца ($\vert h(z)\vert = 1$ при $\vert z\vert = 1$) верно $\vert h(z)\vert\leq\vert z\vert$.
+
+	$h^{-1}$ тоже автоморфизм и переводит $0$ в $0$. Тогда применим лемму Шварца для неё $\vert h^{-1}(w)\vert \leq \vert w\vert \Rightarrow \vert w\vert \leq \vert h(w)\vert \leq \vert w\vert \Rightarrow$ равенство выполняется $\Rightarrow h$ -- поворот $\Leftrightarrow h = e^{i\theta}z \Rightarrow f = \phi^{-1}\circ(e^{i\theta}z) \in \mathfrak{M}$
+\end{proof}
+
+\section{Теорема Римана об отображении. Доказательство единственности.}
+\begin{theorem}
+	Римана. (Доказательство единственности)
+
+	Если $D$ -- односвязная область с границей из более одной точки, то $D$ конформно эквивалентно $\mathbb{D}$. 
+
+	Другими словами, $\exists f :\: D \to \mathbb{D}$ -- конформное отображение. При этом, если потребовать, чтобы $f(z_0) = 0$ и $\arg f'(z_0) = \theta$, то такая $f$ единтственна. 
+\end{theorem}
+
+\begin{proof}
+	Единственность очевидна, так как можно рассмотреть композицию двух  автоморфизмов на $\mathbb{D}$, причём $0 \to 0 \Rightarrow$ по лемме Шварца мы знаем её вид ($e^{i\theta}z$). Фиксирурем $\theta$ и получаем отображение единственным образом.
+\end{proof}
+
+\section{Функция Жуковского}
+\begin{definition}
+	Функцией Жуковского называется
+	\[
+		w = \frac{1}{2}\left(z + \frac{1}{z}\right)
+	\]
+\end{definition}
+
+В каждой точке $z \not\in \{0,\, \pm 1,\, \infty\}$ функция конформна. В точке $0$:
+\[
+	g(z) := \frac{1}{w(z)} = \frac{2z}{z^2 + 1}
+\]
+Эта функция в нуле регулярна и имеет ненулевую производную, а значит, конформна в нуле. В точке $\infty$:
+\[
+	\phi(z) := w\left(\frac{1}{z}\right) = \frac{1}{2}\left(\frac{1}{z} + z\right)
+\]
+Заметим, что это та же $w$, и в силу конформности в нуле, конформность в бесконечности очевидна.
+
+\begin{example}
+	Пусть задана окружность
+	\[
+		\gamma_r = \{z \:\vert\: \vert z\vert = r,\, r \neq 1\}
+	\]
+	Образом под действием функции Жуковского будет $f(z) = \frac{1}{2}\left(re^{i\phi} + \frac{1}{r}e^{-i\phi}\right) = \frac{1}{2}\left(r + \frac{1}{r}\right)\cos\phi + \frac{i}{2}\left(r - \frac{1}{r}\right)\sin\phi$
+
+	При фиксированном $r$ преобразуем к виду $f(z) = a\cos\phi + ib\sin\phi =: u + iv$.
+
+	Тогда
+	\[
+		\frac{u^2}{a^2} + \frac{v^2}{b^2} = 1
+	\]
+	Эллипс с фокусами $a^2 - b^2 = 1 \Rightarrow$ фокусы $\pm1$.
+\end{example}
+
+\begin{example}
+	Пусть задан луч
+	\[
+		l_\phi = \{z \:\vert\: z = re^{i\phi},\, r > 0\},\, \phi \in [-\pi,\, \pi) \setminus \{0,\, \pm\frac{\pi}{2},\, -\varpi\}
+	\]
+	Воспользовавшись формулой из предыдущего примера, в условиях, что теперь $\phi$ фиксирован, получим следующее:
+	\[
+		\frac{u^2}{\cos^2\phi} - \frac{v^2}{\sin^2 \phi} = 1
+	\]
+	Гипербола с фокусами в $\pm(\cos^2\phi + \sin^2\phi) = \pm1$.
+\end{example}
+
+\section{Конформные отображения, осуществляемые степенной и экспоненциальной функциями}
+\begin{example}
+	Рассмотрим $f(z) = z^n,\, n \in \mathbb{N}$.
+
+	Утверждается, что она локально однолистна в $\mathbb{C} \setminus \{0\}$, так как $\forall z \in \mathbb{C} \setminus \{0\} :\: f'(z) = nz^{n - 1} \neq 0$.
+
+	Причём 
+	\[
+		z_1^n = z_2^n \Leftrightarrow \rho_1^ne^{i\phi_1n} = \rho_2^ne^{i\phi_2n} \Leftrightarrow 
+		\begin{cases}
+			\phi_1 - \phi_2 = \frac{2\pi k}{n},\, k \in \mathbb{Z}\\ 
+			\frac{2\pi}{n} \:\vert\: \phi_1 - \phi_2 \text{  делит нацело}\\
+			\rho_1 = \rho_2
+		\end{cases}
+	\]
+
+	Также к нему есть обратное отображение
+	\[
+		f^{-1}(w) = \vert w\vert^{\frac{1}{n}}e^{\frac{i}{n}\arg(w)}
+	\]
+
+	\includegraphics[scale=0.3]{assets/power_ex.png}
+\end{example}
+
+\begin{example}
+	Рассмотрим $f = e^z$.
+
+	Утверждается, что $f$ локально однолистна в $\mathbb{C}$, так как $f' = e^z \neq 0$.
+
+	Причём
+	\[
+		e^{z_1} = e^{z_2} \Leftrightarrow e^{x_1}e^{iy)1} = e^{x_2}e^{iy_2} \Leftrightarrow \begin{cases}
+			2\pi \:\vert\: y_1 - y_2\\
+			x_1 = x_2
+		\end{cases}
+	\]
+	По аналогии, обратное отображение также конформно
+	\[
+		f^{-1}(w) = \ln\vert w\vert + i\arg(w),\, \arg(w) \in (0,\, 2\pi) \text{ - ветвь корня}	
+	\] 
+
+	\includegraphics[scale=0.3]{assets/exp_ex.png}
+\end{example}
+
+\section{Локально равномерная сходимость и теоремы Вейерштрасса}
+\begin{definition}
+	Пусть $f_n$ определена в области $D$. Тогда $f_n$ локально равномерно сходится к $f$ в области $D$, если
+	\[
+		\forall z_0 \in D \: \exists \delta > 0 :\: O_\delta(z_0) \subset D :\: f_n \overset{O_\delta(z_0)}{\rightrightarrows} f
+	\]
+\end{definition}
+
+\begin{proposition}
+	Эквивалентное определение локально равномерной сходимости:
+	\[
+		\forall K \text{ - компакт}\subset D :\: f_n \overset{K}{\rightrightarrows} f
+	\]
+\end{proposition}
+
+\begin{proof}
+	($2 \Rightarrow 1$) В качестве компактов возьмём $\overline{O}_\delta(z_0)$
+
+	($1 \Rightarrow 2$) Компакт покрываем шарами, выбираем конечное подпокрытие и получаем $\rightrightarrows$.
+\end{proof}
+
+\begin{theorem}
+	Пусть $f_n$ голоморфны в $D$, $f_n$ сходится к $f$ локально равномерно в $D$. Тогда
+	\begin{enumerate}
+		\item $f$ -- голоморфна
+		\item $f_n^{(k)}$ локально равномерно сходится к $f^{(k)}$ в $D$
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item По теореме Морера достаточно проверить непрерывность $f$ и 
+		\[
+			\int_{\Gamma \text{ - замкнутой}}f(z)dz = 0 
+		\]
+		Пусть $z_0 \in D,\, \overline{O}_r(z_0) \subset D$. 
+
+		Используя определение с компактами получим, что $f_n \rightrightarrows f$ на $\overline{O}_r(z_0) \Rightarrow f$ непрерывна, как равномерный предел непрерывных.
+		
+		Далее, пусть $\gamma$ -- кусочно гладкая кривая, замкнутая в $\overline{O}_r(z_0)$. 
+
+		Так как
+		\[
+			\left\vert\int_\gamma (f_n - f)dz\right\vert \leq \int_\gamma\vert f_n - f\vert dz \leq \varepsilon_n\int_\gamma dz = c\varepsilon_n \overset{n \to \infty}{\to} 0
+		\]
+		поэтому
+		\[
+			\int_\gamma f_n(z)dz \to \int_\gamma f(z)dz 
+		\]
+		Но 
+		\[
+			\int_\gamma f_ndz = 0 \Rightarrow \int_\gamma f(z)dz = 0 \Rightarrow f \text{ - голоморфна}
+		\]
+		\item Напишем формулу Коши
+		
+		Пусть $z_0 \in D,\, O_r(z_0) \subset D,\, z \in O_{\frac{r}{2}}(z_0)$. Тогда
+		\[
+			f'(z) = \frac{1}{2\pi i} \int_{\partial O_r(z_0)}\frac{f(\xi)d\xi}{(\xi - z)^2};\;\;\;\; f_n'(z) = \frac{1}{2\pi i}\int_{\partial O_r(z_0)}\frac{f_n(\xi)d\xi}{(\xi - z)^2}
+		\]
+		Тогда
+		\begin{align*}
+			\vert f'(z) - f_n'(z)\vert \leq \left\vert\frac{1}{2\pi i}\int_{\gamma_r}\frac{\vert f(\xi) - f_n(\xi)\vert\vert d\xi\vert}{\vert \xi - z\vert^2}\right\vert \leq\\ 
+			\frac{1}{2\pi}\max_{\gamma_r}\vert f- f_n\vert\cdot\left\vert\int_{\gamma_r}\frac{\vert d\xi\vert}{\vert \xi - z\vert^2}\right\vert \leq \frac{2}{\pi r^2}\max_{\gamma_r}\vert f - f_n\vert\cdot2\pi r = c\max_{\gamma_r}\vert f - f_n\vert \to 0
+		\end{align*}
+		При этом $c = \frac{4}{r} \Rightarrow$ стремление на самом деле равномерное на $O_{\frac{r}{2}}(z_0)$. Так можно сделать $\forall z_0 \Rightarrow$ по первому определению $f'$ локально равномерно сходится к $f$ в $D$. Дальше -- очев индукция.
+	\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+	Пусть $f_n$ голоморфна в $D,\, \sum_{n = 1}^\infty f_n$ локально равномерно сходится в области $D$. Тогда
+	\begin{enumerate}
+		\item $f := \sum_{n = 1}^\infty$ -- голоморфная функция
+		\item $f' = \sum_{n = 1}^\infty f_n'$
+	\end{enumerate}
+\end{theorem} 
+
+\begin{proof}
+	$\tilde{f}_k := \sum_{n = 1}^k f_n$ и применяем теорему Вейерштрасса.
 \end{proof}
 
 \end{document}
