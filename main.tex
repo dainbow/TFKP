@@ -462,10 +462,14 @@
 	\[
 		\exists t_0 = \theta_0 < \theta_1 < \cdots < \theta_{n - 1} < \theta_n = t_1
 	\]
-	что
+	что 
+	\[
+		\forall k :\: \gamma|_{[\theta_{k - 1},\, \theta_k]} = z_k
+	\]
+	причём
 	\[
 		\forall k :\: z_k(t),\, t \in [\theta_{k-1},\, \theta_k] \text{ - это гладкая кривая}
-	\]
+	\]л
 \end{definition}
 
 \begin{definition}
@@ -586,7 +590,7 @@
 	\]
 	Получили, что
 	\[
-		\vert I\vert \leq \varepsilon\frac{P_0^2}{4^N}
+		\vert I\vert \leq 4^N\left\vert\int_{\partial\triangle^N} f(z)dz\right\vert \leq 4^N\varepsilon\frac{P_0^2}{4^N}
 	\]
 	В силу произвольности $\varepsilon$: $I = 0$.
 \end{proof}
@@ -613,7 +617,7 @@
 
 \section{Интеграл Коши и его свойства}
 \begin{definition}
-	Пусть $\gamma$ -- кусочно-гладкая кривая в $\mathbb{C}$. Тогда $\forall \phi \in C(\gamma)$ определим интеграл Коши, как
+	Пусть $\gamma$ -- кусочно-гладкая кривая в $\mathbb{C}$. Тогда $\forall \phi \in C(\gamma)$ (непрерывная на $\gamma$ функции) определим интеграл Коши, как
 	\[
 		F_n(z,\, \phi) = \int_\gamma \frac{\phi(\xi)}{(\xi - z)^n}d\xi
 	\]
@@ -693,7 +697,7 @@
 	\]
 	То есть
 	\[
-		\int_{\gamma_r}\frac{f(\xi)d\xi}{\xi - z} = f(z)\int_{\gamma_r}\frac{d\xi}{\xi - z} =: G(z)
+		\int_{\gamma_r}\frac{f(\xi)d\xi}{\xi - z} = f(z)\left[\int_{\gamma_r}\frac{d\xi}{\xi - z} =: G(z)\right]
 	\]
 	$G(z)$ -- голоморфна в $O_r(a),\, G' = \int_{\gamma_r} \frac{d\xi}{(\xi - z)^2} \equiv 0 \Rightarrow G \equiv const \Rightarrow G(a) = 2\pi i \Rightarrow$
 	\[
@@ -982,7 +986,7 @@
 	\begin{enumerate}
 		\item При $\xi \neq z$ непрерывна как отношение непрерывных функций.
 
-		      При $\xi = z$ зафиксируем $z_0 \in D$, по открытости $D \Rightarrow \exists \overline{O}_r(z_0) \subset D$. Тогда будем рассмотримвать сколь угодно близкие $z,\, \xi \in O_\varepsilon(z_0),\, \varepsilon < r$.
+		      При $\xi = z$ зафиксируем $z_0 \in D$, по открытости $D \Rightarrow \exists \overline{O}_r(z_0) \subset D$. Тогда будем рассматривать сколь угодно близкие $z,\, \xi \in O_\varepsilon(z_0),\, \varepsilon < r$.
 
 		      Распишем в этой окрестности ряд Тейлора для двух точек:
 		      \begin{align*}
@@ -1005,11 +1009,26 @@
 		      \[
 			      \int_{\partial\triangle} h(z)dz = \int_{\partial\triangle}\int_\gamma g(\xi,\,z)d\xi dz = \int_\gamma\int_{\partial\triangle}g(\xi,\,z)dzd\xi = 0
 		      \]
-		      Это верно, так как $g(\xi_0,\, \cdot)$ голоморфна в $D \setminus \{\xi\}$, непрерывна в $D \Rightarrow$ по лемме Гурса $\int_{\partial\triangle}g(\xi,\,z)dz = 0$.
+		      Это верно, так как $g(\xi_0,\, \cdot)$ голоморфна в $D \setminus \{\xi_0\}$, непрерывна в $D \Rightarrow$ по лемме Гурса $\int_{\partial\triangle}g(\xi,\,z)dz = 0$.
 
 		      В итоге можем применить теорему Морера, из которой будет следовать, что $h$ -- голоморфна.
 	\end{enumerate}
 \end{proof}
+
+\begin{definition}
+	Пусть $\gamma_1,\, \cdots,\, \gamma_n$ -- замкнутые кусочно гладкие кривые. Тогда
+	\[
+		\Gamma = k_1\gamma_1 + \cdots + k_n\gamma_n
+	\]
+	где $k_i \in \mathbb{Z}$ мы будем называть циклом.
+\end{definition}
+
+\begin{definition}
+	Пусть цикл $\gamma$ лежит в области $D$. Тогда говорят, что $\Gamma \sim 0 (\mod D)$ ($\Gamma$ гомологично эквивалентна 0 в открытой области $D$), если 
+	\[
+		\forall a \in \mathbb{C} \setminus D :\: J_\Gamma(a) = 0
+	\]
+\end{definition}
 
 \begin{theorem}
 	Интегральная теорема Коши.
@@ -1050,7 +1069,7 @@
 
 	Заметим, что $\forall z \in G \cap D :\: h(z) = \tilde{h}(z)$, так как
 	\[
-		\tilde{h}(z) = h(z) = \frac{1}{2\pi i}\int_\Gamma \frac{f(z)d\xi}{\xi - z} = f(z)J_\Gamma(z) = 0
+		\tilde{h}(z) - h(z) = \frac{1}{2\pi i}\int_\Gamma \frac{f(z)d\xi}{\xi - z} = f(z)J_\Gamma(z) = 0
 	\]
 	Тогда введём новую функцию
 	\[
