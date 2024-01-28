@@ -66,15 +66,15 @@
 
 \section{Комплексная дифференцируемость. Условия Коши-Римана}
 \begin{definition}
-	Окрестностью назовём
+	\textbf{Окрестностью} назовём
 	\[
 		B_r(z_0) = \{z \in \mathbb{C} \:\vert\: \vert z - z_0\vert < r\}
 	\]
-	Проколотой окрестностью назовём
+	\textbf{Проколотой окрестностью} назовём
 	\[
 		\dot{B}_r(z_0) = \{z \in \mathbb{C} \:\vert\: 0 < \vert z - z_0\vert < r\}
 	\]
-	Замкнутой окрестностью назовём
+	\textbf{Замкнутой окрестностью} назовём
 	\[
 		\overline{B}_r(z) = \{z_0 \in \mathbb{C} \:\vert\: \vert z - z_0\vert \leq r\}
 	\]
@@ -83,13 +83,14 @@
 \begin{note}
 	Введём обозначения:
 	\begin{align*}
-		\Delta x = x - x_0 ;\;\;\;\; \Delta y = y - y_0 ;\;\;\;\; \Delta z = z - z_0 = \Delta x + i\Delta y \\
-		\Delta u = u(x,\,y) - u(x_0,\,y_0);\;\;\; \Delta v = v(x,\,y) - v(x_0,\, y_0) ;\;\;\; \Delta f = f(x,\, y) - f(x_0,\, y_0) = \Delta u + i\Delta v
+		\Delta x := x - x_0 ;\;\;\;\; \Delta y := y - y_0 ;\;\;\;\; \Delta z := z - z_0 = \Delta x + i\Delta y \\
+		\Delta u := u(x,\,y) - u(x_0,\,y_0);\;\;\; \Delta v := v(x,\,y) - v(x_0,\, y_0) ;\;\;\; \Delta f := f(x,\, y) - f(x_0,\, y_0) = \Delta u + i\Delta v
 	\end{align*}
+	где $f \equiv u + iv;\; u,\,v :\: \mathbb{R}^2 \to \mathbb{R}$.
 \end{note}
 
 \begin{definition}
-	Говорят, что $f :\: B_r(z_0) \to \mathbb{C}$ дифференцируема в точке $z_0$, если
+	Говорят, что $f :\: B_r(z_0) \to \mathbb{C}$ \textbf{дифференцируема в точке} $z_0$, если
 	\[
 		\exists A \in \mathbb{C} :\: f(z) = f(z_0) + A(z - z_0) + o(z - z_0),\, \vert z - z_0\vert \to 0
 	\]
@@ -167,30 +168,7 @@
 
 \section{Связность. Теорема о голоморфной в области функции, производная которой равна нулю.}
 \begin{definition}
-	Функция $u :\: G \to \mathbb{R},\, G \subseteq \mathbb{R}^2$ -- область, причём
-	\[
-		u \in C^2(G),\, \Delta u = 0
-	\]
-	где $\Delta = \nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}$, называется гармонической.
-\end{definition}
-
-\begin{definition}
-	Функция $f :\: G \to \mathbb{C}$, где $G \subseteq \mathbb{C}$ -- область, называется регулярной (голоморфной), если
-	\[
-		\forall z \in G \: \exists f'(z)
-	\]
-	причём производная является непрерывной функцией.
-\end{definition}
-
-\begin{definition}
-	Функция $f :\: G \to \mathbb{C},\, G \subseteq \mathbb{C}$ называется регулярной в точке $z_0 \in G$, если
-	\[
-		\exists r > 0,\, B_r(z_0) \subseteq G :\: f \text{ регулярна на }B_r(z_0)
-	\]
-\end{definition}
-
-\begin{definition}
-	Множество $E \subseteq \overline{\mathbb{C}}$ называется связным, если не существует открытых $G_1,\, G_2$:
+	Множество $E \subseteq \overline{\mathbb{C}}$ называется \textbf{связным}, если не существует открытых $G_1,\, G_2$:
 	\begin{enumerate}
 		\item $G_1 \cup G_2 \supseteq E$
 		\item $E \cap G_1 \cap G_2 = \emptyset$
@@ -199,11 +177,33 @@
 \end{definition}
 
 \begin{definition}
-	Непустое открытое связное множество в $\overline{\mathbb{C}}$ называется областью.
+	Непустое открытое связное множество в $\overline{\mathbb{C}}$ называется \textbf{областью}.
 \end{definition}
 
 \begin{definition}
-	Область $D$ называется односвязной, если $\overline{\mathbb{C}} \setminus D$ -- связно.
+	Область $D$ называется \textbf{односвязной}, если $\overline{\mathbb{C}} \setminus D$ -- связно.
+\end{definition}
+
+\begin{definition}
+	Функция $u :\: G \to \mathbb{R},\, G \subseteq \mathbb{R}^2$ -- область, причём
+	\[
+		u \in C^2(G),\, \Delta u = 0
+	\]
+	где $\Delta = \nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}$, называется \textbf{гармонической}.
+\end{definition}
+
+\begin{definition}
+	Функция $f :\: G \to \mathbb{C}$, где $G \subseteq \mathbb{C}$ -- область, называется \textbf{регулярной (голоморфной)}, если
+	\[
+		\forall z \in G \: \exists f'(z)
+	\]
+\end{definition}
+
+\begin{definition}
+	Функция $f :\: G \to \mathbb{C},\, G \subseteq \mathbb{C}$ называется \textbf{регулярной в точке} $z_0 \in G$, если
+	\[
+		\exists r > 0,\, B_r(z_0) \subseteq G :\: f \text{ регулярна на }B_r(z_0)
+	\]
 \end{definition}
 
 \begin{theorem}
@@ -217,7 +217,7 @@
 \begin{proof}
 	Любые $(x_0,\, y_0) \in D$ лежат вместе с каким-то отрезком $[(x_0,\, y_0),\, (x_0,\, y_0 + \Delta y)]$. Тогда
 	\[
-		f' = u_x + v_xi \Rightarrow u_x \equiv v_x \equiv 0 \Rightarrow u_y \equiv v_y \equiv 0
+		f' = u_x + v_xi = v_y - u_yi \Rightarrow u_x \equiv v_x \equiv 0;\; u_y \equiv v_y \equiv 0
 	\]
 	Применим теорему Лагранжа к $u(x,\,y)$:
 	\[
@@ -269,7 +269,7 @@
 \begin{proof}
 	Первые два пункта выполняется благодаря обычной теореме об обратной функции из матана.
 
-	Пусть $f(z) = u(x,\,y) + iv(x,\,y)$. Имеем отображение $\mathbb{R}^2 \to \mathbb{R}^2$. В силу непрерывной дифференцируемости этих двух функций запишем якобиан и преобразуем согласно УКР:
+	Покажем, что мы имеем право применять ту самую теорему, для этого нам нужен ненулевой якобиан. Пусть $f(z) = u(x,\,y) + iv(x,\,y)$. Имеем отображение $\mathbb{R}^2 \to \mathbb{R}^2$. В силу непрерывной дифференцируемости этих двух функций запишем якобиан и преобразуем согласно УКР:
 	\[
 		J(x,\,y) = \begin{vmatrix}
 			u_x & u_y \\
@@ -290,11 +290,11 @@
 \begin{definition}
 	Ряд $\sum_{k = 1}^\infty g_k(z)$ сходится, если сходится последовательность $\{\sum_{k=1}^n g_k(z)\}_{n = 1}^\infty$.
 
-	Сходимость бывает условной и абсолютной.
+	Сходимость бывает \textbf{условной} и \textbf{абсолютной} (когда сходится ряд из модулей).
 \end{definition}
 
 \begin{definition}
-	Степенным рядом называется ряд вида
+	\textbf{Степенным рядом} называется ряд вида
 	\[
 		\sum_{n = 0}^\infty a_nz^n,\, a_n \in \mathbb{C}
 	\]
@@ -315,7 +315,7 @@
 	\begin{enumerate}
 		\item Если $\vert z\vert \leq r < R$, то степенной ряд сходится равномерно и абсолютно.
 		\item Если $\vert z\vert > R$, то ряд расходится
-		\item $f(z) = \sum_{n = 0}^\infty a_nz^n$ голоморфна при $\vert z\vert < R$ и её производная $f'(z) = \sum_{n = 1}^\infty na_nz^{n-1}$
+		\item $f(z) = \sum_{n = 0}^\infty a_nz^n$ голоморфна при $\vert z\vert < R$ и её производная получается почленным дифференцированием изначального ряда: $f'(z) = \sum_{n = 1}^\infty na_nz^{n-1}$
 	\end{enumerate}
 \end{theorem}
 
@@ -330,7 +330,7 @@
 			      \exists N \in \mathbb{N} \: \forall n > N :\: \vert a_nz^n\vert \leq \left(\frac{r}{\rho}\right)^n,\, \frac{r}{\rho} < 1
 		      \]
 		      Тогда по теореме Вейшерштрасса мы можем ограничить рассматриваемый ряд сходящимся числовым (геометрическая прогрессия) и всё доказали.
-		\item Пусть $\vert z\vert > R$, то есть $\frac{1}{\vert z\vert} < \frac{1}{R}$. Значит
+		\item Пусть $\vert z\vert > R$, то есть $\frac{1}{\vert z\vert} < \frac{1}{R}$. Значит по плотности действительных чисел:
 		      \[
 			      \exists \varepsilon > 0 :\: \frac{1}{\vert z\vert} \leq \frac{1}{R} - \varepsilon \Rightarrow \vert z\vert \geq \frac{1}{\frac{1}{R} - \varepsilon}
 		      \]
@@ -339,9 +339,12 @@
 			      \exists \{n_k\}_{k = 1}^\infty \: \forall k :\: \sqrt[n_k]{\vert a_{n_k}\vert} > \frac{1}{R} - \varepsilon \Rightarrow \vert a_{n_k}z^{n_k}\vert \geq \left(\frac{1}{R} - \varepsilon\right)^{n_k}\cdot\left(\frac{1}{\frac{1}{R} - \varepsilon}\right)^{n_k} \geq 1
 		      \]
 		      Получили, что не выполнено необходимое условие сходимости ряда.
-		\item Заметим, что у $g(z) = \sum_{n = 1}^\infty na_nz^{n-1}$ радиус сходимости такой же в силу $\sqrt[n]{n} \to 1$, то есть ряд сходится при $\vert z\vert < R$.
+		\item Заметим, что у $g(z) = \sum_{n = 1}^\infty na_nz^{n-1}$ радиус сходимости такой же в силу $\sqrt[n]{n} \to 1$, то есть ряд сходится при $\vert z\vert < R$. Причём $\exists r :\: \vert z\vert \leq r < R$. Также введём обозначения:
+		\[
+			F_N(z) := \sum_{i = 0}^{N - 1} a_iz^i;\;\;\;\; H_N(z) = \sum_{i = N}^{+\infty} a_iz^i
+		\]
 
-		      Заметим, что частичные суммы $G_n = F_n'$, то есть равна производной соответствующей частичной суммы $f$.
+		      Заметим, что частичная сумма $G_n = F_n'$, то есть равна производной соответствующей частичной суммы $f$.
 
 		      Распишем производную $f$ через частичные суммы:
 		      \begin{align*}
@@ -366,7 +369,7 @@
 
 \section{Степенные ряды. Свойства экспоненты и тригонометрических.}
 \begin{definition}
-	Голоморфные в $\mathbb{C}$ функции называют целыми
+	Голоморфные в $\mathbb{C}$ функции называют \textbf{целыми}.
 \end{definition}
 
 \begin{definition}
@@ -381,14 +384,14 @@
 	Свойства экспоненты:
 	\begin{enumerate}
 		\item $(e^z)' = e^z$
-		\item $e^{z_1 + z_2} = e^{z_1}e^{z_2}$
+		\item $\forall z_1,\,z_2 \in \mathbb{C} :\: e^{z_1 + z_2} = e^{z_1}e^{z_2}$
 		\item $\forall z \in \mathbb{C} :\: e^z \neq 0$
 	\end{enumerate}
 \end{lemma}
 
 \begin{proof}
 	\begin{enumerate}
-		\item Сразу следует из пункта 3 предыдущей теоремы.
+		\item Сразу следует из пункта 3 предыдущей теоремы. (о почленном дифференцировании рядов)
 		\item Покажем эквивалентное свойство $e^{a - z}e^z = e^a$. Пусть
 		      \[
 			      g(z) := e^{a - z}e^z \Rightarrow g'(z) = -e^{a - z}e^z + e^{a - z}e^z = 0
@@ -400,7 +403,7 @@
 		      \[
 			      e^ze^{-z} = e^0 = 1
 		      \]
-		      Значит в $e^ze^{-z}$ никто не может быть нулём.
+		      Значит в выражении $e^ze^{-z}$ никто не может быть нулём.
 	\end{enumerate}
 \end{proof}
 
@@ -437,50 +440,50 @@
 
 \section{Первообразная и полный дифференциал в области. Условия\dots}
 \begin{definition}
-	Кривая $\gamma$ -- класс эквивалентных параметризаций
+	\textbf{Кривой} $\gamma$ называется класс эквивалентных параметризаций (отличающихся лишь скоростью движения параметра)
 	\[
 		z(t) = x(t) + iy(t),\, t \in [t_0,\, t_1]
 	\]
 \end{definition}
 
 \begin{definition}
-	Кривая $\gamma$ называется гладкой, если существует параметризация
+	Кривая $\gamma$ называется \textbf{гладкой}, если существует параметризация
 	\[
-		z(t) = x(t) + iy(t),\, x \in C^1([t_0,\,t_1]),\, y \in C^1([t_0,\, t_1]);\;\; \forall t \in [t_0,\, t_1] :\: z'(t) \neq 0
+		z(t) = x(t) + iy(t),\, x,\, y \in C^1([t_0,\, t_1]);\;\; \forall t \in [t_0,\, t_1] :\: z'(t) \neq 0
 	\]
 \end{definition}
 
 \begin{definition}
-	Гладкая кривая $\gamma$ называется замкнутой, если
+	Гладкая кривая $\gamma$ называется \textbf{замкнутой}, если
 	\[
 		z(t_0) = z(t_1);\;\; z'(t_0 + 0) = z'(t_1 - 0)
 	\]
 \end{definition}
 
 \begin{definition}
-	Кривая $\gamma$ называется кусочно гладкой, если
+	Кривая $\gamma$ называется \textbf{кусочно-гладкой}, если
 	\[
-		\exists t_0 = \theta_0 < \theta_1 < \cdots < \theta_{n - 1} < \theta_n = t_1
+		\exists\{\theta_i\}_{i = 0}^n :\: t_0 = \theta_0 < \theta_1 < \cdots < \theta_{n - 1} < \theta_n = t_1
 	\]
 	что 
 	\[
-		\forall k :\: \gamma|_{[\theta_{k - 1},\, \theta_k]} = z_k
+		\forall k = \overline{1,\,n} :\: \gamma|_{[\theta_{k - 1},\, \theta_k]} = z_k
 	\]
 	причём
 	\[
-		\forall k :\: z_k(t),\, t \in [\theta_{k-1},\, \theta_k] \text{ - это гладкая кривая}
-	\]л
+		\forall k = \overline{1,\,n} :\: z_k(t),\, t \in [\theta_{k-1},\, \theta_k] \text{ - это гладкая кривая}
+	\]
 \end{definition}
 
 \begin{definition}
-	Пусть $g :\: G \to \mathbb{C}$ на области $G$. Назовём это первообразной непрерывной функции $f :\: G \to \mathbb{C}$, если $g$ регулярна на $G$ и
+	Пусть $g :\: G \to \mathbb{C}$, где $G$ -- область. Назовём $g$ \textbf{первообразной} непрерывной функции $f :\: G \to \mathbb{C}$, если $g$ регулярна на $G$ и
 	\[
 		\forall z \in G :\: g'(z) = f(z)
 	\]
 \end{definition}
 
 \begin{definition}
-	Выражение $f(z)dz$ называется полным дифференциалом в области $G$, если существует первообразная $g$ для $f$ на $G$, то есть
+	Выражение $f(z)dz$ называется \textbf{полным дифференциалом} в области $G$, если существует первообразная $g$ для $f$ на $G$, то есть
 	\[
 		f(z)dz = g'(z)dz
 	\]
@@ -497,6 +500,10 @@
 	\end{enumerate}
 \end{theorem}
 
+\begin{note}
+	Первый пункт выполняется для всех КУСОЧНО-ГЛАДКИХ КРИВЫХ, второй же требует выполнение лишь для ЛОМАНЫХ (класс кривых гораздо меньше чем в первом пункте).
+\end{note}
+
 \begin{proof}
 	\begin{enumerate}
 		\item По условию $\exists g :\: G \to \mathbb{C}$, регулярная, такая, что $g'(z) = f(z)$. Тогда
@@ -507,7 +514,7 @@
 		      \[
 			      g(z) = \int_{\gamma_{az}} f(z)dz
 		      \]
-		      не зависит от $\gamma_{az}$, а лишь от $z$.
+		      причём хотим показать, что этот интеграл не зависит от $\gamma_{az}$, а лишь от $z$.
 
 		      Действительно, если $\exists \gamma_{az} \not\sim \tilde{\gamma}_{az}$, то пусть $\dot{\gamma} = \gamma_{az} \cup \tilde{\gamma}_{az}^{-1}$, тогда по аддитивности интеграла
 		      \[
@@ -532,7 +539,7 @@
 \begin{lemma}
 	Гурса.
 
-	Пусть $G$ -- область, $f :\: G \to \mathbb{C}$ регулярна. Тогда для любого треугольника из $G$ верно
+	Пусть $G$ -- область, $f :\: G \to \mathbb{C}$ регулярна. Тогда для любого треугольника из $G$ (то есть такого, что $\partial\triangle \subseteq G$) верно
 	\[
 		\int_{\partial\triangle} f(z)dz = 0
 	\]
@@ -547,7 +554,7 @@
 	\[
 		\triangle ABC = \bigcup_{k = 1}^4 \triangle_k
 	\]
-	Тогда
+	Тогда из аддитивности интеграла
 	\[
 		I = \sum_{k = 1}^4 \int_{\partial \triangle_k}f(z)dz
 	\]
@@ -617,7 +624,7 @@
 
 \section{Интеграл Коши и его свойства}
 \begin{definition}
-	Пусть $\gamma$ -- кусочно-гладкая кривая в $\mathbb{C}$. Тогда $\forall \phi \in C(\gamma)$ (непрерывная на $\gamma$ функции) определим интеграл Коши, как
+	Пусть $\gamma$ -- кусочно-гладкая кривая в $\mathbb{C}$. Тогда $\forall \phi \in C(\gamma)$ (непрерывная на $\gamma$ функции) определим \textbf{интеграл Коши}, как
 	\[
 		F_n(z,\, \phi) = \int_\gamma \frac{\phi(\xi)}{(\xi - z)^n}d\xi
 	\]
@@ -673,17 +680,13 @@
 
 \section{Интегральная формула Коши для круга\dots}
 \begin{theorem}
-	Пусть $f$ -- голоморфна в $D$, причём $\overline{O}_r(a) \subset D$. Тогда
+	Пусть $f$ -- голоморфна в области $D$, причём $\overline{O}_r(a) \subset D$. Тогда
 	\[
-		\forall z \in O_r(a) :\: f(z) = \frac{1}{2\pi i} \int_{\vert z - a\vert = r}\frac{f(\xi)}{\xi - z}d\xi
+		\forall z \in O_r(a) :\: f(z) = \frac{1}{2\pi i} \int_{\vert \xi - a\vert = r}\frac{f(\xi)}{\xi - z}d\xi
 	\]
 \end{theorem}
 
 \begin{proof}
-	Благодаря замкнутости
-	\[
-		\exists R > r :\: \overline{O}_R(a) \subseteq D
-	\]
 	Фиксируем $z \in O_r(a)$:
 	\[
 		g(\xi) = \begin{cases}
@@ -691,12 +694,13 @@
 			f'(z),\, \xi = z
 		\end{cases}
 	\]
-	$g(\xi)$ -- голоморфна в $O_R(a) \setminus \{z\}$ (как отношение голоморфных функций) и непрерывна в $O_R(a) \Rightarrow \forall \gamma_r$ -- замкнутого контура по теореме Коши:
+	$g(\xi)$ -- голоморфна в $O_r(a) \setminus \{z\}$ (как отношение голоморфных функций) и непрерывна в $O_r(a) \Rightarrow \forall \gamma_r$ -- замкнутого контура по теореме Коши:
 	\[
 		\int_{\gamma_r}g(\xi)d\xi = 0
 	\]
 	То есть
 	\[
+		\int_{\gamma_r}\frac{f(\xi) - f(z)}{\xi - z}d\xi = 0 \Leftrightarrow
 		\int_{\gamma_r}\frac{f(\xi)d\xi}{\xi - z} = f(z)\left[\int_{\gamma_r}\frac{d\xi}{\xi - z} =: G(z)\right]
 	\]
 	$G(z)$ -- голоморфна в $O_r(a),\, G' = \int_{\gamma_r} \frac{d\xi}{(\xi - z)^2} \equiv 0 \Rightarrow G \equiv const \Rightarrow G(a) = 2\pi i \Rightarrow$
@@ -711,7 +715,7 @@
 		\item $f$ -- голоморфна в $D \Rightarrow \forall n \in \mathbb{N} :\: f^{(n)}$ -- голоморфна в $D$.
 		\item В условии формулы Коши для круга:
 		      \begin{equation}\label{nElem}
-			      f^{(n)}(z) = \frac{n!}{2\pi} \int_{\vert z - a\vert = r} \frac{f(\xi)d\xi}{(\xi - z)^{n + 1}}
+			      f^{(n)}(z) = \frac{n!}{2\pi i} \int_{\vert z - a\vert = r} \frac{f(\xi)d\xi}{(\xi - z)^{n + 1}}
 		      \end{equation}
 	\end{enumerate}
 \end{corollary}
@@ -728,7 +732,7 @@
 \end{theorem}
 
 \begin{proof}
-	Заметим, что $\overline{O}_r(a) \subseteq D$ -- выпукло, поэтому применяем лемму:
+	Заметим, что $\overline{O}_r(a) \subseteq D$ -- выпукло, поэтому применяем лемму о триангуляции ломаной треугольниками:
 	\[
 		\forall z \in O_r(a) \: \exists F :\: F' = f
 	\]
@@ -755,7 +759,7 @@
 
 \section{Целые функции и теорема Луивилля}
 \begin{definition}
-	$f$ -- целая, если $f$ голоморфна в $\mathbb{C}$.
+	$f$ -- \textbf{целая}, если $f$ голоморфна в $\mathbb{C}$.
 \end{definition}
 
 \begin{theorem}\label{Lui}
@@ -824,7 +828,7 @@
 \end{proof}
 
 \begin{definition}
-	Пусть $f \neq 0$ -- голоморфна в $O_r(a),\, f(a) = 0$, тогда $m$ -- это порядок нуля в точке $a$. если
+	Пусть $f \not\equiv 0$ -- голоморфна в $O_r(a),\, f(a) = 0$, тогда $m$ -- это \textbf{порядок нуля в точке} $a$. если
 	\[
 		\forall k = \overline{0,\, m - 1} :\: f^{(k)}(a) = 0,\, f^{(m)}(a) \neq 0
 	\]
@@ -925,7 +929,7 @@
 \end{proof}
 
 \begin{definition}
-	Индекс $a$ относительно кривой $\gamma$, где $\gamma$ -- кусочно гладкая замкнутая кривая в $\mathbb{C},\, a \in \mathbb{C} \setminus \gamma$, называется
+	\textbf{Индексом} $a$ относительно кривой $\gamma$, где $\gamma$ -- кусочно гладкая замкнутая кривая в $\mathbb{C},\, a \in \mathbb{C} \setminus \gamma$, называется
 	\[
 		J_\gamma(a) = \frac{\Delta_\gamma(z - a)}{2\pi} \in \mathbb{Z}
 	\]
@@ -951,7 +955,7 @@
 	\]
 	Для неограниченной компоненты
 	\[
-		f(z) := \text{dist }(\gamma,\, z) = \min_{\zeta \in \gamma}\vert z - \zeta\vert > 0
+		d(z) := \text{dist }(\gamma,\, z) = \min_{\zeta \in \gamma}\vert z - \zeta\vert > 0
 	\]
 	Тогда
 	\[
@@ -999,7 +1003,7 @@
 		      \end{align*}
 		      Рассмотрим приращение
 		      \begin{align*}
-			      \vert g(z,\, \xi) - g(z_0,\, z_0)\vert = \vert g(z,\, \xi) - f'(z_0)\vert = \left\vert\sum_{n = 2}^\infty c_n \frac{(z - z_0)^n - (\xi - z_0)^n}{z - \xi}\right\vert \leq \\
+			      \vert g(z,\, \xi) - g(z_0,\, z_0)\vert = \vert g(z,\, \xi) - f'(z_0)\vert \overset{f'(z_0) = \frac{c_1(z - z_0)}{z - z_0}}{=} \left\vert\sum_{n = 2}^\infty c_n \frac{(z - z_0)^n - (\xi - z_0)^n}{z - \xi}\right\vert \leq \\
 			      \sum_{n = 2}^\infty \vert c_n\vert\cdot n\cdot\varepsilon^{n - 1} \leq \varepsilon\sum_{n = 2}^\infty \vert c_n\vert\cdot n\cdot r^{n - 2} = \varepsilon M
 		      \end{align*}
 		      Где $M < \infty$ взяли из сходимости ряда Тейлора путём дифференцирования ($\exists R > r :\: O_R(z_0) \subseteq D \: \overline{O}_r(z_0) \subseteq D$).
@@ -1020,11 +1024,11 @@
 	\[
 		\Gamma = k_1\gamma_1 + \cdots + k_n\gamma_n
 	\]
-	где $k_i \in \mathbb{Z}$ мы будем называть циклом.
+	где $k_i \in \mathbb{Z}$ мы будем называть \textbf{циклом}.
 \end{definition}
 
 \begin{definition}
-	Пусть цикл $\gamma$ лежит в области $D$. Тогда говорят, что $\Gamma \sim 0 (\mod D)$ ($\Gamma$ гомологично эквивалентна 0 в открытой области $D$), если 
+	Пусть цикл $\Gamma$ лежит в области $D$. Тогда говорят, что $\Gamma \sim 0 \mod D$ ($\Gamma$ \textbf{гомологично эквивалентна} 0 в открытой области $D$), если 
 	\[
 		\forall a \in \mathbb{C} \setminus D :\: J_\Gamma(a) = 0
 	\]
@@ -1033,7 +1037,7 @@
 \begin{theorem}
 	Интегральная теорема Коши.
 
-	Пусть $D$ -- область в $\mathbb{C},\, f$ -- голоморфна в $D$. Пусть $\Gamma$ -- цикл в $D$, причём $\Gamma \sim 0 (\mod D)$. Тогда
+	Пусть $D$ -- область в $\mathbb{C},\, f$ -- голоморфна в $D$. Пусть $\Gamma$ -- цикл в $D$, причём $\Gamma \sim 0 \mod D$. Тогда
 	\begin{enumerate}
 		\item $\forall z \in D \setminus \Gamma :\: J_\Gamma(z)\cdot f(z) = \frac{1}{2\pi i}\int_\Gamma \frac{f(\xi)d\xi}{\xi - z}$
 		\item $\int_\Gamma f(z) dz = 0$
@@ -1075,7 +1079,7 @@
 	\[
 		F(z) := \begin{cases}
 			h(z),\, z \in D \\
-			\tilde{h}(z),\, z \in \mathbb{C}\setminus D \subseteq G \text{ так как } \Gamma \sim 0 (\mod D)
+			\tilde{h}(z),\, z \in \mathbb{C}\setminus D \subseteq G \text{ так как } \Gamma \sim 0 \mod D
 		\end{cases}
 	\]
 	Получается, $F(z)$ -- голоморфна в $\mathbb{C}$. (В каждой из гладких областей они голоморфны, и совпадают на границе)
@@ -1104,7 +1108,7 @@
 \begin{corollary}
 	Для односвязной области.
 
-	Пусть $D$ -- односвязная область, $f$ голоморфна в $D$, $\gamma$ -- замкнутая кусочно гладкая кривая в $D$. Тогда
+	Пусть $D$ -- односвязная область, $f$ голоморфна в $D$, $\Gamma$ -- замкнутая кусочно гладкая кривая в $D$. Тогда
 	\[
 		\int_\Gamma f(z)dz = 0
 	\]
@@ -1132,7 +1136,7 @@
 \begin{theorem}
 	Пусть $f$ голоморфна в $K := \{z \:\vert\: r < \vert z - a\vert < R\}$. Тогда
 	\[
-		\forall z \in K :\: f(z) = \sum_{-\infty}^{+\infty}c_n(z - a)^n
+		\forall z \in K :\: f(z) = \sum_{n = -\infty}^{+\infty}c_n(z - a)^n
 	\]
 	где
 	\[
@@ -1176,7 +1180,7 @@
 \end{proof}
 
 \begin{definition}
-	Такие ряды называются рядами Лорана для голоморфной функции $f$.
+	Такие ряды называются \textbf{рядами Лорана} для голоморфной функции $f$.
 \end{definition}
 
 \begin{theorem}
@@ -1195,26 +1199,26 @@
 	\[
 		\int_{\gamma_\rho} f(z)dz = \sum_{n = -\infty}^{+\infty} c_n\cdot\int_{\gamma_\rho}(z - a)^ndz = 2\pi i\cdot c_{-1}
 	\]
-	При $n \neq -1$ обращаемся \dots
+	При $n \neq -1$ сводим к предыдущему пункту для функции $\frac{f(z)}{(z - a)^{n + 1}}$
 \end{proof}
 
 \section{Изолированные особые точки}
 \begin{definition}
-	$a$ -- устранимая особая точка, если
+	$a$ -- \textbf{устранимая} особая точка, если
 	\[
 		\exists A \in \mathbb{C} :\: \lim_{z \to a} f(z) = A
 	\]
 \end{definition}
 
 \begin{definition}
-	$a$ полюс, если
+	$a$ -- \textbf{полюс}, если
 	\[
 		\lim_{z \to a} f(z) = \infty
 	\]
 \end{definition}
 
 \begin{definition}
-	$a$ -- существенная особая точка, если
+	$a$ -- \textbf{существенная} особая точка, если
 	\[
 		\not\exists \lim_{z \to a}f(x)
 	\]
@@ -1233,7 +1237,7 @@
 	\[
 		\vert c_n\vert \leq \frac{1}{2\pi}\int_{\gamma_\rho} \frac{\vert f\vert\vert d\xi\vert}{\rho^{n + 1}} \leq \frac{M_\rho(f)}{2\pi\rho^{n + 1}}\int_{\gamma_r}\vert d\xi\vert = \frac{M_\rho(f)}{\rho^n},\, n \in \mathbb{Z}
 	\]
-	По условию $f$ ограниченный в $\dot{O}(a) \Rightarrow$
+	По условию $f$ ограничена в $\dot{O}_\delta(a) \Rightarrow$
 	\[
 		\exists M \: \forall z \in O_\delta(a) :\: \vert f\vert < M
 	\]
@@ -1263,7 +1267,7 @@
 
 	Значит $\phi(z) := f(z)(z - a)^m$ -- голоморфная в этой области, причём $\phi(a) = c_{-m} \neq 0 \Rightarrow$
 	\[
-		\lim_{z \to a}f(z) = \frac{\lim f(z)(z - a)^m}{\lim(z - a)^m} = \infty
+		\lim_{z \to a}f(z) = \frac{\lim_{z \to a} f(z)(z - a)^m}{\lim_{z \to a} (z - a)^m} = \infty
 	\]
 
 	($\Rightarrow$)
@@ -1276,7 +1280,7 @@
 	\[
 		\frac{1}{f(z)} = (z - a)^mh(z),\, h(a) \neq 0 \Rightarrow f(z) = \frac{1}{(z - a)^m}\frac{1}{h(z)}
 	\]
-	Где $\frac{1}{h(z)}$ -- голоморфная в окрестности $\Rightarrow$ раскладывается в Тейлора.
+	Где $\frac{1}{h(z)}$ -- голоморфная в окрестности $a$ $\Rightarrow$ раскладывается в Тейлора.
 \end{proof}
 
 \begin{theorem}
@@ -1311,7 +1315,7 @@
 
 \section{Вычеты и формулы для их вычисления. Теорема Коши о вычетах.}
 \begin{definition}
-	Если $f$ голоморфна в $\dot{O}_r(a),\, a \neq \infty$, то определим вычет $f$, как
+	Если $f$ голоморфна в $\dot{O}_r(a),\, a \neq \infty$, то определим \textbf{вычет} $f$, как
 	\[
 		\text{res}_af = \frac{1}{2\pi i}\int_{\gamma_\rho}f(z)dz
 	\]
@@ -1331,7 +1335,7 @@
 \begin{theorem}
 	Коши о вычетах.
 
-	Пусть $D$ ограничена циклом $\Gamma = \gamma_0 - \gamma_1 - \cdots - \gamma_n$ (то есть в условиях теореме Коши для многосвязной области).
+	Пусть $D$ ограничена циклом $\Gamma = \gamma_0 - \gamma_1 - \cdots - \gamma_n$ (то есть в условиях теоремы Коши для многосвязной области).
 
 	Пусть $A = \{a_1,\,\cdots,\, a_N\} \subseteq D,\, f$ -- голоморфна в $D' \setminus A$, где $D' \supseteq D$. Тогда
 	\[
@@ -1351,7 +1355,7 @@
 	Обозначим $\tilde{\Gamma} = \Gamma - \sum_{i = 1}^N \delta_i,\, \tilde{D} = D \setminus \cup_{k = 1}^N \overline{O}_R(a_k)$ и $\tilde{D}' = D'
 		\setminus A$. Тогда $\partial\tilde{D} = \tilde{\Gamma}$ и $f$ голоморфна в $\tilde{D}'$.
 
-	Причём $\tilde{D}' \supseteq \tilde{D}$. Более того, $\tilde{\Gamma} \sim 0 \: (\mod \tilde{D}')$, и $\forall z \not\in \tilde{D}' :\: J_{\tilde{\Gamma}}(z) = 0$. Аналогично проверим для
+	Причём $\tilde{D}' \supseteq \tilde{D}$. Более того, $\tilde{\Gamma} \sim 0 \: \mod \tilde{D}'$, и $\forall z \not\in \tilde{D}' :\: J_{\tilde{\Gamma}}(z) = 0$. Аналогично проверим для
 	\begin{enumerate}
 		\item $z \not\in D' \Rightarrow \begin{cases}
 				      J_\Gamma(z) = 0 \\
@@ -1403,7 +1407,7 @@
 \begin{proof}
 	Достаточно доказать, что $\int_{\Gamma_R}\vert e^{i\alpha z}\vert\vert dz\vert$ равномерно ограничен. (то есть $\exists M > 0 \: \forall R > R' :\: \int_{\Gamma_R}\vert e^{i\alpha z}\vert\vert dz\vert \leq M$).
 
-	Пусть $z = Re^{i\phi},\, \phi \in (0,\, \phi)$, тогда очевидно,
+	Пусть $z = Re^{i\phi},\, \phi \in (0,\, \pi)$, тогда очевидно,
 	\[
 		\vert e^{i\alpha z}\vert = e^{\text{Re}(i\alpha z)} = e^{-R\alpha\sin(\phi)}
 	\]
@@ -1413,7 +1417,7 @@
 	\]
 	Вспомним, что $\sin\phi$ вогнут на $[0,\, \frac{\pi}{2}] \Rightarrow \sin\phi \geq \frac{2}{\pi}\phi$. Продолжим цепочку неравенств
 	\begin{align*}
-		2R\int_0^{\frac{\varpi}{2}}e^{-R\alpha\sin\phi}d\phi \leq 2R\int_0^{\frac{\pi}{2}}e^{-\frac{2}{\pi}R\phi}d\phi = \frac{\pi}{\alpha}\int_0^{R\alpha}e^{-t}dt \leq \frac{\pi}{\alpha}\int_0^{+\infty}e^{-t}dt = \frac{\pi}{\alpha}
+		2R\int_0^{\frac{\pi}{2}}e^{-R\alpha\sin\phi}d\phi \leq 2R\int_0^{\frac{\pi}{2}}e^{-\frac{2}{\pi}R\phi}d\phi = \frac{\pi}{\alpha}\int_0^{R\alpha}e^{-t}dt \leq \frac{\pi}{\alpha}\int_0^{+\infty}e^{-t}dt = \frac{\pi}{\alpha}
 	\end{align*}
 \end{proof}
 
@@ -1482,7 +1486,7 @@
 \begin{proof}
 	Введём для $p$:
 	\[
-		p(z) = [f ::= z^n] + [g := c_{n - 1}z^{n - 1} + \cdots + c_1z + c_0]
+		p(z) = [f := z^n] + [g := c_{n - 1}z^{n - 1} + \cdots + c_1z + c_0]
 	\]
 	$p$ голоморфно в $\overline{D} = \overline{O}_R(0)$ при $R > 1$.
 
