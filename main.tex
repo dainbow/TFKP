@@ -1199,7 +1199,7 @@
 	\[
 		\int_{\gamma_\rho} f(z)dz = \sum_{n = -\infty}^{+\infty} c_n\cdot\int_{\gamma_\rho}(z - a)^ndz = 2\pi i\cdot c_{-1}
 	\]
-	При $n \neq -1$ сводим к предыдущему пункту для функции $\frac{f(z)}{(z - a)^{n + 1}}$
+	При $n \neq -1$ сводим к предыдущему случаю для функции $\frac{f(z)}{(z - a)^{n + 1}}$
 \end{proof}
 
 \section{Изолированные особые точки}
@@ -1235,7 +1235,7 @@
 
 	Положим $M_\rho(f) = \max_{\gamma_\rho}\vert f\vert$. Тогда
 	\[
-		\vert c_n\vert \leq \frac{1}{2\pi}\int_{\gamma_\rho} \frac{\vert f\vert\vert d\xi\vert}{\rho^{n + 1}} \leq \frac{M_\rho(f)}{2\pi\rho^{n + 1}}\int_{\gamma_r}\vert d\xi\vert = \frac{M_\rho(f)}{\rho^n},\, n \in \mathbb{Z}
+		\vert c_n\vert \leq \frac{1}{2\pi}\int_{\gamma_\rho} \frac{\vert f\vert\vert d\xi\vert}{\rho^{n + 1}} \leq \frac{M_\rho(f)}{2\pi\rho^{n + 1}}\int_{\gamma_\rho}\vert d\xi\vert = \frac{M_\rho(f)}{\rho^n},\, n \in \mathbb{Z}
 	\]
 	По условию $f$ ограничена в $\dot{O}_\delta(a) \Rightarrow$
 	\[
@@ -1394,6 +1394,7 @@
 	\[
 		\text{res}_af = c_{-1} = \frac{1}{(m - 1)!}\lim_{z \to a}\left(f(z)(z - a)^m\right)^{(m - 1)}
 	\]
+	То есть по сути $m - 1$ коэффициент функции $f(z)(z - a)^m$.
 \end{proof}
 
 \section{Лемма Жордана.\dots}
@@ -1417,7 +1418,7 @@
 	\]
 	Вспомним, что $\sin\phi$ вогнут на $[0,\, \frac{\pi}{2}] \Rightarrow \sin\phi \geq \frac{2}{\pi}\phi$. Продолжим цепочку неравенств
 	\begin{align*}
-		2R\int_0^{\frac{\pi}{2}}e^{-R\alpha\sin\phi}d\phi \leq 2R\int_0^{\frac{\pi}{2}}e^{-\frac{2}{\pi}R\phi}d\phi = \frac{\pi}{\alpha}\int_0^{R\alpha}e^{-t}dt \leq \frac{\pi}{\alpha}\int_0^{+\infty}e^{-t}dt = \frac{\pi}{\alpha}
+		2R\int_0^{\frac{\pi}{2}}e^{-R\alpha\sin\phi}d\phi \leq 2R\int_0^{\frac{\pi}{2}}e^{-\frac{2}{\pi}R\alpha\phi}d\phi = \frac{\pi}{\alpha}\int_0^{R\alpha}e^{-t}dt \leq \frac{\pi}{\alpha}\int_0^{+\infty}e^{-t}dt = \frac{\pi}{\alpha}
 	\end{align*}
 \end{proof}
 
@@ -1443,6 +1444,12 @@
 	\[
 		\frac{f'}{f} = \sum_{i = 1}^\eta\frac{n_i}{z - b_i} - \sum_{i = 1}^k\frac{p_i}{z - a_i} + \frac{g'}{g}
 	\]
+	Почему это так? Рассмотрим, например, $f(z) = (z - b_k)^{n_k}g(z)$, тогда $f'(z) = n_k(z - b_k)^{n_k - 1}g(z) + (z - b_k)^{n_k}g'(z)$. Тогда выполнено следующее:
+	\[
+		\frac{f'}{f} = \frac{n_k}{z - b_k} + \frac{g'}{g}
+	\]
+	Причём после интегрирования первое слагаемое даст нам приращение, а второе ноль, так как функция голоморфная. На случай нескольких нулей и полюсов обобщается аналогично.
+	
 	Значит
 	\[
 		\frac{1}{2\pi i} \int_\Gamma\frac{f'}{f}dz = \sum_{i = 1}^\eta n_iJ_\Gamma(b_i) - \sum_{i = 1}^k p_iJ_\Gamma(a_i) + \frac{1}{2\pi i}\int_\Gamma\frac{g'}{g}dz = \sum_{i = 1}^\eta n_i - \sum_{i = 1}^k p_i = N - P
@@ -1471,7 +1478,13 @@
 	\]
 	Но $\vert g\vert < \vert f\vert$, то есть $\left\vert\frac{g}{f}\right\vert < 1 \Rightarrow \triangle_\Gamma\left(1 + \frac{g}{f}\right) = 0$.
 
-	Тогда $\triangle_\Gamma(f + g) = \triangle_\Gamma(f) \Rightarrow$ по принципу аргументов (так как нет полюсов):
+	Почему это так? Заметим, что образ этой функции находится от числа $1$ на расстоянии не больше 1:
+	\[
+		\vert\left(1 + \frac{g}{f}\right) - 1\vert = \vert\frac{g}{f}\vert < 1
+	\]
+	Из геометрических соображений это значит, что мы не сможем сделать ни одного оборота вокруг нуля, ну а мы знаем, что индекс функции по циклу -- это количество оборотов образа вокруг нуля.
+
+	Тогда $\triangle_\Gamma(f + g) = \triangle_\Gamma(f) \Rightarrow$ по принципу аргументов (так как функции голоморфны $\Rightarrow$ нет полюсов):
 	\[
 		N_f(D) = N_{f +g}(D)
 	\]
@@ -1516,27 +1529,15 @@
 \end{theorem}
 
 \begin{proof}
-	Пусть $f \not\equiv const \Rightarrow$
+	Пусть сначала $w_0 = 0$. Тогда точка $z_0$ -- изолированный ноль функции $f$ и $f'$, поскольку $f^{(n)}(z_0) \neq 0$ (если предположить противное, получим, что $f \equiv 0$ по теореме о единственности). Выберем $\delta > 0$ такое, что других нулей на $\overline{B_\delta(z_0)}$ у этих функций нет.
+
+	Положим $\varepsilon = \min_{\vert z - z_0\vert = \delta}\vert f(z)\vert$. Зафиксируем $\tilde{w} \in \dot{B}_\varepsilon(w_0)$ и проверим условие теоремы Руше для функции $f$ и $-\tilde{w}$ на области $B_\delta(z_0)$:
 	\[
-		\exists r' \: \forall z \in \dot{O}_{r'}(z_0) :\: f(z) \neq w_0,\, f'(z) \neq 0
+		\vert f(z)\vert \geq \varepsilon > \vert -\tilde{w}\vert \text{ при }\vert z - z_0\vert = \delta
 	\]
-	Пусть $r \in (0,\,r')$. Введём
-	\[
-		\gamma = \partial O_r(z_0);\;\;\;\; \Gamma = f(\gamma)
-	\]
-	Тогда
-	\[
-		z \in \gamma \Rightarrow \rho := \text{dist }(\Gamma,\, w_0) > 0
-	\]
-	Пусть $w^* \in \dot{O}_\rho(w_0)$, тогда рассмотрим
-	\[
-		\forall z \in \gamma :\: \vert f(z) - w_0\vert \geq \rho > \vert w^* - w_0\vert
-	\]
-	Тогда по теореме Руше
-	\[
-		N_{O_r(z_0)}(f(z) - w^*) = N_{O_r(z_0)}(f(z) - w_0) = n
-	\]
-	Кратных нулей нет, так как $f'(z) \neq 0$.
+	Значит уравнение $f(z) = \tilde{w}$, как и $f(z) = 0$, имеет $n$ корней на $B_\delta(z_0)$ с учётом кратности. Очевидно, что $f$ имеет ровно 1 корень кратности $n$, так как первые $n - 1$ производные равны нулю.
+
+	Осталось доказать, что все нули функции $f(z) - \tilde{w}$ имеют порядок $1$, это правда, поскольку $(f - \tilde{w})' \neq 0$ на $\dot{B}_\delta(z_0)$ (в силу того, что мы выбирали такую $\delta$-окрестность, что $f'$ не имеет в ней других нулей). Если же $w_0 \neq 0$, то доказанную часть теоремы можно применить к функции $f - w_0$.
 \end{proof}
 
 \begin{theorem}
@@ -1546,26 +1547,20 @@
 \end{theorem}
 
 \begin{proof}
-	Образ связного множества, очевидно, связен. Достаточно показать, что образ открытого открыт. Пусть
-	\[
-		w_0 \in f(D),\, \exists z_0 :\: f(z_0) = w_0,\, \exists n \in \mathbb{N} :\: f^{(n)}(z_0) \neq 0
-	\]
-	Тогда
-	\[
-		\exists O_r(z_0) \: \exists O_\rho(w_0) :\: \forall w^* \in O_\rho(w_0) \: \exists z^* \in O_r(z_0) \Rightarrow O_\rho(w_0) \subseteq f(O_r(z_0))
-	\]
-	Выбирая малое $r$, получим требуемое.
+	Докажем, что множество $f(G)$ -- открытое. Пусть $w_0 \in f(G)$ тогда $\exists z_0 \in G :\: f(z_0) = w_0$. Если $f'(z_0) \neq 0$, то по теореме об обратной функции $\exists \delta > 0$ и $\varepsilon > 0$ такие, что $\forall w \in B_\varepsilon(w_0)$ уравнение $f(z) = w$ имеет единственное решение на $B_\delta(z_0)$, поэтому $B_\varepsilon(w_0) \subset f(G)$. Если же наоборот, $f'(z_0) = 0$, то в силу непостоянности $f$, $\exists n \in \mathbb{N} :\: n \geq 2$ такое, что $f^{(n)}(z_0) \neq 0$, и применима теорема о локальной структуре отображения, дающая аналогичный результат.
+
+	Теперь покажем связность множества $f(G)$. Пусть $w_1,\,w_2 \in f(G)$ тогда для некоторых $z_1,\,z_2 \in G$ выполнено $f(z_1) = w_1,\, f(z_2) = w_2$. Пусть $\gamma$ -- кривая, соединяющая точки $z_1$ и $z_2$, такая, что $\gamma \subset G$. Тогда кривая $\Gamma = f(\gamma)$ соединяет точки $w_1$ и $w_2$.
 \end{proof}
 
 \begin{definition}
-	$f$ голоморфная в $D$ называется однолистной, если
+	$f$ голоморфная в $D$ называется \textbf{однолистной}, если
 	\[
 		\forall z_1,\,z_2 :\: z_1 \neq z_2 \Rightarrow f(z_1) \neq f(z_2)
 	\]
 \end{definition}
 
 \begin{definition}
-	$f$ локально однолистна в некоторой области $O(z_0)$.
+	$f$ \textbf{локально однолистна}, если она однолистна в некоторой области $O(z_0)$.
 \end{definition}
 
 \begin{proposition}
@@ -1638,7 +1633,7 @@
 
 \section{Дробно-линейные отображения. \dots}
 \begin{definition}
-	Пусть $f$ -- отображение из $D$ в $\mathbb{C}$, которое переводит гладкие кривые в гладкие кривые. Оно называется конформным в точке $z_0$, если оно сохраняет углы между кривыми в точке $z_0$.
+	Пусть $f$ -- отображение из $D$ в $\mathbb{C}$, которое переводит гладкие кривые в гладкие кривые. Оно называется \textbf{конформным} в точке $z_0$, если оно сохраняет углы между кривыми в точке $z_0$.
 \end{definition}
 
 \begin{proposition}
@@ -1666,7 +1661,7 @@
 		      \]
 		      Определим
 		      \[
-			      g(w) = f\left(\frac{1}{w}\right) = A + g'(0)w + o(w)
+			      g(w) = f\left(\frac{1}{w}\right) = A + g'(0)w + o(w),\, \vert w\vert \to 0
 		      \]
 		      Тогда
 		      \[
@@ -1936,7 +1931,7 @@
 \begin{example}
 	Пусть задан луч
 	\[
-		l_\phi = \{z \:\vert\: z = re^{i\phi},\, r > 0\},\, \phi \in [-\pi,\, \pi) \setminus \{0,\, \pm\frac{\pi}{2},\, -\varpi\}
+		l_\phi = \{z \:\vert\: z = re^{i\phi},\, r > 0\},\, \phi \in [-\pi,\, \pi) \setminus \{0,\, \pm\frac{\pi}{2},\, -\pi\}
 	\]
 	Воспользовавшись формулой из предыдущего примера, в условиях, что теперь $\phi$ фиксирован, получим следующее:
 	\[
