@@ -221,8 +221,8 @@
 	\]
 	Применим теорему Лагранжа к $u(x,\,y)$:
 	\[
-		\vert u(x_0,\, y_0 + \Delta u) - u(x_0,\, y_0)\vert = \Delta u\vert u'(x_0,\, \xi)\vert = 0 \Rightarrow u(x_0,\, y_0 + \Delta u) = u(x_0,\, y_0)		
-	\] 
+		\vert u(x_0,\, y_0 + \Delta u) - u(x_0,\, y_0)\vert = \Delta u\vert u'(x_0,\, \xi)\vert = 0 \Rightarrow u(x_0,\, y_0 + \Delta u) = u(x_0,\, y_0)
+	\]
 	Аналогично к $v(x,\,y) \Rightarrow f \equiv const$ на всех вертикальных отрезках.
 
 	Аналогично на горизонтальных. Тогда $f \equiv const$ на $D$ в силу связности.
@@ -277,7 +277,7 @@
 		\end{vmatrix} = \begin{vmatrix}
 			u_x & -v_x \\
 			v_x & u_x
-		\end{vmatrix} = (u_x)^2 + (v_x)^2 = \vert f'(z)\vert^2 \Rightarrow J(x_0,\, y_0) \neq 0
+		\end{vmatrix} = (u_x)^2 + (v_x)^2 = \vert f'(z)\vert^2 \Rightarrow J(x_0,\, y_0) = \vert f'(z_0)\vert^2 \neq 0
 	\]
 
 	Третий пункт выполняется благодаря предыдущей теореме:
@@ -323,7 +323,7 @@
 	\begin{enumerate}
 		\item Пусть $\rho \in (r,\, R) \Rightarrow \frac{1}{R} < \frac{1}{\rho} < \frac{1}{r}$. По определению верхнего предела
 		      \[
-			      \exists N \in \mathbb{N} \: \forall n > N :\: \sqrt[n]{a_n} < \frac{1}{\rho}
+			      \exists N \in \mathbb{N} \: \forall n > N :\: \sqrt[n]{\vert a_n\vert} < \frac{1}{\rho}
 		      \]
 		      Тогда (в условиях текущего пункта):
 		      \[
@@ -340,9 +340,9 @@
 		      \]
 		      Получили, что не выполнено необходимое условие сходимости ряда.
 		\item Заметим, что у $g(z) = \sum_{n = 1}^\infty na_nz^{n-1}$ радиус сходимости такой же в силу $\sqrt[n]{n} \to 1$, то есть ряд сходится при $\vert z\vert < R$. Причём $\exists r :\: \vert z\vert \leq r < R$. Также введём обозначения:
-		\[
-			F_N(z) := \sum_{i = 0}^{N - 1} a_iz^i;\;\;\;\; H_N(z) = \sum_{i = N}^{+\infty} a_iz^i
-		\]
+		      \[
+			      F_N(z) := \sum_{i = 0}^{N - 1} a_iz^i;\;\;\;\; H_N(z) := \sum_{i = N}^{+\infty} a_iz^i
+		      \]
 
 		      Заметим, что частичная сумма $G_n = F_n'$, то есть равна производной соответствующей частичной суммы $f$.
 
@@ -465,7 +465,7 @@
 	\[
 		\exists\{\theta_i\}_{i = 0}^n :\: t_0 = \theta_0 < \theta_1 < \cdots < \theta_{n - 1} < \theta_n = t_1
 	\]
-	что 
+	что
 	\[
 		\forall k = \overline{1,\,n} :\: \gamma|_{[\theta_{k - 1},\, \theta_k]} = z_k
 	\]
@@ -617,7 +617,7 @@
 		\forall \triangle \subseteq D :\: \int_{\partial \triangle} fdz = 0
 	\]
 
-	Тогда мы можем триангулировать любую ломаную $\Rightarrow$ по одной из теорем $fdz$ -- полный дифференциал (нужны были непрерывность и нулевой интеграл по всем ломаным).
+	Тогда мы можем триангулировать любую ломаную (в силу выпуклости) $\Rightarrow$ по одной из теорем $fdz$ -- полный дифференциал (нужны были непрерывность и нулевой интеграл по всем ломаным).
 
 	А как мы знаем, интеграл по любой замкнутой кривой от полного дифференциала нулевой.
 \end{proof}
@@ -653,7 +653,7 @@
 
 	Из того же тождества
 	\[
-		\frac{F_1(z,\, \phi) - F_1(z_0,\, \phi)}{z - z_0} = F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) \overset{z \to z_0}{\to} F_1\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = F_2(z_0,\, \phi(\xi))
+		\frac{F_1(z,\, \phi) - F_1(z_0,\, \phi)}{z - z_0} = F_1\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) \overset{z \to z_0}{\to} F_1\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = F_2(z_0,\, \phi)
 	\]
 	Доказали голоморфность существованием производной.
 
@@ -673,7 +673,7 @@
 	\begin{align*}
 		\frac{F_n(z,\, \phi) - F_n(z_0,\, \phi)}{z - z_0} = \int_\gamma\frac{\phi(\xi)d\xi}{(\xi - z)^n(\xi - z_0)} + \frac{F_{n - 1}\left(z,\, \frac{\phi(\xi)}{\xi - z_0}\right) - F_{n-1}\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right)}{z - z_0} \overset{z \to z_0}{\to} \\
 		F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) + F_{n - 1}'\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) + (n-1)F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) =                                        \\
-		n\cdot F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = n\cdot F_{n + 1}(z_0,\, \phi(\xi))
+		n\cdot F_n\left(z_0,\, \frac{\phi(\xi)}{\xi - z_0}\right) = n\cdot F_{n + 1}(z_0,\, \phi)
 	\end{align*}
 	Таким образом, $F_n(z,\, \phi)$ -- бесконечно дифференцируемая.
 \end{proof}
@@ -715,7 +715,7 @@
 		\item $f$ -- голоморфна в $D \Rightarrow \forall n \in \mathbb{N} :\: f^{(n)}$ -- голоморфна в $D$.
 		\item В условии формулы Коши для круга:
 		      \begin{equation}\label{nElem}
-			      f^{(n)}(z) = \frac{n!}{2\pi i} \int_{\vert z - a\vert = r} \frac{f(\xi)d\xi}{(\xi - z)^{n + 1}}
+			      f^{(n)}(z) = \frac{n!}{2\pi i} \int_{\vert \xi - a\vert = r} \frac{f(\xi)d\xi}{(\xi - z)^{n + 1}}
 		      \end{equation}
 	\end{enumerate}
 \end{corollary}
@@ -1028,7 +1028,7 @@
 \end{definition}
 
 \begin{definition}
-	Пусть цикл $\Gamma$ лежит в области $D$. Тогда говорят, что $\Gamma \sim 0 \mod D$ ($\Gamma$ \textbf{гомологично эквивалентна} 0 в открытой области $D$), если 
+	Пусть цикл $\Gamma$ лежит в области $D$. Тогда говорят, что $\Gamma \sim 0 \mod D$ ($\Gamma$ \textbf{гомологично эквивалентна} 0 в открытой области $D$), если
 	\[
 		\forall a \in \mathbb{C} \setminus D :\: J_\Gamma(a) = 0
 	\]
@@ -1301,7 +1301,7 @@
 		      \]
 		      Пусть $A$ -- не предельная. Тогда
 		      \[
-			      \exists \varepsilon \: \exists \delta > 0 \: \forall z \in \dot{O}_\delta(a) :\: \vert f(z) - A\vert \geq \varepsilon
+			      \exists \varepsilon > 0 \: \exists \delta > 0 \: \forall z \in \dot{O}_\delta(a) :\: \vert f(z) - A\vert \geq \varepsilon
 		      \]
 		      Значит $g(z)$ голоморфна в $\dot{O}_\delta(a)$ как отношение голоморфных функций. Причём $g(z) \neq 0$ в $\dot{O}_\delta(a)$. Также $\vert g(z)\vert \leq \frac{1}{\varepsilon} \Rightarrow g$ -- ограниченная, то есть точка $a$ -- УОТ. Тогда
 		      \[
@@ -1449,7 +1449,7 @@
 		\frac{f'}{f} = \frac{n_k}{z - b_k} + \frac{g'}{g}
 	\]
 	Причём после интегрирования первое слагаемое даст нам приращение, а второе ноль, так как функция голоморфная. На случай нескольких нулей и полюсов обобщается аналогично.
-	
+
 	Значит
 	\[
 		\frac{1}{2\pi i} \int_\Gamma\frac{f'}{f}dz = \sum_{i = 1}^\eta n_iJ_\Gamma(b_i) - \sum_{i = 1}^k p_iJ_\Gamma(a_i) + \frac{1}{2\pi i}\int_\Gamma\frac{g'}{g}dz = \sum_{i = 1}^\eta n_i - \sum_{i = 1}^k p_i = N - P
@@ -1480,7 +1480,7 @@
 
 	Почему это так? Заметим, что образ этой функции находится от числа $1$ на расстоянии не больше 1:
 	\[
-		\vert\left(1 + \frac{g}{f}\right) - 1\vert = \vert\frac{g}{f}\vert < 1
+		\left\vert\left(1 + \frac{g}{f}\right) - 1\right\vert = \left\vert\frac{g}{f}\right\vert < 1
 	\]
 	Из геометрических соображений это значит, что мы не сможем сделать ни одного оборота вокруг нуля, ну а мы знаем, что индекс функции по циклу -- это количество оборотов образа вокруг нуля.
 
@@ -1529,7 +1529,7 @@
 \end{theorem}
 
 \begin{proof}
-	Пусть сначала $w_0 = 0$. Тогда точка $z_0$ -- изолированный ноль функции $f$ и $f'$, поскольку $f^{(n)}(z_0) \neq 0$ (если предположить противное, получим, что $f \equiv 0$ по теореме о единственности). Выберем $\delta > 0$ такое, что других нулей на $\overline{B_\delta(z_0)}$ у этих функций нет.
+	Пусть сначала $w_0 = 0$. Тогда точка $z_0$ -- изолированный ноль функции $f$ и $f'$, поскольку $f^{(n)}(z_0) \neq 0$ (если предположить противное, получим, что $f \equiv 0$ по теореме о единственности). Выберем $\delta > 0$ такое, что других нулей на $\overline{B_\delta}(z_0)$ у этих функций нет.
 
 	Положим $\varepsilon = \min_{\vert z - z_0\vert = \delta}\vert f(z)\vert$. Зафиксируем $\tilde{w} \in \dot{B}_\varepsilon(w_0)$ и проверим условие теоремы Руше для функции $f$ и $-\tilde{w}$ на области $B_\delta(z_0)$:
 	\[
@@ -1690,7 +1690,7 @@
 \end{proof}
 
 \begin{definition}
-	$L(z) = \frac{az + b}{cz + d}$ -- дробно линейное отображение, если $L(z) \neq const$, то есть $ad - bc \neq 0$.
+	$L(z) = \frac{az + b}{cz + d}$ -- \textbf{дробно линейное отображение}, если $L(z) \neq const$, то есть $ad - bc \neq 0$.
 
 	Пусть $\mathfrak{M}$ -- множество всех ДЛО.
 \end{definition}
@@ -1787,15 +1787,15 @@
 \end{corollary}
 
 \begin{definition}
-	Точки $z_1$ и $z_2$ называются симметричными относительно окружности и центром в точке $z_0$ радиуса $R > 0$, если они лежат на одном луче, исходящем из точки $z_0$, и $\vert z_1 - z_0\vert\cdot\vert z_2 - z_0\vert = R^2$.
+	Точки $z_1$ и $z_2$ называются \textbf{симметричными относительно окружности} и центром в точке $z_0$ радиуса $R > 0$, если они лежат на одном луче, исходящем из точки $z_0$, и $\vert z_1 - z_0\vert\cdot\vert z_2 - z_0\vert = R^2$.
 \end{definition}
 
 \begin{proposition}
 	Следующие определения эквивалентны:
 	\begin{enumerate}
 		\item $\begin{cases}
-							\arg(z_1 - z_0) = \arg(z_2 - z_0)\\
-							\vert z_1 - z_0\vert\cdot\vert z_2 - z_0\vert = R^2
+				      \arg(z_1 - z_0) = \arg(z_2 - z_0) \\
+				      \vert z_1 - z_0\vert\cdot\vert z_2 - z_0\vert = R^2
 			      \end{cases}$
 		\item $(z_1 - z_0)\overline{(z_2 - z_1)} = R^2$
 		\item Точки пересечения изначальной окружности с $\forall$ другой проходящей через $z_1,\, z_2$ являются точками касания.
@@ -1838,20 +1838,20 @@
 \begin{proof}
 	Из предыдущих свойств, очевидно, что каждое ДЛУ обладает всеми нужными свойствами.
 
-	Если же $f$ произвольный автоморфизм расширенной комплексной плоскости, то $\exists z_0 \in \overline{\mathbb{C}} :\: f(z_0) = \infty$. 
+	Если же $f$ произвольный автоморфизм расширенной комплексной плоскости, то $\exists z_0 \in \overline{\mathbb{C}} :\: f(z_0) = \infty$.
 
 	\begin{enumerate}
 		\item Если $z_0 \in \mathbb{C}$, то $f$ имеет полюс первого порядка (так как $f$ конформно в $z_0$). Рассмотрим
-		\[
-			h(z) := \frac{\text{res}_{z_0}f}{z - z_0} - f(z)
-		\]
-		Голоморфна кроме $z_0$, а $z_0$ -- её УОТ. Причём
-		\[
-			\lim_{z \to \infty}h(z) = \lim_{z \to \infty}f(z) \in \mathbb{C}
-		\]
-		(из-за биективности мы не можем попасть в бесконечность из двух разных точек).
+		      \[
+			      h(z) := \frac{\text{res}_{z_0}f}{z - z_0} - f(z)
+		      \]
+		      Голоморфна кроме $z_0$, а $z_0$ -- её УОТ. Причём
+		      \[
+			      \lim_{z \to \infty}h(z) = \lim_{z \to \infty}f(z) \in \mathbb{C}
+		      \]
+		      (из-за биективности мы не можем попасть в бесконечность из двух разных точек).
 
-		Значит $h$ -- целая и ограниченная $\Rightarrow h \equiv const$ (по теореме Луивилля) $\Rightarrow f$ -- ДЛУ. 
+		      Значит $h$ -- целая и ограниченная $\Rightarrow h \equiv const$ (по теореме Луивилля) $\Rightarrow f$ -- ДЛУ.
 	\end{enumerate}
 \end{proof}
 
@@ -1885,13 +1885,13 @@
 \begin{theorem}
 	Римана. (Доказательство единственности)
 
-	Если $D$ -- односвязная область с границей из более одной точки, то $D$ конформно эквивалентно $\mathbb{D}$. 
+	Если $D$ -- односвязная область с границей из более одной точки, то $D$ конформно эквивалентно $\mathbb{D}$.
 
-	Другими словами, $\exists f :\: D \to \mathbb{D}$ -- конформное отображение. При этом, если потребовать, чтобы $f(z_0) = 0$ и $\arg f'(z_0) = \theta$, то такая $f$ единтственна. 
+	Другими словами, $\exists f :\: D \to \mathbb{D}$ -- конформное отображение. При этом, если потребовать, чтобы $f(z_0) = 0$ и $\arg f'(z_0) = \theta$, то такая $f$ единтственна.
 \end{theorem}
 
 \begin{proof}
-	Единственность очевидна, так как можно рассмотреть композицию двух  автоморфизмов на $\mathbb{D}$, причём $0 \to 0 \Rightarrow$ по лемме Шварца мы знаем её вид ($e^{i\theta}z$). Фиксирурем $\theta$ и получаем отображение единственным образом.
+	Единственность очевидна, так как можно рассмотреть композицию двух  автоморфизмов на $\mathbb{D}$, причём $0 \mapsto 0 \Rightarrow$ по лемме Шварца мы знаем её вид ($e^{i\theta}z$). Фиксирурем $\theta$ и получаем отображение единственным образом.
 \end{proof}
 
 \section{Функция Жуковского}
@@ -1931,7 +1931,7 @@
 \begin{example}
 	Пусть задан луч
 	\[
-		l_\phi = \{z \:\vert\: z = re^{i\phi},\, r > 0\},\, \phi \in [-\pi,\, \pi) \setminus \{0,\, \pm\frac{\pi}{2},\, -\pi\}
+		l_\phi = \{z \:\vert\: z = re^{i\phi},\, r > 0\},\, \phi \in [-\pi,\, \pi) \setminus \left\{0,\, \pm\frac{\pi}{2},\, -\pi\right\}
 	\]
 	Воспользовавшись формулой из предыдущего примера, в условиях, что теперь $\phi$ фиксирован, получим следующее:
 	\[
@@ -1946,12 +1946,12 @@
 
 	Утверждается, что она локально однолистна в $\mathbb{C} \setminus \{0\}$, так как $\forall z \in \mathbb{C} \setminus \{0\} :\: f'(z) = nz^{n - 1} \neq 0$.
 
-	Причём 
+	Причём
 	\[
-		z_1^n = z_2^n \Leftrightarrow \rho_1^ne^{i\phi_1n} = \rho_2^ne^{i\phi_2n} \Leftrightarrow 
+		z_1^n = z_2^n \Leftrightarrow \rho_1^ne^{i\phi_1n} = \rho_2^ne^{i\phi_2n} \Leftrightarrow
 		\begin{cases}
-			\phi_1 - \phi_2 = \frac{2\pi k}{n},\, k \in \mathbb{Z}\\ 
-			\frac{2\pi}{n} \:\vert\: \phi_1 - \phi_2 \text{  делит нацело}\\
+			\phi_1 - \phi_2 = \frac{2\pi k}{n},\, k \in \mathbb{Z}         \\
+			\frac{2\pi}{n} \:\vert\: \phi_1 - \phi_2 \text{  делит нацело} \\
 			\rho_1 = \rho_2
 		\end{cases}
 	\]
@@ -1971,15 +1971,15 @@
 
 	Причём
 	\[
-		e^{z_1} = e^{z_2} \Leftrightarrow e^{x_1}e^{iy)1} = e^{x_2}e^{iy_2} \Leftrightarrow \begin{cases}
-			2\pi \:\vert\: y_1 - y_2\\
+		e^{z_1} = e^{z_2} \Leftrightarrow e^{x_1}e^{iy_1} = e^{x_2}e^{iy_2} \Leftrightarrow \begin{cases}
+			2\pi \:\vert\: y_1 - y_2 \\
 			x_1 = x_2
 		\end{cases}
 	\]
 	По аналогии, обратное отображение также конформно
 	\[
-		f^{-1}(w) = \ln\vert w\vert + i\arg(w),\, \arg(w) \in (0,\, 2\pi) \text{ - ветвь корня}	
-	\] 
+		f^{-1}(w) = \ln\vert w\vert + i\arg(w),\, \arg(w) \in (0,\, 2\pi) \text{ - ветвь корня}
+	\]
 
 	\includegraphics[scale=0.3]{assets/exp_ex.png}
 \end{example}
@@ -2015,50 +2015,50 @@
 
 \begin{proof}
 	\begin{enumerate}
-		\item По теореме Морера достаточно проверить непрерывность $f$ и 
-		\[
-			\int_{\Gamma \text{ - замкнутой}}f(z)dz = 0 
-		\]
-		Пусть $z_0 \in D,\, \overline{O}_r(z_0) \subset D$. 
+		\item По теореме Морера достаточно проверить непрерывность $f$ и
+		      \[
+			      \int_{\Gamma \text{ - замкнутой}}f(z)dz = 0
+		      \]
+		      Пусть $z_0 \in D,\, \overline{O}_r(z_0) \subset D$.
 
-		Используя определение с компактами получим, что $f_n \rightrightarrows f$ на $\overline{O}_r(z_0) \Rightarrow f$ непрерывна, как равномерный предел непрерывных.
-		
-		Далее, пусть $\gamma$ -- кусочно гладкая кривая, замкнутая в $\overline{O}_r(z_0)$. 
+		      Используя определение с компактами получим, что $f_n \rightrightarrows f$ на $\overline{O}_r(z_0) \Rightarrow f$ непрерывна, как равномерный предел непрерывных.
 
-		Так как
-		\[
-			\left\vert\int_\gamma (f_n - f)dz\right\vert \leq \int_\gamma\vert f_n - f\vert dz \leq \varepsilon_n\int_\gamma dz = c\varepsilon_n \overset{n \to \infty}{\to} 0
-		\]
-		поэтому
-		\[
-			\int_\gamma f_n(z)dz \to \int_\gamma f(z)dz 
-		\]
-		Но 
-		\[
-			\int_\gamma f_ndz = 0 \Rightarrow \int_\gamma f(z)dz = 0 \Rightarrow f \text{ - голоморфна}
-		\]
+		      Далее, пусть $\gamma$ -- кусочно гладкая кривая, замкнутая в $\overline{O}_r(z_0)$.
+
+		      Так как
+		      \[
+			      \left\vert\int_\gamma (f_n - f)dz\right\vert \leq \int_\gamma\vert f_n - f\vert dz \leq \varepsilon_n\int_\gamma dz = c\varepsilon_n \overset{n \to \infty}{\to} 0
+		      \]
+		      поэтому
+		      \[
+			      \int_\gamma f_n(z)dz \to \int_\gamma f(z)dz
+		      \]
+		      Но
+		      \[
+			      \int_\gamma f_ndz = 0 \Rightarrow \int_\gamma f(z)dz = 0 \Rightarrow f \text{ - голоморфна}
+		      \]
 		\item Напишем формулу Коши
-		
-		Пусть $z_0 \in D,\, O_r(z_0) \subset D,\, z \in O_{\frac{r}{2}}(z_0)$. Тогда
-		\[
-			f'(z) = \frac{1}{2\pi i} \int_{\partial O_r(z_0)}\frac{f(\xi)d\xi}{(\xi - z)^2};\;\;\;\; f_n'(z) = \frac{1}{2\pi i}\int_{\partial O_r(z_0)}\frac{f_n(\xi)d\xi}{(\xi - z)^2}
-		\]
-		Тогда
-		\begin{align*}
-			\vert f'(z) - f_n'(z)\vert \leq \left\vert\frac{1}{2\pi i}\int_{\gamma_r}\frac{\vert f(\xi) - f_n(\xi)\vert\vert d\xi\vert}{\vert \xi - z\vert^2}\right\vert \leq\\ 
-			\frac{1}{2\pi}\max_{\gamma_r}\vert f- f_n\vert\cdot\left\vert\int_{\gamma_r}\frac{\vert d\xi\vert}{\vert \xi - z\vert^2}\right\vert \leq \frac{2}{\pi r^2}\max_{\gamma_r}\vert f - f_n\vert\cdot2\pi r = c\max_{\gamma_r}\vert f - f_n\vert \to 0
-		\end{align*}
-		При этом $c = \frac{4}{r} \Rightarrow$ стремление на самом деле равномерное на $O_{\frac{r}{2}}(z_0)$. Так можно сделать $\forall z_0 \Rightarrow$ по первому определению $f'$ локально равномерно сходится к $f$ в $D$. Дальше -- очев индукция.
+
+		      Пусть $z_0 \in D,\, O_r(z_0) \subset D,\, z \in O_{\frac{r}{2}}(z_0)$. Тогда
+		      \[
+			      f'(z) = \frac{1}{2\pi i} \int_{\partial O_r(z_0)}\frac{f(\xi)d\xi}{(\xi - z)^2};\;\;\;\; f_n'(z) = \frac{1}{2\pi i}\int_{\partial O_r(z_0)}\frac{f_n(\xi)d\xi}{(\xi - z)^2}
+		      \]
+		      Тогда
+		      \begin{align*}
+			      \vert f'(z) - f_n'(z)\vert \leq \left\vert\frac{1}{2\pi i}\int_{\gamma_r}\frac{\vert f(\xi) - f_n(\xi)\vert\vert d\xi\vert}{\vert \xi - z\vert^2}\right\vert \leq \\
+			      \frac{1}{2\pi}\max_{\gamma_r}\vert f- f_n\vert\cdot\left\vert\int_{\gamma_r}\frac{\vert d\xi\vert}{\vert \xi - z\vert^2}\right\vert \leq \frac{2}{\pi r^2}\max_{\gamma_r}\vert f - f_n\vert\cdot2\pi r = c\max_{\gamma_r}\vert f - f_n\vert \to 0
+		      \end{align*}
+		      При этом $c = \frac{4}{r} \Rightarrow$ стремление на самом деле равномерное на $O_{\frac{r}{2}}(z_0)$. Так можно сделать $\forall z_0 \Rightarrow$ по первому определению $f'$ локально равномерно сходится к $f$ в $D$. Дальше -- очев индукция.
 	\end{enumerate}
 \end{proof}
 
 \begin{theorem}
 	Пусть $f_n$ голоморфна в $D,\, \sum_{n = 1}^\infty f_n$ локально равномерно сходится в области $D$. Тогда
 	\begin{enumerate}
-		\item $f := \sum_{n = 1}^\infty$ -- голоморфная функция
+		\item $f := \sum_{n = 1}^\infty f_n$ -- голоморфная функция
 		\item $f' = \sum_{n = 1}^\infty f_n'$
 	\end{enumerate}
-\end{theorem} 
+\end{theorem}
 
 \begin{proof}
 	$\tilde{f}_k := \sum_{n = 1}^k f_n$ и применяем теорему Вейерштрасса.
