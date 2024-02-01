@@ -1204,6 +1204,10 @@
 
 \section{Изолированные особые точки}
 \begin{definition}
+	\textbf{Изолированная особая точка} -- точка, в некоторой проколотой окрестности которой функция $f(z)$ однозначна и голоморфна, а в самой точке либо не задана, либо недифференцируема.
+\end{definition}
+
+\begin{definition}
 	$a$ -- \textbf{устранимая} особая точка, если
 	\[
 		\exists A \in \mathbb{C} :\: \lim_{z \to a} f(z) = A
@@ -1683,7 +1687,7 @@
 		      \]
 		      Тогда критерием конформности будет $g'(0) \neq 0$, то есть
 		      \[
-			      \lim_{w \to 0}\frac{g(w)}{w} \neq 0 \Leftrightarrow \lim_{z \to \infty}\frac{z}{f(z)}
+			      \lim_{w \to 0}\frac{g(w)}{w} \neq 0 \Leftrightarrow \lim_{z \to \infty}\frac{z}{f(z)} \neq 0
 		      \]
 		      то есть $f$ имеет простой полюс (П1П).
 	\end{enumerate}
@@ -1865,7 +1869,7 @@
 \begin{theorem}
 	Общий вид конформного отображения $\mathbb{D} \mapsto \mathbb{D}$:
 	\[
-		f(z) = e^{i\beta}\frac{z - a}{1 - z\overline{a}},\, \vert a\vert < 1,\, \theta \in \mathbb{R}
+		f(z) = e^{i\theta}\frac{z - a}{1 - z\overline{a}},\, \vert a\vert < 1,\, \theta \in \mathbb{R}
 	\]
 \end{theorem}
 
