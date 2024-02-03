@@ -516,7 +516,7 @@
 		      \]
 		      причём хотим показать, что этот интеграл не зависит от $\gamma_{az}$, а лишь от $z$.
 
-		      Действительно, если $\exists \gamma_{az} \not\sim \tilde{\gamma}_{az}$, то пусть $\dot{\gamma} = \gamma_{az} \cup \tilde{\gamma}_{az}^{-1}$, тогда по аддитивности интеграла
+		      Действительно, если $\exists \gamma_{az} \not\sim \tilde{\gamma}_{az}$, то пусть $\dot{\gamma} = \gamma_{az} \sqcup \tilde{\gamma}_{az}^{-1}$, тогда по аддитивности интеграла
 		      \[
 			      \int_{\dot{\gamma}}f(z)dz = 0 = \int_{\gamma_{az}}f(z)dz - \int_{\tilde{\gamma}_{az}}f(z)dz
 		      \]
@@ -830,7 +830,7 @@
 \begin{definition}
 	Пусть $f \not\equiv 0$ -- голоморфна в $O_r(a),\, f(a) = 0$, тогда $m$ -- это \textbf{порядок нуля в точке} $a$. если
 	\[
-		\forall k = \overline{0,\, m - 1} :\: f^{(k)}(a) = 0,\, f^{(m)}(a) \neq 0
+		\forall k = \overline{0,\, m - 1} :\: f^{(k)}(a) = 0;\; f^{(m)}(a) \neq 0
 	\]
 \end{definition}
 
@@ -898,7 +898,7 @@
 	\[
 		\Gamma = f(\gamma) = \{w = f(z(t)) \:\vert\: t \in [\alpha,\, \beta]\}
 	\]
-	Причём $\Gamma$ -- кусочно гладкая, $\Gamma \subseteq \mathbb{C}\setminus\{0\}$. Тогда приращением аргумента вдоль кривой называется
+	Причём $\Gamma$ -- кусочно гладкая, $\Gamma \subseteq \mathbb{C}\setminus\{0\}$. Тогда \textbf{приращением аргумента вдоль кривой} называется
 	\[
 		\Delta_\Gamma w := \text{Im }\int_\Gamma\frac{dw}{w} = \text{Im }\int_\gamma\frac{f'(z)dz}{f(z)} =: \Delta_\gamma f
 	\]
@@ -1856,6 +1856,11 @@
 		      (из-за биективности мы не можем попасть в бесконечность из двух разных точек).
 
 		      Значит $h$ -- целая и ограниченная $\Rightarrow h \equiv const$ (по теореме Луивилля) $\Rightarrow f$ -- ДЛУ.
+		\item Если $z_0 = \infty$. Тогда $f$ в бесконечности имеет полюс первого порядка, то есть
+		\[
+			f(z) = Az + h(z),\, h(z) = o(z),\, \vert z\vert \to +\infty
+		\]
+		Тогда $h(z)$ голоморфна в $\mathbb{C}$ и $\lim_{z \to \infty} h(z) \in \mathbb{C} \Rightarrow h \equiv const$
 	\end{enumerate}
 \end{proof}
 
